@@ -74,10 +74,10 @@ MonoBehaviour:
     value: {r: 0.6037736, g: 0.24207903, b: 0.55823785, a: 1}
   hueShift:
     overrideState: 1
-    value: -51
+    value: 32
   saturation:
     overrideState: 1
-    value: -44.9
+    value: 0
   brightness:
     overrideState: 0
     value: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
     value: 0.78
   contrast:
     overrideState: 1
-    value: 4.3
+    value: 100
   mixerRedOutRedIn:
     overrideState: 1
     value: 200
@@ -116,7 +116,7 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 0.3389324, y: 0.60983634, z: 1, w: 0}
+    value: {x: 0.44828713, y: 0.7109021, z: 1, w: 0}
   gamma:
     overrideState: 1
     value: {x: 0.75858307, y: 0.32613355, z: 1, w: 0}
