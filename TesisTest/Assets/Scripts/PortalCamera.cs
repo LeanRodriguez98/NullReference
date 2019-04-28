@@ -11,7 +11,6 @@ public class PortalCamera : MonoBehaviour
     public Shader portalShader;
     public RenderTexture portalRenderTexture;
 
-    private Camera playerCam;
 
     public Transform corner_TL;
     public Transform corner_TR;
@@ -19,7 +18,10 @@ public class PortalCamera : MonoBehaviour
     public Transform corner_BR;
 
     public Transform lookTarget;
-    public bool drawNearCone, drawFrustum;
+    public bool drawNearCone;
+    public bool drawFrustum;
+
+    private Camera playerCam;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class PortalCamera : MonoBehaviour
             playerCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>().gameObject;
             if (playerCamera == null)
             {
-                print("cannot find player camera");
+                Debug.LogError("cannot find player camera, please set the players tag in ''player'' ");
             }
         }
 
@@ -62,13 +64,12 @@ public class PortalCamera : MonoBehaviour
 
     void CullCameraFrustum()
     {
-        Vector3 pa, pb, pc, pd;
 
 
-        pa = corner_BL.position;
-        pb = corner_BR.position;
-        pc = corner_TL.position;
-        pd = corner_TR.position;
+        Vector3 pa = corner_BL.position;
+        Vector3 pb = corner_BR.position;
+        Vector3 pc = corner_TL.position;
+        Vector3 pd = corner_TR.position;
 
         Vector3 pe = playerCam.transform.position;
 

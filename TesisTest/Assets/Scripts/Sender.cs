@@ -26,14 +26,19 @@ public class Sender : MonoBehaviour
 
                 if (currentDot < 0) 
                 {
-                    currentlyOverlappingObject.Teleport(this.transform, receiver.transform);
-                    currentlyOverlappingObject = null;
-                    senderUntilActivate = true;
-                    Invoke("SenderUntilActivateDisabled", Time.deltaTime);
-                    if (functionAtTeleport != null)
+                    if (currentlyOverlappingObject.enabled)
                     {
-                        functionAtTeleport.CallFuncions();
-                        
+
+
+                        currentlyOverlappingObject.Teleport(this.transform, receiver.transform);
+                        currentlyOverlappingObject = null;
+                        senderUntilActivate = true;
+                        Invoke("SenderUntilActivateDisabled", Time.deltaTime);
+                        if (functionAtTeleport != null)
+                        {
+                            functionAtTeleport.CallFuncions();
+
+                        }
                     }
                 }
             }
