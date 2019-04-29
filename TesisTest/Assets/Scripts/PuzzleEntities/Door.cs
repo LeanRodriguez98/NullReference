@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Door : PuzzleEntity {
     public GameObject door;
-  
+    public bool defaultState = false;
 	new void Start () {
         base.Start();
         cantTriggers = 0;
+        door.gameObject.SetActive(!defaultState);
+
     }
-	
-	void Update () {
+
+    void Update () {
      
     }
 
@@ -28,11 +30,11 @@ public class Door : PuzzleEntity {
 
             if (cantTriggers == triggerList.Count)
             {
-                door.gameObject.SetActive(false);
+                door.gameObject.SetActive(defaultState);
             }
             else
             {
-                door.gameObject.SetActive(true);
+                door.gameObject.SetActive(!defaultState);
             }
                         
             cantTriggers = 0;
