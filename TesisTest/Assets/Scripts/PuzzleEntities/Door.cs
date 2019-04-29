@@ -25,14 +25,16 @@ public class Door : PuzzleEntity {
                     cantTriggers++;
                 }
             }
-            if (cantTriggers % 2 == 0)
-            {
-                door.gameObject.SetActive(true);
-            }
-            else
+
+            if (cantTriggers == triggerList.Count)
             {
                 door.gameObject.SetActive(false);
             }
+            else
+            {
+                door.gameObject.SetActive(true);
+            }
+                        
             cantTriggers = 0;
         }
     }

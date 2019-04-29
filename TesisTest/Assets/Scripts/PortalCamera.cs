@@ -27,10 +27,10 @@ public class PortalCamera : MonoBehaviour
     {
         if (playerCamera == null)
         {
-            playerCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>().gameObject;
+            playerCamera = GameObject.FindGameObjectWithTag("FPSCharacter").GetComponentInChildren<Camera>().gameObject;
             if (playerCamera == null)
             {
-                Debug.LogError("cannot find player camera, please set the players tag in ''player'' ");
+                Debug.LogError("cannot find player camera, please set the players tag in ''FPSCharacter'' ");
             }
         }
 
