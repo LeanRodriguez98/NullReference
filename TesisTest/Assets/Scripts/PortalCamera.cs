@@ -27,10 +27,10 @@ public class PortalCamera : MonoBehaviour
     {
         if (playerCamera == null)
         {
-            playerCamera = GameObject.FindGameObjectWithTag("FPSCharacter").GetComponentInChildren<Camera>().gameObject;
+            playerCamera = Camera.main.gameObject;
             if (playerCamera == null)
             {
-                Debug.LogError("cannot find player camera, please set the players tag in ''FPSCharacter'' ");
+                Debug.LogError("Cannot find player camera, please set the MainCamera tag to the player's main camera and only in this");
             }
         }
 
@@ -38,11 +38,16 @@ public class PortalCamera : MonoBehaviour
         if (playerCam.targetTexture != null)
             playerCam.targetTexture.Release();
 
-        playerCam.targetTexture = new RenderTexture(portalRenderTexture);
+
+        RenderTexture portalRenderTex = new RenderTexture(portalRenderTexture);
+        portalRenderTex.autoGenerateMips = false;
+
+        playerCam.targetTexture = portalRenderTex;
 
         renderPlane.material = new Material(portalShader);
         renderPlane.material.mainTexture = playerCam.targetTexture;
     }
+
 
     void LateUpdate()
     {
