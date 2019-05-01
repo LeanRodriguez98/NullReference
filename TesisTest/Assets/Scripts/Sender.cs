@@ -7,7 +7,7 @@ public class Sender : MonoBehaviour
 {
 
     public GameObject receiver;
-    public Portable currentlyOverlappingObject;
+    private Portable currentlyOverlappingObject;
     private Sender otherSender;
     private PortalCallFunction functionAtTeleport;
     private bool senderUntilActivate = false;

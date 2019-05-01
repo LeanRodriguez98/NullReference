@@ -16,8 +16,11 @@ public class PresurePlate : PuzzleTrigger
     {
         if (other.gameObject.tag == "PuzzleObject" || other.gameObject.tag == "Player")
         {
-            IsTrigered = true;
-            UpdateEntities();
+            if (!IsTrigered)
+            {
+                IsTrigered = true;
+                UpdateEntities();
+            }
         }
     }
 
@@ -29,7 +32,6 @@ public class PresurePlate : PuzzleTrigger
             UpdateEntities();
         }
     }
-
 
  
 }

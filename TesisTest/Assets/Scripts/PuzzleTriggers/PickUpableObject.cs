@@ -6,13 +6,11 @@ public class PickUpableObject : MonoBehaviour {
     private Player playerInstance;
     private Rigidbody rb;
     private bool isGrabbed;
-    private Collider objectcollider;
 	// Use this for initialization
 	void Start () {
         playerInstance = Player.instance;
         rb = GetComponent<Rigidbody>();
         isGrabbed = false;
-        objectcollider = GetComponent<Collider>();
     }
 	
 	// Update is called once per frame
@@ -29,8 +27,9 @@ public class PickUpableObject : MonoBehaviour {
                 Invoke("SetIsGrabbed", Time.deltaTime * 2);
                 isGrabbed = false;
                 gameObject.layer = 0;
-                if (objectcollider != null)
-                    objectcollider.enabled = true;
+ 
+
+                
             }
         }
 	}
@@ -46,8 +45,10 @@ public class PickUpableObject : MonoBehaviour {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 Invoke("SetIsGrabbed", Time.deltaTime * 2);
                 gameObject.layer = 11; // 11 is the "characterChildren" layer
-                if (objectcollider != null)
-                    objectcollider.enabled = false;
+      
+
+
+               
             }
         }
     }
@@ -57,4 +58,6 @@ public class PickUpableObject : MonoBehaviour {
         isGrabbed = !isGrabbed;
     }
 
+
+   
 }
