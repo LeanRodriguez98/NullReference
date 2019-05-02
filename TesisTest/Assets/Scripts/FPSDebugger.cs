@@ -22,14 +22,22 @@ public class FPSDebugger : MonoBehaviour
 
     void Update()
     {
-        frameCount++;
-        dt += Time.unscaledDeltaTime;
-        if (dt > 1.0 / updateRateSeconds)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            fps = frameCount / dt;
-            frameCount = 0;
-            dt -= 1.0F / updateRateSeconds;
+            txtFps.gameObject.SetActive(!txtFps.gameObject.activeSelf);
         }
-        txtFps.text = formatedString.Replace("{value}", System.Math.Round(fps, 1).ToString("0.0"));
+
+        if (txtFps.gameObject.activeSelf)
+        {
+            frameCount++;
+            dt += Time.unscaledDeltaTime;
+            if (dt > 1.0 / updateRateSeconds)
+            {
+                fps = frameCount / dt;
+                frameCount = 0;
+                dt -= 1.0F / updateRateSeconds;
+            }
+            txtFps.text = formatedString.Replace("{value}", System.Math.Round(fps, 1).ToString("0.0"));
+        }
     }
 }
