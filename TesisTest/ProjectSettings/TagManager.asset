@@ -6,7 +6,6 @@ TagManager:
   tags:
   - PuzzleObject
   - InteractPoint
-  - FPSCharacter
   layers:
   - Default
   - TransparentFX

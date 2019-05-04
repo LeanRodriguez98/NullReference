@@ -7,14 +7,19 @@ public class Sender : MonoBehaviour
 {
 
     public GameObject receiver;
-    private Portable currentlyOverlappingObject;
+    public Portable currentlyOverlappingObject;
+    private Collider currentlyOverlappingObjectCollider;
     private Sender otherSender;
     private PortalCallFunction functionAtTeleport;
     private bool senderUntilActivate = false;
+    private BoxCollider colliderPlane;
+    private Player playerInstance;
     void Start()
     {
         otherSender = receiver.GetComponent<Sender>();
         functionAtTeleport = GetComponent<PortalCallFunction>();
+        colliderPlane = GetComponent<BoxCollider>();
+        playerInstance = Player.instance;
     }
 
 
@@ -30,14 +35,22 @@ public class Sender : MonoBehaviour
                 {
                     if (currentlyOverlappingObject.enabled)
                     {
-                        currentlyOverlappingObject.Teleport(this.transform, receiver.transform);
-                        currentlyOverlappingObject = null;
-                        senderUntilActivate = true;
-                        Invoke("SenderUntilActivateDisabled", Time.deltaTime);
-                        if (functionAtTeleport != null)
+                        if (colliderPlane.bounds.Intersects(currentlyOverlappingObjectCollider.bounds))
                         {
-                            functionAtTeleport.CallFuncions();
+                            currentlyOverlappingObject.Teleport(this.transform, receiver.transform);
+                            currentlyOverlappingObject = null;
+                            senderUntilActivate = true;
+                            Invoke("SenderUntilActivateDisabled", Time.deltaTime);
+                            if (functionAtTeleport != null)
+                            {
+                                functionAtTeleport.CallFuncions();
+                            }
                         }
+                        else
+                        {
+                            OnOverlappingObjectExit();
+                        }
+                       
                     }
                 }
             }
@@ -57,10 +70,16 @@ public class Sender : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!otherSender.GetSenderUntilActivate())
-        {
-            if (other.GetComponentInParent<Portable>() != null)
+        { 
+            if (other.gameObject.CompareTag("Player"))
+            {
+                currentlyOverlappingObject = playerInstance.playerPortable;
+                currentlyOverlappingObjectCollider = playerInstance.mainCollider;
+            }
+            else if (other.GetComponentInParent<Portable>() != null)
             {
                 currentlyOverlappingObject = other.GetComponentInParent<Portable>();
+                currentlyOverlappingObjectCollider = other.GetComponentInParent<Collider>();
                 otherSender.OnOverlappingObjectExit();
 
 
@@ -68,6 +87,8 @@ public class Sender : MonoBehaviour
             else if (other.GetComponent<Portable>() != null)
             {
                 currentlyOverlappingObject = other.GetComponent<Portable>();
+                currentlyOverlappingObjectCollider = other.GetComponent<Collider>();
+
                 otherSender.OnOverlappingObjectExit();
 
             }
@@ -76,12 +97,8 @@ public class Sender : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.GetComponentInParent<Portable>() != null)
-        {
-            otherSender.OnOverlappingObjectExit();
-        }
-        else if (other.GetComponent<Portable>() != null)
-        {
+        if(other.gameObject.CompareTag("Player") || other.GetComponentInParent<Portable>() != null || other.GetComponent<Portable>() != null)
+        { 
             otherSender.OnOverlappingObjectExit();
         }
     }
@@ -89,6 +106,7 @@ public class Sender : MonoBehaviour
     public void OnOverlappingObjectExit()
     {
         currentlyOverlappingObject = null;
+        currentlyOverlappingObjectCollider = null;
     }
 
 

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+
     public static Player instance;
     public GameObject GrabbPoint;
-
+    public Collider mainCollider;
+    public Portable playerPortable;
 
     private void Awake()
     {
