@@ -11,6 +11,7 @@ ScriptedImporter:
     2800004: NR_floor_tile_1_metallic
     2800006: NR_floor_tile_1_height
     2800008: NR_floor_tile_1_emissive
+    2800010: NR_floor_tile_1_roughness
     3300000: NR_floor_test/NR_floor_test/MeshFilter
     11400000: sbsar
     11400002: graph0
@@ -26,9 +27,12 @@ ScriptedImporter:
   - graphLabel: NR_floor_tile_1
     prototypeName: NR_floor_tile_1
     graphDescIndex: 0
-    generateAllOutputs: 0
+    generateAllOutputs: 1
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://NR_floor_tile_1\" label=\"\" >\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://NR_floor_tile_1\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"3802548024\" type=\"8\" value=\"9,9\" />\n
+      \ <presetinput identifier=\"emissive_color\" uid=\"2283616698\" type=\"3\" value=\"0,0.745424,1,1\"
+      />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive
     texturePackingList:
@@ -87,8 +91,8 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 512
+      textureHeight: 512
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
