@@ -41,7 +41,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
+        private bool autowalk = false;
+        private float horizontalSpeed;
+        private float verticalSpeed;
         // Use this for initialization
         private void Start()
         {
@@ -81,6 +83,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
         }
 
 
@@ -200,13 +203,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Camera.transform.localPosition = newCameraPosition;
         }
 
+    
+
 
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+     
 
+            if (!autowalk)
+            {
+
+                horizontalSpeed = CrossPlatformInputManager.GetAxis("Horizontal");
+                verticalSpeed = CrossPlatformInputManager.GetAxis("Vertical");
+            }
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
@@ -216,7 +226,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
-            m_Input = new Vector2(horizontal, vertical);
+            m_Input = new Vector2(horizontalSpeed, verticalSpeed);
 
             // normalize input if it exceeds 1 in combined length:
             if (m_Input.sqrMagnitude > 1)
@@ -236,9 +246,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            if (!autowalk)
+            {
+                m_MouseLook.LookRotation(transform, m_Camera.transform);
+            }
         }
-
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
@@ -259,6 +271,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public void Rotate(Quaternion q)
         {
             m_MouseLook.Rotate(q);
+        }
+
+        public void SetAutoWalk()
+        {
+            autowalk = !autowalk;
         }
     }
 }

@@ -7,13 +7,14 @@ public class Sender : MonoBehaviour
 {
 
     public GameObject receiver;
-    public Portable currentlyOverlappingObject;
+    private Portable currentlyOverlappingObject;
     private Collider currentlyOverlappingObjectCollider;
     private Sender otherSender;
     private PortalCallFunction functionAtTeleport;
     private bool senderUntilActivate = false;
     private BoxCollider colliderPlane;
     private Player playerInstance;
+    [SerializeField] private float autoWalkFrames = 5.0f;
     void Start()
     {
         otherSender = receiver.GetComponent<Sender>();
@@ -37,6 +38,10 @@ public class Sender : MonoBehaviour
                     {
                         if (colliderPlane.bounds.Intersects(currentlyOverlappingObjectCollider.bounds))
                         {
+                            if (currentlyOverlappingObject == playerInstance.playerPortable)
+                            {
+                                playerInstance.AutoWalk(autoWalkFrames * Time.deltaTime);
+                            }
                             currentlyOverlappingObject.Teleport(this.transform, receiver.transform);
                             currentlyOverlappingObject = null;
                             senderUntilActivate = true;
