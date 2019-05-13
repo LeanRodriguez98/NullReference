@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PuzzleObject
   - InteractPoint
+  - FallingDoor
   layers:
   - Default
   - TransparentFX
