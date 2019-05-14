@@ -2,77 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grabber : MonoBehaviour
+namespace BetoScripts
 {
-	public Transform grabber;
-	public float maxDistanceToGrab;
-
-	private GameObject pickedUpObject;
-	private bool isGrabbing;
-
-	private void Start()
+	public class Grabber : MonoBehaviour
 	{
-		pickedUpObject = null;
-		isGrabbing = false;
-	}
+		public Transform m_grabbingPoint;
+		public float m_maxDistanceToGrab;
 
-	private void Update ()
-	{
-		if (!isGrabbing)
-			CheckForPickableObjects();
-		else
+		private GameObject m_currentPickedUpObject;
+		private bool m_isGrabbing;
+
+		private void Start()
 		{
-			KeepObjectAtGrabberPosition();
-
-			if (Input.GetKeyDown(KeyCode.Mouse0))
-				Drop(pickedUpObject);
+			m_currentPickedUpObject = null;
+			m_isGrabbing = false;
 		}
-	}
 
-	private void CheckForPickableObjects()
-	{
-		RaycastHit hit;
-		if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, maxDistanceToGrab))
+		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Mouse0))
-				TryToPickUp(hit.collider.gameObject);
+			if (!m_isGrabbing)
+				CheckForPickableObjects();
+			else if (Input.GetKeyDown(KeyCode.Mouse0))
+				DropObject();
 		}
-	}
 
-	private void TryToPickUp(GameObject obj)
-	{
-		if (obj.tag == "PickableObject")
-			PickUp(obj);
-	}
+		private void CheckForPickableObjects()
+		{
+			RaycastHit hit;
+			if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, m_maxDistanceToGrab))
+			{
+				GameObject obj = hit.collider.gameObject;
 
-	private void PickUp(GameObject objectToPickUp)
-	{
-		objectToPickUp.transform.position = grabber.position;
-		objectToPickUp.transform.parent = grabber.transform;
-		objectToPickUp.transform.rotation = grabber.rotation;
-		pickedUpObject = objectToPickUp;
+				UI_Player.GetInstance().EnableCrosshair(IsPickUpable(obj));
 
-		Rigidbody rb = pickedUpObject.GetComponent<Rigidbody>();
-		rb.useGravity = false;
-		rb.constraints = RigidbodyConstraints.FreezeAll;
+				if (Input.GetKeyDown(KeyCode.Mouse0) && IsPickUpable(obj))
+					PickUp(obj);
+			}
+			else
+				UI_Player.GetInstance().EnableCrosshair(false);
+		}
 
-		isGrabbing = true;
-	}
+		private bool IsPickUpable(GameObject obj)
+		{
+			if (obj.tag == "PickUpable")
+				return true;
+			else
+				return false;
+		}
 
-	private void KeepObjectAtGrabberPosition()
-	{
-		Rigidbody rb = pickedUpObject.GetComponent<Rigidbody>();
-		rb.position = grabber.position;
-	}
+		private void PickUp(GameObject pickedUpObject)
+		{
+			SetCurrentPickedUpObject(pickedUpObject);
 
-	private void Drop(GameObject objectToDrop)
-	{
-		Rigidbody rb = pickedUpObject.GetComponent<Rigidbody>();
-		rb.useGravity = true;
-		rb.constraints = RigidbodyConstraints.None;
+			Rigidbody rb = m_currentPickedUpObject.GetComponent<Rigidbody>();
+			rb.useGravity = false;
+			rb.constraints = RigidbodyConstraints.FreezeAll;
 
-		objectToDrop.transform.parent = null;
-		pickedUpObject = null;
-		isGrabbing = false;
+			m_isGrabbing = true;
+
+			UI_Player.GetInstance().EnableCrosshair(false);
+		}
+
+		private void SetCurrentPickedUpObject(GameObject pickedUpObject)
+		{
+			m_currentPickedUpObject = pickedUpObject;
+			m_currentPickedUpObject.transform.parent = m_grabbingPoint.transform;
+			m_currentPickedUpObject.transform.position = m_grabbingPoint.position;
+			m_currentPickedUpObject.transform.rotation = m_grabbingPoint.rotation;
+			m_currentPickedUpObject.layer = LayerMask.NameToLayer("PickedUpObject");
+		}
+
+
+		private void DropObject()
+		{
+			Rigidbody rb = m_currentPickedUpObject.GetComponent<Rigidbody>();
+			rb.useGravity = true;
+			rb.constraints = RigidbodyConstraints.FreezePositionX;
+			rb.constraints = RigidbodyConstraints.FreezePositionZ;
+
+			m_currentPickedUpObject.layer = LayerMask.NameToLayer("Default");
+			m_currentPickedUpObject.transform.parent = null;
+			m_currentPickedUpObject = null;
+			m_isGrabbing = false;
+		}
 	}
 }

@@ -27,9 +27,6 @@ public class PickUpableObject : MonoBehaviour {
                 Invoke("SetIsGrabbed", Time.deltaTime * 2);
                 isGrabbed = false;
                 gameObject.layer = 0;
- 
-
-                
             }
         }
 	}
