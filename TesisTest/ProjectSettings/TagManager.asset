@@ -21,7 +21,7 @@ TagManager:
   - PortalCollider
   - PickedUpObject
   - CharacterChilders
-  - 
+  - DynamicObject
   - 
   - 
   - 
