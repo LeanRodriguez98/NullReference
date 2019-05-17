@@ -7,10 +7,6 @@ ScriptedImporter:
     2100000: mat.NR_floor_tile_1
     2300000: NR_floor_test_rescue/NR_floor_test_rescue/MeshRenderer
     2800000: NR_floor_tile_1_baseColor
-    2800002: NR_floor_tile_1_normal
-    2800004: NR_floor_tile_1_metallic
-    2800006: NR_floor_tile_1_height
-    2800008: NR_floor_tile_1_emissive
     3300000: NR_floor_test_rescue/NR_floor_test_rescue/MeshFilter
     11400000: sbsar
     11400002: graph0
@@ -32,21 +28,9 @@ ScriptedImporter:
       identifier=\"emissiveColor\" uid=\"2282305277\" type=\"3\" value=\"0,0.471992,1,1\"
       />\n  <presetinput identifier=\"tileColor\" uid=\"2282305035\" type=\"3\" value=\"0.226415,0.226415,0.226415,1\"
       />\n </sbspreset>\n"
-    shaderName: Standard
-    outputNames: baseColor,normal,metallic,height,emissive
-    texturePackingList:
-    - outputName: baseColor
-      alphaSource: baseColor
-    - outputName: normal
-      alphaSource: normal
-    - outputName: roughness
-      alphaSource: roughness
-    - outputName: metallic
-      alphaSource: smoothness
-    - outputName: height
-      alphaSource: height
-    - outputName: emissive
-      alphaSource: emissive
+    shaderName: NullReference/Mechi/WorldspaceUV
+    outputNames: baseColor
+    texturePackingList: []
     textureParameters:
     - textureName: NR_floor_tile_1_roughness
       wrapMode: 0
@@ -95,9 +79,4 @@ ScriptedImporter:
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
-    generatedTextures:
-    - {fileID: 2800000, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
-    - {fileID: 2800002, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
-    - {fileID: 2800004, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
-    - {fileID: 2800006, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
-    - {fileID: 2800008, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
+    generatedTextures: []
