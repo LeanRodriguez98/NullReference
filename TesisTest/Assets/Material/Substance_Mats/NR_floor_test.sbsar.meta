@@ -31,10 +31,10 @@ ScriptedImporter:
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://NR_floor_tile_1\" label=\"\" >\n  <presetinput
       identifier=\"$outputsize\" uid=\"3802548024\" type=\"8\" value=\"9,9\" />\n
-      \ <presetinput identifier=\"emissive_color\" uid=\"2283616698\" type=\"3\" value=\"0,0.745424,1,1\"
+      \ <presetinput identifier=\"emissive_color\" uid=\"2283616698\" type=\"3\" value=\"1,0,0.0489273,1\"
       />\n </sbspreset>\n"
     shaderName: Standard
-    outputNames: baseColor,normal,metallic,height,emissive
+    outputNames: 
     texturePackingList:
     - outputName: baseColor
       alphaSource: baseColor
@@ -96,4 +96,10 @@ ScriptedImporter:
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
-    generatedTextures: []
+    generatedTextures:
+    - {fileID: 2800010, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
+    - {fileID: 2800000, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
+    - {fileID: 2800002, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
+    - {fileID: 2800004, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
+    - {fileID: 2800006, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}
+    - {fileID: 2800008, guid: 3899c3202940d434bac4f0b5b73180c6, type: 3}

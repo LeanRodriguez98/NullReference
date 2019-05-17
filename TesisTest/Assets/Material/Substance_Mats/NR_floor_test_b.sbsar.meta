@@ -29,7 +29,7 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://NR_floor_tile_1\" label=\"\" >\n  <presetinput
-      identifier=\"emissive_color\" uid=\"2283616698\" type=\"3\" value=\"0,0.691152,1,1\"
+      identifier=\"emissive_color\" uid=\"2283616698\" type=\"3\" value=\"1,0,0.0670705,1\"
       />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive

@@ -1,17 +1,21 @@
 fileFormatVersion: 2
-guid: 4f8fea34b4c96c942b09b15d9e6380fd
+guid: 159c2e80940337f49818229e57cd8d86
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: NR_floor_test_rescue/NR_floor_test_rescue
-    400000: NR_floor_test_rescue/NR_floor_test_rescue/Transform
-    2100000: mat.NR_floor_tile_1
-    2300000: NR_floor_test_rescue/NR_floor_test_rescue/MeshRenderer
-    2800000: NR_floor_tile_1_baseColor
-    3300000: NR_floor_test_rescue/NR_floor_test_rescue/MeshFilter
+    100000: wall/wall
+    400000: wall/wall/Transform
+    2100000: mat.New_Graph
+    2300000: wall/wall/MeshRenderer
+    2800000: New_Graph_baseColor
+    2800002: New_Graph_normal
+    2800004: New_Graph_metallic
+    2800006: New_Graph_height
+    2800008: New_Graph_emissive
+    3300000: wall/wall/MeshFilter
     11400000: sbsar
     11400002: graph0
-    13500000: NR_floor_test_rescue/NR_floor_test_rescue/SphereCollider
-    100100000: NR_floor_test_rescue
+    13500000: wall/wall/SphereCollider
+    100100000: wall
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -19,17 +23,14 @@ ScriptedImporter:
   script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
   version: 13
   mGraphInstanceData:
-  - graphLabel: NR_floor_tile_1
-    prototypeName: NR_floor_tile_1
+  - graphLabel: New_Graph
+    prototypeName: New_Graph
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://NR_floor_tile_1\" label=\"\" >\n  <presetinput
-      identifier=\"emissiveColor\" uid=\"2282305277\" type=\"3\" value=\"1,0,0.103298,1\"
-      />\n  <presetinput identifier=\"tileColor\" uid=\"2282305035\" type=\"3\" value=\"0.415094,0.233001,0.233001,1\"
-      />\n </sbspreset>\n"
-    shaderName: NullReference/Mechi/WorldspaceUV
-    outputNames: baseColor
+    preset: " <sbspreset pkgurl=\"pkg://New_Graph\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
     texturePackingList:
     - outputName: baseColor
       alphaSource: baseColor
@@ -38,33 +39,33 @@ ScriptedImporter:
     - outputName: roughness
       alphaSource: roughness
     - outputName: metallic
-      alphaSource: metallic
+      alphaSource: smoothness
     - outputName: height
       alphaSource: height
     - outputName: emissive
       alphaSource: emissive
     textureParameters:
-    - textureName: NR_floor_tile_1_roughness
+    - textureName: New_Graph_roughness
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: NR_floor_tile_1_baseColor
+    - textureName: New_Graph_baseColor
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: NR_floor_tile_1_normal
+    - textureName: New_Graph_normal
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: NR_floor_tile_1_metallic
+    - textureName: New_Graph_metallic
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: NR_floor_tile_1_height
+    - textureName: New_Graph_height
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: NR_floor_tile_1_emissive
+    - textureName: New_Graph_emissive
       wrapMode: 0
       filterMode: 1
       aniso: 1
@@ -90,6 +91,5 @@ ScriptedImporter:
       textureHeight: 256
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {fileID: 2100000, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
-    generatedTextures:
-    - {fileID: 2800000, guid: 4f8fea34b4c96c942b09b15d9e6380fd, type: 3}
+    material: {instanceID: 0}
+    generatedTextures: []
