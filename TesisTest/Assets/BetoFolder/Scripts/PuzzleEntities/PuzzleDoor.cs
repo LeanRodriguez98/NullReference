@@ -27,6 +27,8 @@ namespace BetoScripts
 				if (m_leaverConnections[i].IsEnabled())
 					return true;
 
+			if (m_pressurePlateConnections.Count == 0) return false;
+
 			for (int i = 0; i < m_pressurePlateConnections.Count; i++)
 				if (m_pressurePlateConnections[i].IsEnabled() == false)
 					return false;
