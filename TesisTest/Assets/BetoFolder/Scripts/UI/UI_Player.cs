@@ -28,17 +28,9 @@ namespace BetoScripts
 			m_lookingAtInteractable = false;
 		}
 
-		void Update()
-		{
-			if (m_lookingAtInteractable)
-				m_interactableCrosshair.SetActive(true);
-			else
-				m_interactableCrosshair.SetActive(false);
-		}
-
 		public void EnableCrosshair(bool isInteractable)
 		{
-			m_lookingAtInteractable = isInteractable;
+			m_interactableCrosshair.SetActive(isInteractable);
 		}
 	}
 }

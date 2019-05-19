@@ -33,13 +33,11 @@ namespace BetoScripts
 			{
 				GameObject obj = hit.collider.gameObject;
 
-				UI_Player.GetInstance().EnableCrosshair(IsPickUpable(obj));
+				//UI_Player.GetInstance().EnableCrosshair(IsPickUpable(obj));
 
 				if (Input.GetKeyDown(KeyCode.Mouse0) && IsPickUpable(obj))
 					PickUp(obj);
 			}
-			else
-				UI_Player.GetInstance().EnableCrosshair(false);
 		}
 
 		private bool IsPickUpable(GameObject obj)

@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace BetoScripts
 {
-	public class PressurePlate : PuzzleDoorTrigger
+	public class PressurePlate : MonoBehaviour
 	{
-		public List<PuzzleDoor> m_puzzleDoors;
+		public List<DoorConnection> m_doorConnections;
 		public Animator m_animator;
 
 		private void OnTriggerStay(Collider other)
@@ -22,14 +22,13 @@ namespace BetoScripts
 		private void IsBeingPressed(bool isBeingPressed)
 		{
 			m_animator.SetBool("isPressed", isBeingPressed);
-			m_isEnabled = isBeingPressed;
-			UpdateDoorsStates();
+			EnableDoorConnections(isBeingPressed);
 		}
 
-		void UpdateDoorsStates()
+		void EnableDoorConnections(bool enabled)
 		{
-			for (int i = 0; i < m_puzzleDoors.Count; i++)
-				m_puzzleDoors[i].UpdateState();
+			for (int i = 0; i < m_doorConnections.Count; i++)
+				m_doorConnections[i].SetIsEnabled(enabled);
 		}
 	}
 }

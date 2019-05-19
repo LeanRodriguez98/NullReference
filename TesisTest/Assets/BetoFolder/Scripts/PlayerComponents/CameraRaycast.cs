@@ -17,9 +17,8 @@ namespace BetoScripts
 
 		void Update()
 		{
-			if (!m_interactableFound)
-				m_interactableFound = CheckInteractableEntity();
-			else if (Input.GetKeyDown(KeyCode.Mouse0))
+			m_interactableFound = CheckInteractableEntity();
+			if (m_interactableFound && Input.GetKeyDown(KeyCode.Mouse0))
 				m_interactableFound.Interact();
 		}
 
@@ -28,11 +27,24 @@ namespace BetoScripts
 			RaycastHit hit;
 			if (Physics.Raycast(transform.position, transform.forward, out hit, m_interactionRange))
 			{
-				//Debug.Log("Looking at: " + hit.collider.name);
-				return hit.collider.GetComponent<Interactable>();
+				Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+				if (interactable != null)
+				{
+					UI_Player.GetInstance().EnableCrosshair(true);
+					return interactable;
+				}
+				else
+				{
+					UI_Player.GetInstance().EnableCrosshair(false);
+					return null;
+				}
 			}
 			else
+			{
+				UI_Player.GetInstance().EnableCrosshair(false);
 				return null;
+			}
 		}
 	}
 }

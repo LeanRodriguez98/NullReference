@@ -2,15 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leaver : MonoBehaviour {
+namespace BetoScripts
+{
+	public class Leaver : Interactable
+	{
+		public List<DoorConnection> m_doorConnections;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		private Animator m_animator;
+
+		private void Start()
+		{
+			m_animator = GetComponent<Animator>();
+		}
+
+		public override void Interact()
+		{
+			base.Interact();
+
+			m_animator.SetTrigger("Interact");
+			UpdateDoorConnectionsStates();
+		}
+
+		private void UpdateDoorConnectionsStates()
+		{
+			for (int i = 0; i < m_doorConnections.Count; i++)
+			{
+				bool currentDoorState = m_doorConnections[i].IsEnabled();
+				m_doorConnections[i].SetIsEnabled(!currentDoorState);
+			}
+		}
 	}
 }

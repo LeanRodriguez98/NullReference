@@ -6,7 +6,8 @@ namespace BetoScripts
 {
 	public class PuzzleDoor : MonoBehaviour
 	{
-		public List<PuzzleDoorTrigger> m_doorTriggers;
+		public List<DoorConnection> m_pressurePlateConnections;
+		public List<DoorConnection> m_leaverConnections;
 
 		private Animator m_animator;
 
@@ -17,14 +18,19 @@ namespace BetoScripts
 
 		public void UpdateState()
 		{
-			m_animator.SetBool("AllTriggersEnabled", AllTriggersEnabled());
+			m_animator.SetBool("AllTriggersEnabled", ShouldOpenDoor());
 		}
 
-		private bool AllTriggersEnabled()
+		private bool ShouldOpenDoor()
 		{
-			for (int i = 0; i < m_doorTriggers.Count; i++)
-				if (m_doorTriggers[i].GetIsEnabled() == false)
+			for (int i = 0; i < m_leaverConnections.Count; i++)
+				if (m_leaverConnections[i].IsEnabled())
+					return true;
+
+			for (int i = 0; i < m_pressurePlateConnections.Count; i++)
+				if (m_pressurePlateConnections[i].IsEnabled() == false)
 					return false;
+
 			return true;
 		}
 	}
