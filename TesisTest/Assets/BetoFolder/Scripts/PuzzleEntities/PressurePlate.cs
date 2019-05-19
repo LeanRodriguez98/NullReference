@@ -4,20 +4,32 @@ using UnityEngine;
 
 namespace BetoScripts
 {
-	public class PressurePlate : MonoBehaviour
+	public class PressurePlate : PuzzleDoorTrigger
 	{
+		public List<PuzzleDoor> m_puzzleDoors;
 		public Animator m_animator;
 
 		private void OnTriggerStay(Collider other)
 		{
-			Debug.Log("Plate pressed");
-			m_animator.SetBool("isPressed", true);
+			IsBeingPressed(true);
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
-			Debug.Log("Plate unpressed");
-			m_animator.SetBool("isPressed", false);
+			IsBeingPressed(false);
+		}
+
+		private void IsBeingPressed(bool isBeingPressed)
+		{
+			m_animator.SetBool("isPressed", isBeingPressed);
+			m_isEnabled = isBeingPressed;
+			UpdateDoorsStates();
+		}
+
+		void UpdateDoorsStates()
+		{
+			for (int i = 0; i < m_puzzleDoors.Count; i++)
+				m_puzzleDoors[i].UpdateState();
 		}
 	}
 }
