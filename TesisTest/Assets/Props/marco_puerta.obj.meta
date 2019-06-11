@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 46b66941b5570bc43b404c0f290cbf34
+guid: 800d232c200d95e4085256455c3a45b5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: pCube2_group3
-    100002: //RootNode
-    400000: pCube2_group3
-    400002: //RootNode
+    100000: //RootNode
+    100002: pCube7_null1
+    400000: //RootNode
+    400002: pCube7_null1
     2100000: initialShadingGroup
-    2300000: pCube2_group3
-    3300000: pCube2_group3
-    4300000: pCube2_group3
+    2300000: pCube7_null1
+    3300000: pCube7_null1
+    4300000: pCube7_null1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -42,7 +42,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.75
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
