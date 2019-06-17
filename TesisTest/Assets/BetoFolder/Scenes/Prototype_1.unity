@@ -8493,6 +8493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 390843004}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &265887943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17039,6 +17040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 265887940}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &390843006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23614,6 +23616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 899701997}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &465974006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24065,6 +24068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 1922860495}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &487079858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24580,6 +24584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 1330705546}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &508959044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24715,6 +24720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 1334270978}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &509337869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40013,6 +40019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 923327113}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &822459812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40707,6 +40714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 465974003}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &899701999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41349,6 +41357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 822459809}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &923327115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54565,6 +54574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 508959042}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &1330705549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54672,6 +54682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 509337866}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &1334270980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80785,6 +80796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789051833}
   - component: {fileID: 1918937484}
+  - component: {fileID: 1918937482}
   - component: {fileID: 1918937483}
   m_Layer: 0
   m_Name: CharacterChilderCamera
@@ -80793,6 +80805,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1918937482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918937481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcf569b148529a42a3f8793df7de654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displacementMap: {fileID: 2800000, guid: fbead165e4ff8c94484daac1eb769b81, type: 3}
+  Shader: {fileID: 4800000, guid: 450c31a66c47eb04380a577440383bae, type: 3}
+  intensity: 1
+  flipIntensity: 1
+  colorIntensity: 1
+  glitchDuration: 0.5
 --- !u!81 &1918937483
 AudioListener:
   m_ObjectHideFlags: 0
@@ -80959,6 +80988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 487079856}
   autoWalkFrames: 5
+  activateVisualGlitch: 1
 --- !u!65 &1922860498
 BoxCollider:
   m_ObjectHideFlags: 0

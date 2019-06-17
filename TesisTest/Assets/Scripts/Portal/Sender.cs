@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-using UnityEditor;
 
 public class Sender : MonoBehaviour
 {
@@ -15,6 +13,9 @@ public class Sender : MonoBehaviour
     private BoxCollider colliderPlane;
     private Player playerInstance;
     [SerializeField] private float autoWalkFrames = 5.0f;
+
+    public bool activateVisualGlitch = true;
+
     void Start()
     {
         otherSender = receiver.GetComponent<Sender>();
@@ -46,7 +47,14 @@ public class Sender : MonoBehaviour
                             currentlyOverlappingObject = null;
                             senderUntilActivate = true;
                             Invoke("SenderUntilActivateDisabled", Time.deltaTime);
-                            if (functionAtTeleport != null)
+                            if (activateVisualGlitch)
+                            {
+                                if (GlitchEffect.glitchEffectInstance != null)
+                                {
+                                    GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
+                                }
+                            }
+                                if (functionAtTeleport != null)
                             {
                                 functionAtTeleport.CallFuncions();
                             }
