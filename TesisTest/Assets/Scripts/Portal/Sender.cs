@@ -13,15 +13,19 @@ public class Sender : MonoBehaviour
     private BoxCollider colliderPlane;
     private Player playerInstance;
     [SerializeField] private float autoWalkFrames = 5.0f;
-
-    public bool activateVisualGlitch = true;
-
+    [Space(10)]
+    [SerializeField] private bool activateVisualGlitch = true;
+    [SerializeField] private float visualGlitchDuration = 0.0f;
     void Start()
     {
         otherSender = receiver.GetComponent<Sender>();
         functionAtTeleport = GetComponent<PortalCallFunction>();
         colliderPlane = GetComponent<BoxCollider>();
         playerInstance = Player.instance;
+        if (visualGlitchDuration < 0)
+        {
+            visualGlitchDuration = 0;
+        }
     }
 
 
@@ -51,10 +55,17 @@ public class Sender : MonoBehaviour
                             {
                                 if (GlitchEffect.glitchEffectInstance != null)
                                 {
-                                    GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
+                                    if (visualGlitchDuration == 0)
+                                    {
+                                        GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
+                                    }
+                                    else
+                                    {
+                                        GlitchEffect.glitchEffectInstance.DisplayGlitchOn(visualGlitchDuration);
+                                    }
                                 }
                             }
-                                if (functionAtTeleport != null)
+                            if (functionAtTeleport != null)
                             {
                                 functionAtTeleport.CallFuncions();
                             }

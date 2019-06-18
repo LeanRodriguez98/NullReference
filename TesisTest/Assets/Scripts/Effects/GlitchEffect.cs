@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class GlitchEffect : MonoBehaviour
@@ -28,7 +26,7 @@ public class GlitchEffect : MonoBehaviour
     private float _flickerTime = 0.5f;
     private Material _material;
     private bool displayGlitch = false;
-    public float glitchDuration = 0.5f;
+    public float glitcDefaulthDuration = 0.5f;
     private void Awake()
     {
         glitchEffectInstance = this;
@@ -42,7 +40,15 @@ public class GlitchEffect : MonoBehaviour
     public void DisplayGlitchOn()
     {
         displayGlitch = true;
-        Invoke("DisplayGlitchOff", glitchDuration);
+        CancelInvoke("DisplayGlitchOff");
+        Invoke("DisplayGlitchOff", glitcDefaulthDuration);
+    }
+
+    public void DisplayGlitchOn(float duration)
+    {
+        displayGlitch = true;
+        CancelInvoke("DisplayGlitchOff");
+        Invoke("DisplayGlitchOff", duration);
     }
 
     public void DisplayGlitchOff()
@@ -50,7 +56,6 @@ public class GlitchEffect : MonoBehaviour
         displayGlitch = false;
     }
 
-    // Called by camera to apply image effect
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (displayGlitch)
