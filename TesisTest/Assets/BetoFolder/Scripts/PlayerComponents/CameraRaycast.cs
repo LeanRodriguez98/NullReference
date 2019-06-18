@@ -24,25 +24,34 @@ namespace BetoScripts
 
 		Interactable CheckInteractableEntity()
 		{
+			UI_Player playerUI = UI_Player.GetInstance();
+
 			RaycastHit hit;
 			if (Physics.Raycast(transform.position, transform.forward, out hit, m_interactionRange))
 			{
 				Interactable interactable = hit.collider.GetComponent<Interactable>();
 
-				if (interactable != null)
+				if (playerUI)
 				{
-					UI_Player.GetInstance().EnableCrosshair(true);
-					return interactable;
+					if (interactable != null)
+					{
+
+						playerUI.EnableCrosshair(true);
+						return interactable;
+					}
+					else
+					{
+						playerUI.EnableCrosshair(false);
+						return null;
+					}
 				}
-				else
-				{
-					UI_Player.GetInstance().EnableCrosshair(false);
-					return null;
-				}
+				return null;
 			}
 			else
 			{
-				UI_Player.GetInstance().EnableCrosshair(false);
+				if (playerUI)
+					playerUI.EnableCrosshair(false);
+
 				return null;
 			}
 		}
