@@ -63,6 +63,7 @@ namespace BetoScripts
 			m_currentPickedUpObject = pickedUpObject;
 			m_currentObjectRB = m_currentPickedUpObject.GetComponent<Rigidbody>();
 			m_currentPickedUpObject.layer = LayerMask.NameToLayer("PickedUpObject");
+			m_currentPickedUpObject.transform.parent = m_grabbingPoint;
 		}
 
 		private void GrabObject()
