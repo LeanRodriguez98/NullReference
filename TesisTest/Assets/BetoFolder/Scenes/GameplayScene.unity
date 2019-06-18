@@ -165,12 +165,12 @@ Prefab:
         type: 2}
       propertyPath: playerPortable
       value: 
-      objectReference: {fileID: 1282811358}
+      objectReference: {fileID: 0}
     - target: {fileID: 114620402488522470, guid: f593c703698094d4d89f09c24d49c3e2,
         type: 2}
       propertyPath: mainCollider
       value: 
-      objectReference: {fileID: 88926193}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f593c703698094d4d89f09c24d49c3e2, type: 2}
   m_IsPrefabAsset: 0
@@ -490,11 +490,6 @@ Transform:
   m_Father: {fileID: 1310269371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &88926193 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 136966190574434606, guid: f593c703698094d4d89f09c24d49c3e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 9307532}
 --- !u!1 &120041451
 GameObject:
   m_ObjectHideFlags: 0
@@ -16119,12 +16114,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1248954901}
   m_Mesh: {fileID: 4300000, guid: cc8a75d4b0555464baf933efa7dd318c, type: 3}
---- !u!114 &1282811358 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114238902027986532, guid: f593c703698094d4d89f09c24d49c3e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 9307532}
-  m_Script: {fileID: 11500000, guid: 1dff180b89220464eb11fc8464240991, type: 3}
 --- !u!1 &1310269367
 GameObject:
   m_ObjectHideFlags: 0
