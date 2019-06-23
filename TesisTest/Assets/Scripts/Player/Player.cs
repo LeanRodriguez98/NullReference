@@ -25,12 +25,10 @@ public class Player : MonoBehaviour {
             Utilities.ReloadScene();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Utilities.ExitGame();
-        }
-
-       
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    Utilities.ExitGame();
+        //}
 	}
 
     public void AutoWalk(float disableTime)
