@@ -9,7 +9,8 @@ namespace BetoScripts
 		public Transform m_grabbingPoint;
 		public float m_maxDistanceToGrab;
 		public float m_distanceToAutoDrop;
-		public float m_strength;
+		public float m_grabbingStrength;
+		public float m_throwStrength;
 
 		private GameObject m_currentPickedUpObject;
 		private Rigidbody m_currentObjectRB;
@@ -37,7 +38,7 @@ namespace BetoScripts
 			{
 				GameObject obj = hit.collider.gameObject;
 
-				if (IsPickUpable(obj))
+				if (obj.CompareTag("PickUpable"))
 				{
 					UI_Player.GetInstance().EnableCrosshair(true);
 
@@ -45,11 +46,6 @@ namespace BetoScripts
 						PickUp(obj);
 				}
 			}
-		}
-
-		private bool IsPickUpable(GameObject obj)
-		{
-			return (obj.tag == "PickUpable");
 		}
 
 		private void PickUp(GameObject pickedUpObject)
@@ -61,30 +57,26 @@ namespace BetoScripts
 		private void SetCurrentPickedUpObject(GameObject pickedUpObject)
 		{
 			m_currentPickedUpObject = pickedUpObject;
-			m_currentObjectRB = m_currentPickedUpObject.GetComponent<Rigidbody>();
 			m_currentPickedUpObject.layer = LayerMask.NameToLayer("PickedUpObject");
-			m_currentPickedUpObject.transform.parent = m_grabbingPoint;
+			m_currentPickedUpObject.transform.rotation = m_grabbingPoint.rotation;
+			m_currentPickedUpObject.transform.parent = m_grabbingPoint.parent;
+
+			m_currentObjectRB = m_currentPickedUpObject.GetComponent<Rigidbody>();
+			m_currentObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
 		}
 
 		private void GrabObject()
 		{
 			Vector3 distanceToGrabber = m_grabbingPoint.position - m_currentPickedUpObject.transform.position;
-			KeepObjectAtGrabberPosition(distanceToGrabber);
+			m_currentObjectRB.velocity = distanceToGrabber * (m_grabbingStrength / m_currentObjectRB.mass);
 
 			bool shouldAutodrop = distanceToGrabber.magnitude > m_distanceToAutoDrop;
 			if (shouldAutodrop || Input.GetKeyDown(KeyCode.Mouse0))
 				DropObject();
+			else if (Input.GetKeyDown(KeyCode.Mouse1))
+				ThrowObject();
 
 			UI_Player.GetInstance().EnableCrosshair(false);
-		}
-
-		private void KeepObjectAtGrabberPosition(Vector3 distToGrabber)
-		{
-			if (m_currentObjectRB != null)
-			{
-				m_currentObjectRB.velocity = distToGrabber * (m_strength / m_currentObjectRB.mass);
-				m_currentObjectRB.rotation = m_grabbingPoint.rotation;
-			}
 		}
 
 		private void DropObject()
@@ -96,6 +88,13 @@ namespace BetoScripts
 			m_currentPickedUpObject.transform.parent = null;
 			m_currentPickedUpObject = null;
 			m_isGrabbing = false;
+		}
+
+		private void ThrowObject()
+		{
+			m_currentObjectRB.velocity = Vector3.zero;
+			m_currentObjectRB.AddForce(m_grabbingPoint.transform.forward * m_throwStrength);
+			DropObject();
 		}
 	}
 }
