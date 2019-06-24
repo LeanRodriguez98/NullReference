@@ -44,6 +44,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool autowalk = false;
         private float horizontalSpeed;
         private float verticalSpeed;
+		private bool onAnimation;
+
         // Use this for initialization
         private void Start()
         {
@@ -57,35 +59,35 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+			onAnimation = false;
         }
-
 
         // Update is called once per frame
         private void Update()
         {
-            RotateView();
-            // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+			if (!onAnimation)
+			{
+				RotateView();
+				// the jump state needs to read here to make sure it is not missed
+				if (!m_Jump)
+				{
+					m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+				}
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
-            {
-                StartCoroutine(m_JumpBob.DoBobCycle());
-               // PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
-
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
-
-        }
-
+				if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
+				{
+					StartCoroutine(m_JumpBob.DoBobCycle());
+					// PlayLandingSound();
+					m_MoveDir.y = 0f;
+					m_Jumping = false;
+				}
+				if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
+				{
+					m_MoveDir.y = 0f;
+				}
+				m_PreviouslyGrounded = m_CharacterController.isGrounded;
+			}
+		}
 
         /*private void PlayLandingSound()
         {
@@ -94,47 +96,49 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }*/
 
-
         private void FixedUpdate()
         {
-            float speed;
-            GetInput(out speed);
-            // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
+			if (!onAnimation)
+			{
+				float speed;
+				GetInput(out speed);
+				// always move along the camera forward as it is the direction that it being aimed at
+				Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
-            // get a normal for the surface that is being touched to move along it
-            RaycastHit hitInfo;
-            Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/2f, ~0, QueryTriggerInteraction.Ignore);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+				// get a normal for the surface that is being touched to move along it
+				RaycastHit hitInfo;
+				Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
+								   m_CharacterController.height / 2f, ~0, QueryTriggerInteraction.Ignore);
+				desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
+				m_MoveDir.x = desiredMove.x * speed;
+				m_MoveDir.z = desiredMove.z * speed;
 
 
-            if (m_CharacterController.isGrounded)
-            {
-                m_MoveDir.y = -m_StickToGroundForce;
+				if (m_CharacterController.isGrounded)
+				{
+					m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump)
-                {
-                    m_MoveDir.y = m_JumpSpeed;
-                   // PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
-                }
-            }
-            else
-            {
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
-            }
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+					if (m_Jump)
+					{
+						m_MoveDir.y = m_JumpSpeed;
+						// PlayJumpSound();
+						m_Jump = false;
+						m_Jumping = true;
+					}
+				}
+				else
+				{
+					m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+				}
+				m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
+				ProgressStepCycle(speed);
+				UpdateCameraPosition(speed);
 
-            m_MouseLook.UpdateCursorLock();
-        }
+				m_MouseLook.UpdateCursorLock();
+			}
+		}
 
 
         /*private void PlayJumpSound()
@@ -277,5 +281,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             autowalk = !autowalk;
         }
-    }
+
+		public void SetOnAnimation(bool playerIsOnAnimation)
+		{
+			onAnimation = playerIsOnAnimation;
+		}
+	}
 }

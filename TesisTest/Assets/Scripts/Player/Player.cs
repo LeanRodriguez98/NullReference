@@ -8,14 +8,17 @@ public class Player : MonoBehaviour {
     public Collider mainCollider;
     public Portable playerPortable;
 
+	private Animator animator;
+
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpc;
     private void Awake()
     {
         instance = this;
     }
-    // Use this for initialization
+
     void Start () {
         fpc = GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +32,21 @@ public class Player : MonoBehaviour {
         //{
         //    Utilities.ExitGame();
         //}
+	}
+
+	public void EnableOnAnimation()
+	{
+		fpc.SetOnAnimation(true);
+	}
+
+	public void DisableOnAnimation()
+	{
+		fpc.SetOnAnimation(false);
+	}
+
+	public void DisableAnimator()
+	{
+		animator.enabled = false;
 	}
 
     public void AutoWalk(float disableTime)
