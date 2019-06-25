@@ -7,8 +7,10 @@ public class Aiva : Interactable
 	private Animator animator;
 	private bool hasRestarted;
 
-	void Start ()
+	public override void Start ()
 	{
+		base.Start();
+
 		hasRestarted = false;
 		animator = GetComponent<Animator>();
 	}
@@ -23,6 +25,8 @@ public class Aiva : Interactable
 			{
 				GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
 				animator.SetTrigger("AivaRestarted");
+				CanInteract = false;
+				GameManager.GetInstance().RestartedAIVA = true;
 				hasRestarted = true;
 			}
 		}

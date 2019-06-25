@@ -10,8 +10,9 @@ namespace BetoScripts
 
 		private Animator m_animator;
 
-		private void Start()
+		public override void Start()
 		{
+			base.Start();
 			m_animator = GetComponent<Animator>();
 		}
 

@@ -33,7 +33,7 @@ namespace BetoScripts
 
 				if (playerUI)
 				{
-					if (interactable != null)
+					if (interactable != null && interactable.CanInteract)
 					{
 
 						playerUI.EnableCrosshair(true);
