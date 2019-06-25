@@ -41,7 +41,6 @@ namespace BetoScripts
 			if (collision.collider.CompareTag("PickUpable"))
 			{
 				float collisionPointDot = Vector3.Dot(transform.forward, transform.position - collision.collider.transform.position);
-				Debug.Log(collisionPointDot);
 
 				if (collisionPointDot < 0.0f && leaverPointingBackwards ||
 					collisionPointDot > 0.0f && !leaverPointingBackwards)
