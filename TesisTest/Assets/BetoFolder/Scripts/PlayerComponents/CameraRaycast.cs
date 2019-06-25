@@ -20,6 +20,19 @@ namespace BetoScripts
 			m_interactableFound = CheckInteractableEntity();
 			if (m_interactableFound && Input.GetKeyDown(KeyCode.Mouse0))
 				m_interactableFound.Interact();
+
+			CheckForTriggeEvents();
+		}
+
+		void CheckForTriggeEvents()
+		{
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position, transform.forward, out hit))
+			{
+				RaycastTriggerEvent triggerEvent = hit.collider.GetComponent<RaycastTriggerEvent>();
+				if (triggerEvent)
+					triggerEvent.TriggerEvent();
+			}
 		}
 
 		Interactable CheckInteractableEntity()
@@ -35,7 +48,6 @@ namespace BetoScripts
 				{
 					if (interactable != null && interactable.CanInteract)
 					{
-
 						playerUI.EnableCrosshair(true);
 						return interactable;
 					}

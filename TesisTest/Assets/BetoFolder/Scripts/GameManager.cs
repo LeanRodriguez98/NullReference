@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 	public bool RestartedAIVA { get; set; }
 	public bool CoffeeMugFound { get; set; }
 
+	public Player player;
+
 	void Start ()
 	{
 		// The beginning cinematics takes 6 seconds...
