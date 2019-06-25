@@ -14,6 +14,7 @@ namespace BetoScripts
 		private void Start()
 		{
 			m_animator = GetComponent<Animator>();
+			UpdateState();
 		}
 
 		public void UpdateState()
