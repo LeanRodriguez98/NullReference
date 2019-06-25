@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour
 {
+	public float timeToTrigger;
 	public string animationTrigger;
 	public Animator targetAnimator;
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
-			targetAnimator.SetTrigger(animationTrigger);
+			Invoke("TriggerAnimation", timeToTrigger);
+	}
+
+	private void TriggerAnimation()
+	{
+		targetAnimator.SetTrigger(animationTrigger);
 	}
 }

@@ -4,50 +4,29 @@ using UnityEngine;
 
 public class IntroAI_SpotLight : RaycastTriggerEvent
 {
-	public GameObject congratsWallMsg;
-	public GameObject exitDoor;
+	public GameObject confettiParticles;
+	public GameObject exitDoorCollider;
+	public GameObject leaverSpotlight;
+	public GameObject leaverSideBound;
 
 	private Transform playerTransform;
-	private BoxCollider boxCollider;
-
-	enum LightStates
-	{
-		LookingAtPlayer,
-		PointingAtCongratsText,
-		PointingTowardsExit,
-		PointingTowardsLeaver
-	}
-	private LightStates lightState;
+	private Animator animator;
 
 	private void Start()
 	{
-		lightState = LightStates.LookingAtPlayer;
 		playerTransform = GameManager.GetInstance().player.transform;
-		boxCollider = GetComponent<BoxCollider>();
+
+		animator = GetComponent<Animator>();
+		animator.enabled = false;
 	}
 
-	void Update ()
+	private void Update()
 	{
-		UpdateState();
+		if (!animator.enabled)
+			LookAtPlayer();
 	}
 
-	void UpdateState()
-	{
-		switch (lightState)
-		{
-			case LightStates.LookingAtPlayer:
-				LookAtPlayer();
-				break;
-			case LightStates.PointingAtCongratsText:
-				break;
-			case LightStates.PointingTowardsExit:
-				break;
-			case LightStates.PointingTowardsLeaver:
-				break;
-		}
-	}
-
-	void LookAtPlayer()
+	private void LookAtPlayer()
 	{
 		transform.forward = playerTransform.position - transform.position;
 	}
@@ -56,8 +35,27 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	{
 		base.TriggerEvent();
 
-		Debug.Log("Player looked at light");
-		boxCollider.enabled = false;
-		lightState = LightStates.PointingAtCongratsText;
+		animator.enabled = true;
+		animator.SetTrigger("LookAtWall");
+	}
+
+	public void EnableConfetti()
+	{
+		confettiParticles.SetActive(true);
+	}
+
+	public void DisableExitCollider()
+	{
+		exitDoorCollider.SetActive(false);
+	}
+
+	public void EnableLeaverSpotlight()
+	{
+		leaverSpotlight.SetActive(true);
+	}
+
+	public void DisableLeaverBound()
+	{
+		leaverSideBound.SetActive(false);
 	}
 }
