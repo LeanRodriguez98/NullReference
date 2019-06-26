@@ -6,6 +6,7 @@ namespace BetoScripts
 {
 	public class Grabber : MonoBehaviour
 	{
+		public GameObject throwObj_UI;
 		public Transform m_grabbingPoint;
 		public float m_maxDistanceToGrab;
 		public float m_distanceToAutoDrop;
@@ -52,6 +53,7 @@ namespace BetoScripts
 		{
 			SetCurrentPickedUpObject(pickedUpObject);
 			m_isGrabbing = true;
+			throwObj_UI.SetActive(true);
 		}
 
 		private void SetCurrentPickedUpObject(GameObject pickedUpObject)
@@ -88,6 +90,8 @@ namespace BetoScripts
 			m_currentPickedUpObject.transform.parent = null;
 			m_currentPickedUpObject = null;
 			m_isGrabbing = false;
+
+			throwObj_UI.SetActive(false);
 		}
 
 		private void ThrowObject()

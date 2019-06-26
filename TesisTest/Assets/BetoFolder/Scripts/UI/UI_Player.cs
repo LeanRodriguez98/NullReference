@@ -33,7 +33,7 @@ namespace BetoScripts
 
 		private void Update()
 		{
-			if (GameManager.GetInstance().RestartedAIVA)
+			if (currentObjective.gameObject.activeSelf && GameManager.GetInstance().RestartedAIVA)
 				currentObjective.text = GameManager.GetInstance().coffeeObjective;
 		}
 
