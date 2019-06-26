@@ -28,7 +28,9 @@ ScriptedImporter:
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://NR_floor_final\" label=\"\" >\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://NR_floor_final\" label=\"\" >\n  <presetinput
+      identifier=\"tileColor\" uid=\"3789500371\" type=\"3\" value=\"0.509434,0.509434,0.509434,1\"
+      />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive
     texturePackingList:
@@ -91,5 +93,10 @@ ScriptedImporter:
       textureHeight: 256
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {instanceID: 0}
-    generatedTextures: []
+    material: {fileID: 2100000, guid: 952b65dd4d0fc0a4f85cadb9b8a8b70b, type: 3}
+    generatedTextures:
+    - {fileID: 2800000, guid: 952b65dd4d0fc0a4f85cadb9b8a8b70b, type: 3}
+    - {fileID: 2800002, guid: 952b65dd4d0fc0a4f85cadb9b8a8b70b, type: 3}
+    - {fileID: 2800004, guid: 952b65dd4d0fc0a4f85cadb9b8a8b70b, type: 3}
+    - {fileID: 2800006, guid: 952b65dd4d0fc0a4f85cadb9b8a8b70b, type: 3}
+    - {fileID: 2800008, guid: 952b65dd4d0fc0a4f85cadb9b8a8b70b, type: 3}
