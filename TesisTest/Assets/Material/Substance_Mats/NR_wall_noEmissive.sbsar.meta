@@ -1,0 +1,106 @@
+fileFormatVersion: 2
+guid: 7883dabe34c152c4fbf74989c00924ec
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: NR_wall_noEmissive/NR_wall_noEmissive
+    400000: NR_wall_noEmissive/NR_wall_noEmissive/Transform
+    2100000: mat.New_Graph
+    2300000: NR_wall_noEmissive/NR_wall_noEmissive/MeshRenderer
+    2800000: New_Graph_baseColor
+    2800002: New_Graph_normal
+    2800004: New_Graph_metallic
+    2800006: New_Graph_height
+    2800008: New_Graph_emissive
+    2800010: New_Graph_ambientOcclusion
+    3300000: NR_wall_noEmissive/NR_wall_noEmissive/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: NR_wall_noEmissive/NR_wall_noEmissive/SphereCollider
+    100100000: NR_wall_noEmissive
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 13
+  mGraphInstanceData:
+  - graphLabel: New_Graph
+    prototypeName: New_Graph
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://New_Graph\" label=\"\" >\n  <presetinput identifier=\"$outputsize\"
+      uid=\"1526401641\" type=\"8\" value=\"10,10\" />\n  <presetinput identifier=\"time\"
+      uid=\"814199284\" type=\"0\" value=\"1\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive,ambientOcclusion
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    textureParameters:
+    - textureName: New_Graph_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: New_Graph_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: New_Graph_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: New_Graph_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: New_Graph_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: New_Graph_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: New_Graph_ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: ambientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: 7883dabe34c152c4fbf74989c00924ec, type: 3}
+    generatedTextures: []
