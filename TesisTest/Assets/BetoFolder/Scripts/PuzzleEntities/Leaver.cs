@@ -9,13 +9,13 @@ namespace BetoScripts
 		public List<DoorConnection> m_doorConnections;
 
 		private Animator m_animator;
-		private bool leaverPointingBackwards;
+		private bool stickLeaningFoward;
 
 		public override void Start()
 		{
 			base.Start();
 			m_animator = GetComponent<Animator>();
-			leaverPointingBackwards = false;
+			stickLeaningFoward = false;
 		}
 
 		public override void Interact()
@@ -24,7 +24,7 @@ namespace BetoScripts
 
 			m_animator.SetTrigger("Interact");
 			UpdateDoorConnectionsStates();
-			leaverPointingBackwards = !leaverPointingBackwards;
+			stickLeaningFoward = !stickLeaningFoward;
 		}
 
 		private void UpdateDoorConnectionsStates()
@@ -36,17 +36,12 @@ namespace BetoScripts
 			}
 		}
 
-		private void OnCollisionEnter(Collision collision)
+		public void InteractOnCubeCollision(LeaverTriggerFlag.FlagSide flagSide)
 		{
-			if (collision.collider.CompareTag("PickUpable"))
+			if (flagSide == LeaverTriggerFlag.FlagSide.Back && !stickLeaningFoward ||
+				flagSide == LeaverTriggerFlag.FlagSide.Front && stickLeaningFoward)
 			{
-				float collisionPointDot = Vector3.Dot(transform.forward, transform.position - collision.collider.transform.position);
-
-				if (collisionPointDot < 0.0f && leaverPointingBackwards ||
-					collisionPointDot > 0.0f && !leaverPointingBackwards)
-				{
-					Interact();
-				}
+				Interact();
 			}
 		}
 	}
