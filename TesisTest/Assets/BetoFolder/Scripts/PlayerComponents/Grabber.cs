@@ -17,7 +17,10 @@ namespace BetoScripts
 		private Rigidbody m_currentObjectRB;
 		private bool m_isGrabbing;
 
-		private void Start()
+        private GameObject obj;
+        private Portable objCollider;
+
+        private void Start()
 		{
 			m_currentPickedUpObject = null;
 			m_currentObjectRB = null;
@@ -37,15 +40,22 @@ namespace BetoScripts
 			RaycastHit hit;
 			if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, m_maxDistanceToGrab))
 			{
-				GameObject obj = hit.collider.gameObject;
+				obj = hit.collider.gameObject;
 
-				if (obj.CompareTag("PickUpable"))
-				{
-					UI_Player.GetInstance().EnableCrosshair(true);
+                if (obj.CompareTag("PickUpable"))
+                {
+                    UI_Player.GetInstance().EnableCrosshair(true);
 
-					if (Input.GetKeyDown(KeyCode.Mouse0))
-						PickUp(obj);
-				}
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        PickUp(obj);
+                        objCollider = obj.GetComponent<Portable>();
+                        if (objCollider != null)
+                        {
+                            objCollider.enabled = false;
+                        }
+                    }
+                }
 			}
 		}
 
@@ -60,7 +70,13 @@ namespace BetoScripts
 		{
 			m_currentPickedUpObject = pickedUpObject;
 			m_currentPickedUpObject.layer = LayerMask.NameToLayer("PickedUpObject");
-			m_currentPickedUpObject.transform.rotation = m_grabbingPoint.rotation;
+
+            for (int i = 0; i < m_currentPickedUpObject.transform.childCount; i++)
+            {
+                m_currentPickedUpObject.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
+            }
+
+            m_currentPickedUpObject.transform.rotation = m_grabbingPoint.rotation;
 			m_currentPickedUpObject.transform.parent = m_grabbingPoint.parent;
 
 			m_currentObjectRB = m_currentPickedUpObject.GetComponent<Rigidbody>();
@@ -87,9 +103,19 @@ namespace BetoScripts
 			m_currentObjectRB = null;
 
 			m_currentPickedUpObject.layer = LayerMask.NameToLayer("Default");
-			m_currentPickedUpObject.transform.parent = null;
+
+            for (int i = 0; i < m_currentPickedUpObject.transform.childCount; i++)
+            {
+                m_currentPickedUpObject.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer("Default");
+            }
+            m_currentPickedUpObject.transform.parent = null;
 			m_currentPickedUpObject = null;
 			m_isGrabbing = false;
+
+            if (objCollider != null)
+            {
+                objCollider.enabled = true;
+            }
 
 			throwObj_UI.SetActive(false);
 		}
@@ -98,6 +124,7 @@ namespace BetoScripts
 		{
 			m_currentObjectRB.velocity = Vector3.zero;
 			m_currentObjectRB.AddForce(m_grabbingPoint.transform.forward * m_throwStrength);
+            
 			DropObject();
 		}
 	}
