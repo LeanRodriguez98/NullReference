@@ -7,6 +7,6 @@ public class TestScript : MonoBehaviour {
 
 public void TestFunction()
 {
-	Debug.Log("Holaaaaaaaaaaaaaaaaaa");	
+	Debug.Log("PortalCallFunctionWorks!");	
 }
 }

@@ -27,6 +27,22 @@ public class portal : MonoBehaviour
 	private bool teleport;
 	private Dictionary<int, GameObject> clones = new Dictionary<int, GameObject>();
     private GameObject auxClone;
+    private PortalCallFunction functionAtTeleport;
+
+    [Space(10)]
+    [SerializeField] private bool activateVisualGlitch = true;
+    [SerializeField] private float visualGlitchDuration = 0.0f;
+
+    private void Start()
+    {
+        if (visualGlitchDuration < 0)
+        {
+            visualGlitchDuration = 0;
+        }
+
+        functionAtTeleport = GetComponent<PortalCallFunction>();
+
+    }
 
     public void OnWillRenderObject()
 	{
@@ -314,7 +330,29 @@ public class portal : MonoBehaviour
 			if (other.gameObject.GetComponent ("PortalableFirstPersonController"))
             {
 				other.gameObject.GetComponent ("PortalableFirstPersonController").SendMessage ("UpdateOrientation", other.transform.rotation);
-			}
+
+                if (activateVisualGlitch)
+                {
+                    if (GlitchEffect.glitchEffectInstance != null)
+                    {
+                        if (visualGlitchDuration == 0)
+                        {
+                            GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
+                        }
+                        else
+                        {
+                            GlitchEffect.glitchEffectInstance.DisplayGlitchOn(visualGlitchDuration);
+                        }
+                    }
+                }
+
+
+                if (functionAtTeleport != null)
+                {
+                    functionAtTeleport.CallFuncions();
+                }
+
+            }
 
 			if (!clones.ContainsKey (other.gameObject.GetInstanceID()))
             {

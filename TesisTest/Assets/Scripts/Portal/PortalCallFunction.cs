@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Sender))]
 public class PortalCallFunction : MonoBehaviour {
 
     [System.Serializable]
