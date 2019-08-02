@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KitchenDoorTrigger : MonoBehaviour
 {
+	public GameObject playerVoiceline;
+
 	private Animator kitchenDoorAnimator;
 	private GameManager gameManager;
 	private bool playerCanOpenDoor;
@@ -18,6 +20,9 @@ public class KitchenDoorTrigger : MonoBehaviour
 	{
 		playerCanOpenDoor = gameManager.CoffeeMugFound && gameManager.RestartedAIVA;
 		if (other.CompareTag("Player") && playerCanOpenDoor)
+		{
 			kitchenDoorAnimator.SetTrigger("OpenDoor");
+			playerVoiceline.SetActive(true);
+		}
 	}
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Aiva : Interactable
 {
+	public GameObject playerVoiceline;
+
 	private Animator animator;
 	private bool hasRestarted;
 
@@ -28,6 +30,8 @@ public class Aiva : Interactable
 				CanInteract = false;
 				GameManager.GetInstance().RestartedAIVA = true;
 				hasRestarted = true;
+
+				playerVoiceline.SetActive(true);
 			}
 		}
 	}
