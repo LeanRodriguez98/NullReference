@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IntroAI_SpotLight : RaycastTriggerEvent
 {
+	public GameObject playerAivaDialogue;
 	public GameObject confettiParticles;
 	public GameObject exitDoorCollider;
 	public GameObject leaverSpotlight;
@@ -24,6 +25,8 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	{
 		if (!animator.enabled)
 			LookAtPlayer();
+		else
+			playerAivaDialogue.SetActive(true);
 	}
 
 	private void LookAtPlayer()
