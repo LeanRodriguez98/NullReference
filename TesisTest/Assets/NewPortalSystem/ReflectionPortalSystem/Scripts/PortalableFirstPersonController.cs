@@ -135,6 +135,8 @@ namespace PortalableFirstPerson
 
         private void Update()
         {
+
+
             RotateView();
 
 			if (Input.GetMouseButtonDown (0)) {
