@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SubtitleManager : MonoBehaviour
 {
@@ -12,13 +13,18 @@ public class SubtitleManager : MonoBehaviour
         public string englishSubtitles;
         public string spanishSubtitles;
     }
-    
+
     private Dictionary<string, Audio> audios;
     public TextAsset sourceCSV;
+    private List<string> audioQueque;
+    public AudioSource audioSource;
+    public Text subtitles;
+
     private void Awake()
     {
         instance = this;
         audios = new Dictionary<string, Audio>();
+        audioQueque = new List<string>();
         LoadSubtitles();
     }
 
@@ -26,9 +32,9 @@ public class SubtitleManager : MonoBehaviour
     {
 
         string[] data = sourceCSV.text.Split(new char[] { '\n' });
-        for (int i = 1; i < data.Length - 1; i++)
+        for (int i = 1; i < data.Length; i++)
         {
-            string[] row = data[i].Split(new char[] { ',' });
+            string[] row = data[i].Split(new char[] { ';' });
             if (row[1] != "")
             {
                 Audio a;
@@ -39,7 +45,6 @@ public class SubtitleManager : MonoBehaviour
                 audios.Add(row[1], a);
             }
         }
-
     }
 
     public Audio GetAudio(string key)
@@ -64,5 +69,38 @@ public class SubtitleManager : MonoBehaviour
         a.englishSubtitles = englishSubtitles;
         a.spanishSubtitles = spanishSubtitles;
         audios.Add(key, a);
+    }
+
+    public void LoadAudioQueque(string[] keys)
+    {
+        audioQueque.Clear();
+        for (int i = 0; i < keys.Length; i++)
+        {
+            audioQueque.Add(keys[i]);
+        }
+    }
+
+    void Update()
+    {
+        if (audioSource)
+        {
+            if(!audioSource.isPlaying)
+            {
+                if (audioQueque.Count > 0)
+                {
+                    Audio aux = GetAudio(audioQueque[0]);
+                    audioSource.clip = aux.clip;
+                    if(subtitles && subtitles.IsActive())
+                    {
+                            subtitles.text = aux.englishSubtitles;
+                    }
+                    audioSource.Play();
+                    audioQueque.RemoveAt(0);
+                }
+                else
+                    if(subtitles)
+                        subtitles.text = null;
+            }
+        }
     }
 }
