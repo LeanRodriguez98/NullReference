@@ -7,7 +7,7 @@ namespace BetoScripts
 	public class Grabber : MonoBehaviour
 	{
 		public GameObject throwObj_UI;
-		public Transform m_grabbingPoint;
+		//public Transform m_grabbingPoint;
 		public float m_maxDistanceToGrab;
 		public float m_distanceToAutoDrop;
 		public float m_grabbingStrength;
@@ -76,8 +76,8 @@ namespace BetoScripts
                 m_currentPickedUpObject.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer("PickedUpObject");
             }
 
-            m_currentPickedUpObject.transform.rotation = m_grabbingPoint.rotation;
-			m_currentPickedUpObject.transform.parent = m_grabbingPoint.parent;
+            m_currentPickedUpObject.transform.rotation = transform.rotation;
+			m_currentPickedUpObject.transform.parent = transform.parent;
 
 			m_currentObjectRB = m_currentPickedUpObject.GetComponent<Rigidbody>();
 			m_currentObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
@@ -85,7 +85,7 @@ namespace BetoScripts
 
 		private void GrabObject()
 		{
-			Vector3 distanceToGrabber = m_grabbingPoint.position - m_currentPickedUpObject.transform.position;
+			Vector3 distanceToGrabber = (transform.position + (transform.forward * m_maxDistanceToGrab) - m_currentPickedUpObject.transform.position );
 			m_currentObjectRB.velocity = distanceToGrabber * (m_grabbingStrength / m_currentObjectRB.mass);
 
 			bool shouldAutodrop = distanceToGrabber.magnitude > m_distanceToAutoDrop;
@@ -123,7 +123,7 @@ namespace BetoScripts
 		private void ThrowObject()
 		{
 			m_currentObjectRB.velocity = Vector3.zero;
-			m_currentObjectRB.AddForce(m_grabbingPoint.transform.forward * m_throwStrength);
+			m_currentObjectRB.AddForce(transform.forward * m_throwStrength);
             
 			DropObject();
 		}
