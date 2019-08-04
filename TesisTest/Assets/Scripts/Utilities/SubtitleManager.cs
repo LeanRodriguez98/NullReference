@@ -25,12 +25,12 @@ public class SubtitleManager : MonoBehaviour
         instance = this;
         audios = new Dictionary<string, Audio>();
         audioQueque = new List<string>();
+        audioSource.volume *= PlayerPrefs.GetFloat("VolumeLevel");
         LoadSubtitles();
     }
 
     public void LoadSubtitles()
     {
-
         string[] data = sourceCSV.text.Split(new char[] { '\n' });
         for (int i = 1; i < data.Length; i++)
         {
@@ -90,9 +90,15 @@ public class SubtitleManager : MonoBehaviour
                 {
                     Audio aux = GetAudio(audioQueque[0]);
                     audioSource.clip = aux.clip;
-                    if(subtitles && subtitles.IsActive())
+                    if(PlayerPrefs.GetInt("DisplaySubtitles") == 1)
                     {
-                            subtitles.text = aux.englishSubtitles;
+                        if(subtitles && subtitles.IsActive())
+                        {
+                            if(PlayerPrefs.GetInt("SubtitleLenguage") == 0)
+                                subtitles.text = aux.englishSubtitles;
+                            else
+                                subtitles.text = aux.spanishSubtitles;
+                        }
                     }
                     audioSource.Play();
                     audioQueque.RemoveAt(0);
