@@ -247,12 +247,19 @@ public class portal : MonoBehaviour
         {
 
 			if (!clones.ContainsKey (other.gameObject.GetInstanceID()) && !clones.ContainsValue(other.gameObject))
-            { 
-				GameObject clone = Instantiate(other.gameObject, transform.position, Quaternion.identity) as GameObject;
-				clone.name = "Clone of " + other.gameObject.name;
+            {
+                if (other.tag != "Clone")
+                {
 
-				clones.Add (other.gameObject.GetInstanceID(), clone);
-                clones.TryGetValue (other.gameObject.GetInstanceID(), out this.auxClone);
+
+                    GameObject clone = Instantiate(other.gameObject, transform.position, Quaternion.identity) as GameObject;
+                    clone.name = "Clone of " + other.gameObject.name;
+
+                    clone.tag = "Clone";
+
+                    clones.Add(other.gameObject.GetInstanceID(), clone);
+                    clones.TryGetValue(other.gameObject.GetInstanceID(), out this.auxClone);
+                }
 			} 
 		}
         else

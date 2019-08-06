@@ -9,7 +9,20 @@ namespace BetoScripts
 		public List<DoorConnection> m_doorConnections;
 		public Animator m_animator;
 
-		private void OnTriggerStay(Collider other)
+        private AudioSource audioClip;
+
+        private void Start()
+        {
+            audioClip = GetComponent<AudioSource>();
+            audioClip.volume *= PlayerPrefs.GetFloat("VolumeLevel");
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            audioClip.Play();
+        }
+
+        private void OnTriggerStay(Collider other)
 		{
 			IsBeingPressed(true);
 		}
@@ -23,7 +36,7 @@ namespace BetoScripts
 		{
 			m_animator.SetBool("isPressed", isBeingPressed);
 			EnableDoorConnections(isBeingPressed);
-		}
+        }
 
 		void EnableDoorConnections(bool enabled)
 		{

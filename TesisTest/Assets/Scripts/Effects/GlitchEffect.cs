@@ -27,6 +27,9 @@ public class GlitchEffect : MonoBehaviour
     private Material _material;
     private bool displayGlitch = false;
     public float glitcDefaulthDuration = 0.5f;
+
+    private AudioSource audioClip;
+
     private void Awake()
     {
         glitchEffectInstance = this;
@@ -35,6 +38,7 @@ public class GlitchEffect : MonoBehaviour
     void Start()
     {
         _material = new Material(Shader);
+        audioClip = GetComponent<AudioSource>();
     }
 
     public void DisplayGlitchOn()
@@ -42,6 +46,7 @@ public class GlitchEffect : MonoBehaviour
         displayGlitch = true;
         CancelInvoke("DisplayGlitchOff");
         Invoke("DisplayGlitchOff", glitcDefaulthDuration);
+        audioClip.Play();
     }
 
     public void DisplayGlitchOn(float duration)
@@ -49,6 +54,7 @@ public class GlitchEffect : MonoBehaviour
         displayGlitch = true;
         CancelInvoke("DisplayGlitchOff");
         Invoke("DisplayGlitchOff", duration);
+        audioClip.Play();
     }
 
     public void DisplayGlitchOff()
