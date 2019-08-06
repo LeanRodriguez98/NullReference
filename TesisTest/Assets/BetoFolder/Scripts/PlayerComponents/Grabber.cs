@@ -18,7 +18,7 @@ namespace BetoScripts
 		private bool m_isGrabbing;
 
         private GameObject obj;
-        private Portable objCollider;
+        private Collider objCollider;
 
         private void Start()
 		{
@@ -49,7 +49,7 @@ namespace BetoScripts
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         PickUp(obj);
-                        objCollider = obj.GetComponent<Portable>();
+                        objCollider = obj.GetComponent<Collider>();
                         if (objCollider != null)
                         {
                             objCollider.enabled = false;

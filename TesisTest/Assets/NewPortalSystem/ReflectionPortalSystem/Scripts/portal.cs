@@ -141,7 +141,7 @@ public class portal : MonoBehaviour
 		reflectionCamera.targetTexture = reflectionTexture;
 
 		Vector3 euler = cam.transform.eulerAngles;
-		
+		cam.transform.localScale = Vector3.one;
 		Material[] materials = rend.sharedMaterials;
 		foreach (Material mat in materials)
         {
