@@ -26,6 +26,6 @@ id;key;filePath;englishSubtitles;spanishSubtitles
 25;line25;Player Voicelines/Line 25;I got to get out of here...;Tengo que salir de aqui...
 26;AIVAObjective; - ;Get to AIVA and restart her;Ve con AIVA y reiniciala
 27;CoffeObjective; - ;Find your coffe mug and go to the kitchen;Encuentra tu taza de cafe y ve a la cocina
-28;PressUI; - ;    press       to interact;        Presiona       para interactuar
-29;ThrowUI; - ;to THROW object;para LANZAR el objeto
-30;DropUI; - ;to DROP object;para SOLTAR el objeto
+28;PressUI; - ;Press       to interact;    Presiona       para interactuar
+29;ThrowUI; - ;To THROW object;Para LANZAR el objeto
+30;DropUI; - ;To DROP object;Para SOLTAR el objeto
