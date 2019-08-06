@@ -11,12 +11,16 @@ namespace BetoScripts
 		private Animator m_animator;
 		private bool stickLeaningFoward;
 
+        private AudioSource audioClip;
+
 		public override void Start()
 		{
 			base.Start();
 			m_animator = GetComponent<Animator>();
 			stickLeaningFoward = false;
-		}
+            audioClip = GetComponent<AudioSource>();
+            audioClip.volume *= PlayerPrefs.GetFloat("VolumeLevel");
+        }
 
 		public override void Interact()
 		{
@@ -25,7 +29,9 @@ namespace BetoScripts
 			m_animator.SetTrigger("Interact");
 			UpdateDoorConnectionsStates();
 			stickLeaningFoward = !stickLeaningFoward;
-		}
+
+            audioClip.Play();
+        }
 
 		private void UpdateDoorConnectionsStates()
 		{

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Aiva : Interactable
 {
 	public GameObject playerVoiceline;
+    public AudioSource pcClip;
 
 	private Animator animator;
 	private bool hasRestarted;
@@ -15,6 +16,7 @@ public class Aiva : Interactable
 
 		hasRestarted = false;
 		animator = GetComponent<Animator>();
+        pcClip.volume *= PlayerPrefs.GetFloat("VolumeLevel");
 	}
 
 	public override void Interact()
@@ -30,6 +32,8 @@ public class Aiva : Interactable
 				CanInteract = false;
 				GameManager.GetInstance().RestartedAIVA = true;
 				hasRestarted = true;
+
+                pcClip.Stop();
 
 				playerVoiceline.SetActive(true);
 			}
