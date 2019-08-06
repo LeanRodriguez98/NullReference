@@ -14,12 +14,34 @@ public class GameManager : MonoBehaviour
 	private void Awake()
 	{
 		instance = this;
+		
+		if(PlayerPrefs.GetInt("SubtitleLenguage") == 0)
+		{
+            aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").englishSubtitles;
+			coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").englishSubtitles;
+		}
+		else
+		{
+		    aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").spanishSubtitles;
+			coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").spanishSubtitles;
+		}
 	}
 	#endregion
 
 	public GameObject playerUI;
-	public string aivaObjective;
-	public string coffeeObjective;
+	private string aivaObjective;
+
+	public string GetAivaObjective()
+	{
+		return aivaObjective;
+	}
+
+	private string coffeeObjective;
+
+	public string GetCoffeObjective()
+	{
+		return coffeeObjective;
+	}
 
 	public bool RestartedAIVA { get; set; }
 	public bool CoffeeMugFound { get; set; }
@@ -34,6 +56,7 @@ public class GameManager : MonoBehaviour
 
 		RestartedAIVA = false;
 		CoffeeMugFound = false;
+        	
 	}
 	
 	void EnablePlayerUI()

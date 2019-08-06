@@ -53,7 +53,10 @@ public class UI_MainMenu : MonoBehaviour
 		if(subtitles)
 			PlayerPrefs.SetInt("DisplaySubtitles", 1);
 		else
+		{
 			PlayerPrefs.SetInt("DisplaySubtitles", 0);
+			PlayerPrefs.SetInt("SubtitleLenguage", 0);
+		}
 	}
 
 	public void SetSubtitlesLenguage()

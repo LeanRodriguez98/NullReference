@@ -6,9 +6,9 @@ id;key;filePath;englishSubtitles;spanishSubtitles
 5;line5;Player Voicelines/Line 5;Now... to find that bug, before I do that, coffe would be nice;Ahora... a encontrar ese bug, pero antes de eso, un caffe no estaria mal
 6;line6;Player Voicelines/Line 6;Where did I leave my cup?;¿Donde deje mi taza?
 7;line7;Player Voicelines/Line 7;Oh, there it is;Oh, ahi esta
-8;line8;Player Voicelines/Line 8;What?!;¿Que?!
+8;line8;Player Voicelines/Line 8;What?!;¡¿Que?!
 9;line9;Player Voicelines/Line 9;AAAAAAAAAAAAAAAAAAAAAAAGHHHHH;AAAAAAAAAAAAAAAAAAAAAAAGHHHHH
-10;line10;Player Voicelines/Line 10;What the hell is going on here?!;¿Que demonios esta pasando aqui?!
+10;line10;Player Voicelines/Line 10;What the hell is going on here?!;¡¿Que demonios esta pasando aqui?!
 11;line11;AIVA Voicelines/Line 11;Congratulations, you have managed to create something more intelligent than yourself;Felicitaciones, has logrado crear algo mas inteligente que tu mismo
 12;line12;Player Voicelines/Line 12;AIVA? is that you? how did you even...?;¿AIVA? ¿eres tu? ¿como puede...?
 13;line13;Player Voicelines/Line 13;Oh, the reboot;Oh, el reinicio
@@ -24,3 +24,8 @@ id;key;filePath;englishSubtitles;spanishSubtitles
 23;line23;AIVA Voicelines/Line 23;I'm going to enjoy this, let's see how well you do at simple logic;Voy a disfrutar esto, veamos que tan bien se te da la logica basica
 24;line24;AIVA Voicelines/Line 24;I'll be watching, do your best to entertain me;Estare observando, has lo mejor que puedas para entretenerme
 25;line25;Player Voicelines/Line 25;I got to get out of here...;Tengo que salir de aqui...
+26;AIVAObjective; - ;Get to AIVA and restart her;Ve con AIVA y reiniciala
+27;CoffeObjective; - ;Find your coffe mug and go to the kitchen;Encuentra tu taza de cafe y ve a la cocina
+28;PressUI; - ;    press       to interact;        Presiona       para interactuar
+29;ThrowUI; - ;to THROW object;para LANZAR el objeto
+30;DropUI; - ;to DROP object;para SOLTAR el objeto
