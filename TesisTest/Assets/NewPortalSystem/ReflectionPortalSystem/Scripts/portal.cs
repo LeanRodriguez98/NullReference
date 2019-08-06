@@ -225,52 +225,61 @@ public class portal : MonoBehaviour
         }
 	}
 
-
+	private void Update()
+	{
+		
+	}
 
 	void OnTriggerStay(Collider other)
 	{
 
+		if (other.gameObject.tag == "Clone")
+			return;
+
 		if (HasChildCamera(other.gameObject))
 		{
-			Camera cam = GetChildCamera (other.gameObject).GetComponent<Camera>();
+			Camera cam = GetChildCamera(other.gameObject).GetComponent<Camera>();
 			cam.nearClipPlane = Mathf.Min(.3f, .007f * (cam.transform.position - transform.position).magnitude);
 		}
 
 
 		foreach (GameObject clone in clones.Values)
 		{
-            Destroy(this.auxClone);
+			Destroy(this.auxClone);
 		}
-		clones.Clear(); 
+		clones.Clear();
+		
+			if (teleport && (!HasChildCamera(other.gameObject) && !isBehindMe(other.transform.position)))
+			{
 
-		if (teleport && (!HasChildCamera (other.gameObject) && !isBehindMe (other.transform.position)))
-        {
-
-			if (!clones.ContainsKey (other.gameObject.GetInstanceID()) && !clones.ContainsValue(other.gameObject))
-            {
-                if (other.tag != "Clone")
-                {
+				if (!clones.ContainsKey(other.gameObject.GetInstanceID()) && !clones.ContainsValue(other.gameObject))
+				{
 
 
-                    GameObject clone = Instantiate(other.gameObject, transform.position, Quaternion.identity) as GameObject;
-                    clone.name = "Clone of " + other.gameObject.name;
+					GameObject clone = Instantiate(other.gameObject, transform.position, Quaternion.identity);
+					clone.name = "Clone";
+					clone.tag = "Clone";
 
-                    clone.tag = "Clone";
+				//Destroy(clone, Time.fixedDeltaTime);
 
-                    clones.Add(other.gameObject.GetInstanceID(), clone);
-                    clones.TryGetValue(other.gameObject.GetInstanceID(), out this.auxClone);
-                }
-			} 
-		}
-        else
-        {
-			if (isBehindMe (other.transform.position))
-            {
-				Destroy (auxClone);
-			    clones.Remove (other.gameObject.GetInstanceID());
+				//if (!clone.GetComponent<DestroyOnTime>())
+				//{
+				//clone.AddComponent<DestroyOnTime>();
+				//}
+
+				clones.Add(other.gameObject.GetInstanceID(), clone);
+					clones.TryGetValue(other.gameObject.GetInstanceID(), out this.auxClone);
+				}
 			}
-		}
-
+			else
+			{
+				if (isBehindMe(other.transform.position))
+				{
+					Destroy(auxClone);
+					clones.Remove(other.gameObject.GetInstanceID());
+				}
+			}
+		
 		if (teleport && (!HasChildCamera(other.gameObject) || isCamBehindMe(GetChildCamera(other.gameObject))))
         {
 
