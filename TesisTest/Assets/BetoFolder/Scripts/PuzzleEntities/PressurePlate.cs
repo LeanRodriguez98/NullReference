@@ -8,7 +8,7 @@ namespace BetoScripts
 	{
 		public List<DoorConnection> m_doorConnections;
 		public Animator m_animator;
-        public Cube activatorCube;
+        private Cube activatorCube;
 
         private AudioSource audioClip;
 

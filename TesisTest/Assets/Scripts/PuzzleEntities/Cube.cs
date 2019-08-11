@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour {
 
-    public bool isGrabbed = false;
+    [HideInInspector] public bool isGrabbed = false;
 
     public void SetIsGrabbed(bool state)
     {
