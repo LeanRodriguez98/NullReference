@@ -50,15 +50,22 @@ namespace BetoScripts
                     {
                         PickUp(obj);
                         objCollider = obj.GetComponent<Collider>();
+
                         if (objCollider != null)
                         {
                             objCollider.enabled = false;
+                        }
+
+                        if (obj.GetComponent<Cube>() != null)
+                        {
+                            obj.GetComponent<Cube>().SetIsGrabbed(true);
                         }
                     }
                 }
 			}
 		}
 
+     
 		private void PickUp(GameObject pickedUpObject)
 		{
 			SetCurrentPickedUpObject(pickedUpObject);
@@ -118,7 +125,12 @@ namespace BetoScripts
             }
 
 			throwObj_UI.SetActive(false);
-		}
+
+            if (obj.GetComponent<Cube>() != null)
+            {
+                obj.GetComponent<Cube>().SetIsGrabbed(false);
+            }
+        }
 
 		private void ThrowObject()
 		{

@@ -11,7 +11,7 @@ public class portal : MonoBehaviour
 	public class AdvancedSettings
 	{
 		public bool teleport = true;
-		public int textureSize = 512;
+		public int textureSize = 2048;
 	}
     public GameObject partner;
     public AdvancedSettings advancedSettings;

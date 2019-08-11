@@ -5,13 +5,21 @@ using UnityEngine;
 public class PresurePlate : PuzzleTrigger
 {
 
-	void Start () {
-		
-	}
-	
-	void Update () {
+    public Cube activatorCube;
 
-  	}
+
+	void Update () {
+        if (activatorCube != null)
+        {
+            if (activatorCube.isGrabbed)
+            {
+                IsTrigered = false;
+                activatorCube = null;
+                UpdateEntities();
+            }
+    	}
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "PuzzleObject" || other.gameObject.tag == "Player")
@@ -19,6 +27,7 @@ public class PresurePlate : PuzzleTrigger
             if (!IsTrigered)
             {
                 IsTrigered = true;
+                activatorCube = other.GetComponent<Cube>();
                 UpdateEntities();
             }
         }
@@ -29,6 +38,7 @@ public class PresurePlate : PuzzleTrigger
         if (other.gameObject.tag == "PuzzleObject" || other.gameObject.tag == "Player")
         {
             IsTrigered = false;
+            activatorCube = null;
             UpdateEntities();
         }
     }

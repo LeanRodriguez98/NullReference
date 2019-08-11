@@ -36,9 +36,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4695729736426204}
-  - component: {fileID: 114923074940149566}
   - component: {fileID: 65961817046662170}
   - component: {fileID: 54401824448792208}
+  - component: {fileID: 114200998627153422}
   m_Layer: 0
   m_Name: PuzzleCube
   m_TagString: PickUpable
@@ -142,7 +142,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114923074940149566
+--- !u!114 &114200998627153422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163641436631264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddfa57c9a1ba8b4686f23c4242c5f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 57499f0b6968b64438f170293aa986b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrabbed: 0

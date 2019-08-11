@@ -27,12 +27,20 @@ public class Player : MonoBehaviour {
         {
             Utilities.ReloadScene();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Time.timeScale = 5;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Time.timeScale = 1;
 
+        }
         //if (Input.GetKeyDown(KeyCode.Escape))
         //{
         //    Utilities.ExitGame();
         //}
-	}
+    }
 
 	public void EnableOnAnimation()
 	{
