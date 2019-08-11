@@ -3293,6 +3293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lenguageDropdown: {fileID: 2067303096}
   volumeSlider: {fileID: 1391843653}
+  lenguageToggle: {fileID: 629153310}
   onOptionMenuEnable:
   - {fileID: 629153308}
   - {fileID: 2067303094}

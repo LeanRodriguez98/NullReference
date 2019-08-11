@@ -11,6 +11,7 @@ public class UI_MainMenu : MonoBehaviour
 	private bool subtitles = false;
 	public Dropdown lenguageDropdown;
 	public Slider volumeSlider;
+    public Toggle lenguageToggle;
 	public GameObject[] onOptionMenuEnable;
 	public GameObject[] onOptionMenuDisable;
     public SO_GameOptions gameOptions;
@@ -18,14 +19,15 @@ public class UI_MainMenu : MonoBehaviour
 
 	private void Start()
 	{
+        Utilities.LoadGame(gameOptions);
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.None;
 		//PlayerPrefs.SetInt("DisplaySubtitles", 0);
-        gameOptions.dilplaySubtitles = false;
+        lenguageToggle.isOn = gameOptions.dilplaySubtitles;
 		//PlayerPrefs.SetInt("SubtitleLenguage", lenguageDropdown.value);
-        gameOptions.lenguage = lenguageDropdown.value;
+        lenguageDropdown.value = gameOptions.lenguage;
 		//PlayerPrefs.SetFloat("VolumeLevel", volumeSlider.value);
-        gameOptions.volume = volumeSlider.value;
+        volumeSlider.value = gameOptions.volume;
 	}
 
 	public void LoadScene(string sceneName)
@@ -68,17 +70,22 @@ public class UI_MainMenu : MonoBehaviour
             //PlayerPrefs.SetInt("SubtitleLenguage", 0);
             gameOptions.lenguage = (int)GameManager.Lenguges.English;
         }
-	}
+        Utilities.SaveGame(gameOptions);
+    }
 
 	public void SetSubtitlesLenguage()
 	{
 		//PlayerPrefs.SetInt("SubtitleLenguage", lenguageDropdown.value);
         gameOptions.lenguage = lenguageDropdown.value;
+        Utilities.SaveGame(gameOptions);
+
     }
 
-	public void SetVolumeLevel()
+    public void SetVolumeLevel()
 	{
 		//PlayerPrefs.SetFloat("VolumeLevel", volumeSlider.value);
         gameOptions.volume = volumeSlider.value;
-	}
+        Utilities.SaveGame(gameOptions);
+
+    }
 }

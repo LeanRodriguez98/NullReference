@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
 	{
 		instance = this;
-		
+        Utilities.LoadGame(gameOptions);
 		if(gameOptions.lenguage == (int)Lenguges.English/*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
 		{
             aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").englishSubtitles;
