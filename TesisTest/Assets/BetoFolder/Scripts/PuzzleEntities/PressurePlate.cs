@@ -14,7 +14,7 @@ namespace BetoScripts
         private void Start()
         {
             audioClip = GetComponent<AudioSource>();
-            audioClip.volume *= PlayerPrefs.GetFloat("VolumeLevel");
+            audioClip.volume *= GameManager.GetInstance().gameOptions.volume; //PlayerPrefs.GetFloat("VolumeLevel");
         }
 
         private void OnTriggerEnter(Collider other)

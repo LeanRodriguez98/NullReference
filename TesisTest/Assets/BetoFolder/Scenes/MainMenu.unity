@@ -3303,6 +3303,7 @@ MonoBehaviour:
   - {fileID: 1771364822}
   - {fileID: 52572306}
   - {fileID: 1089593816}
+  gameOptions: {fileID: 11400000, guid: 4e904864692eb6141aea0c6040c74540, type: 2}
 --- !u!95 &2071109235
 Animator:
   serializedVersion: 3

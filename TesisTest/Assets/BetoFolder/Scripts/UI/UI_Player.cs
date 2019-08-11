@@ -26,24 +26,28 @@ namespace BetoScripts
 		{
 			instance = this;
 			
-			if(PlayerPrefs.GetInt("SubtitleLenguage") == 0)
-			{
-				interactText.text = SubtitleManager.instance.GetAudio("PressUI").englishSubtitles;
-				throwText.text = SubtitleManager.instance.GetAudio("ThrowUI").englishSubtitles;
-				dropText.text = SubtitleManager.instance.GetAudio("DropUI").englishSubtitles;
-			}
-			else
-			{
-				interactText.text = SubtitleManager.instance.GetAudio("PressUI").spanishSubtitles;
-				throwText.text = SubtitleManager.instance.GetAudio("ThrowUI").spanishSubtitles;
-				dropText.text = SubtitleManager.instance.GetAudio("DropUI").spanishSubtitles;
-			}
+		
 		}
 		#endregion 
 
 		void Start()
 		{
-			m_lookingAtInteractable = false;
+
+            if (GameManager.GetInstance().gameOptions.lenguage == (int)GameManager.Lenguges.English /*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
+            {
+                interactText.text = SubtitleManager.instance.GetAudio("PressUI").englishSubtitles;
+                throwText.text = SubtitleManager.instance.GetAudio("ThrowUI").englishSubtitles;
+                dropText.text = SubtitleManager.instance.GetAudio("DropUI").englishSubtitles;
+            }
+            else
+            {
+                interactText.text = SubtitleManager.instance.GetAudio("PressUI").spanishSubtitles;
+                throwText.text = SubtitleManager.instance.GetAudio("ThrowUI").spanishSubtitles;
+                dropText.text = SubtitleManager.instance.GetAudio("DropUI").spanishSubtitles;
+            }
+
+
+            m_lookingAtInteractable = false;
 			currentObjective.text = GameManager.GetInstance().GetAivaObjective();
 		}
 

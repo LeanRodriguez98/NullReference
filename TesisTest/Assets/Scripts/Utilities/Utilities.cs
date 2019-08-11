@@ -17,14 +17,24 @@ namespace UnityEngine
                 .Invoke(null, null);
         }
         #endregion
-
         #region ReloadScene
         public static void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         #endregion
+        #region LoadScene
 
+        public static void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+
+        public static void LoadScene(int sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        #endregion
         #region ExitGame
         public static void ExitGame()
         {
@@ -35,7 +45,6 @@ namespace UnityEngine
 #endif
         }
         #endregion
-
         #region ParametricInvoke
         public static void ParametricInvoke(this MonoBehaviour behaviour, string method, object options, float delay)
         {

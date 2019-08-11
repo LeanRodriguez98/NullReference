@@ -5,17 +5,27 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	#region Singleton
-	private static GameManager instance;
+
+    public enum Lenguges
+    {
+        English,
+        Spanish,
+        Count
+    }
+    public SO_GameOptions gameOptions;
+    #region Singleton
+    private static GameManager instance;
 	public static GameManager GetInstance()
 	{
 		return instance;
 	}
-	private void Awake()
+    #endregion
+
+    private void Awake()
 	{
 		instance = this;
 		
-		if(PlayerPrefs.GetInt("SubtitleLenguage") == 0)
+		if(gameOptions.lenguage == (int)Lenguges.English/*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
 		{
             aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").englishSubtitles;
 			coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").englishSubtitles;
@@ -26,7 +36,6 @@ public class GameManager : MonoBehaviour
 			coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").spanishSubtitles;
 		}
 	}
-	#endregion
 
 	public GameObject playerUI;
 	private string aivaObjective;

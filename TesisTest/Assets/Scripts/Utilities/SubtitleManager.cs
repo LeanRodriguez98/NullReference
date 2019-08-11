@@ -25,8 +25,12 @@ public class SubtitleManager : MonoBehaviour
         instance = this;
         audios = new Dictionary<string, Audio>();
         audioQueque = new List<string>();
-        audioSource.volume *= PlayerPrefs.GetFloat("VolumeLevel");
         LoadSubtitles();
+    }
+
+    private void Start()
+    {
+        audioSource.volume *= GameManager.GetInstance().gameOptions.volume;// PlayerPrefs.GetFloat("VolumeLevel");
     }
 
     public void LoadSubtitles()
@@ -90,11 +94,11 @@ public class SubtitleManager : MonoBehaviour
                 {
                     Audio aux = GetAudio(audioQueque[0]);
                     audioSource.clip = aux.clip;
-                    if(PlayerPrefs.GetInt("DisplaySubtitles") == 1)
+                    if(GameManager.GetInstance().gameOptions.dilplaySubtitles/*   PlayerPrefs.GetInt("DisplaySubtitles") == 1*/)
                     {
                         if(subtitles && subtitles.IsActive())
                         {
-                            if(PlayerPrefs.GetInt("SubtitleLenguage") == 0)
+                            if(GameManager.GetInstance().gameOptions.lenguage == (int)GameManager.Lenguges.English /*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
                                 subtitles.text = aux.englishSubtitles;
                             else
                                 subtitles.text = aux.spanishSubtitles;
