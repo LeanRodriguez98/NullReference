@@ -22,8 +22,8 @@ public class TouchPad : Interactable
 		SetMaterial();
 
         audioClip = GetComponent<AudioSource>();
-        audioClip.volume *= GameManager.GetInstance().gameOptions.volume;//PlayerPrefs.GetFloat("VolumeLevel");
-        sliderAudioSource.volume *= GameManager.GetInstance().gameOptions.volume; //PlayerPrefs.GetFloat("VolumeLevel");
+        audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;//PlayerPrefs.GetFloat("VolumeLevel");
+        sliderAudioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
     }
 
 	public override void Interact()

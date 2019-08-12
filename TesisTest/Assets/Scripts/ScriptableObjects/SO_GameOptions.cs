@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameOptions", menuName = "SO/GameOptions")]
 public class SO_GameOptions : ScriptableObject {
 
-    public float volume;
+    public float voicesVolume;
+    public float soundsVolume;
     public bool dilplaySubtitles;
     public int lenguage;
 }

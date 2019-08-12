@@ -16,7 +16,7 @@ public class Aiva : Interactable
 
 		hasRestarted = false;
 		animator = GetComponent<Animator>();
-        pcClip.volume *= GameManager.GetInstance().gameOptions.volume; //PlayerPrefs.GetFloat("VolumeLevel");
+        pcClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
 	}
 
 	public override void Interact()

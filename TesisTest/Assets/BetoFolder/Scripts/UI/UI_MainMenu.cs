@@ -10,7 +10,8 @@ public class UI_MainMenu : MonoBehaviour
 	private bool optionsMenu = false;
 	private bool subtitles = false;
 	public Dropdown lenguageDropdown;
-	public Slider volumeSlider;
+	public Slider soundsVolumeSlider;
+	public Slider voicesVolumeSlider;
     public Toggle lenguageToggle;
 	public GameObject[] onOptionMenuEnable;
 	public GameObject[] onOptionMenuDisable;
@@ -27,8 +28,10 @@ public class UI_MainMenu : MonoBehaviour
 		//PlayerPrefs.SetInt("SubtitleLenguage", lenguageDropdown.value);
         lenguageDropdown.value = gameOptions.lenguage;
 		//PlayerPrefs.SetFloat("VolumeLevel", volumeSlider.value);
-        volumeSlider.value = gameOptions.volume;
-	}
+        soundsVolumeSlider.value = gameOptions.soundsVolume;
+        voicesVolumeSlider.value = gameOptions.voicesVolume;
+
+    }
 
 	public void LoadScene(string sceneName)
 	{
@@ -81,10 +84,17 @@ public class UI_MainMenu : MonoBehaviour
 
     }
 
-    public void SetVolumeLevel()
+    public void SetSoundsVolumeLevel()
 	{
 		//PlayerPrefs.SetFloat("VolumeLevel", volumeSlider.value);
-        gameOptions.volume = volumeSlider.value;
+        gameOptions.soundsVolume = soundsVolumeSlider.value;
+        Utilities.SaveGame(gameOptions);
+
+    }
+
+    public void SetVoicesVolumeLevel()
+    {
+        gameOptions.voicesVolume = voicesVolumeSlider.value;
         Utilities.SaveGame(gameOptions);
 
     }

@@ -39,7 +39,7 @@ public class GlitchEffect : MonoBehaviour
     {
         _material = new Material(Shader);
         audioClip = GetComponent<AudioSource>();
-        audioClip.volume *= GameManager.GetInstance().gameOptions.volume;
+        audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;
     }
 
     public void DisplayGlitchOn()

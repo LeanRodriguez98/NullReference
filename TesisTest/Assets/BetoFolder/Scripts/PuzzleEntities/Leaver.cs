@@ -19,7 +19,7 @@ namespace BetoScripts
 			m_animator = GetComponent<Animator>();
 			stickLeaningFoward = false;
             audioClip = GetComponent<AudioSource>();
-            audioClip.volume *= GameManager.GetInstance().gameOptions.volume; //PlayerPrefs.GetFloat("VolumeLevel");
+            audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
         }
 
 		public override void Interact()
