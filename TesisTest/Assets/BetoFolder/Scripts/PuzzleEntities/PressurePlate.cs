@@ -43,12 +43,15 @@ namespace BetoScripts
 			IsBeingPressed(true);
 		}
 
-		private void OnTriggerExit(Collider other)
-		{
-			IsBeingPressed(false);
-            if (other.gameObject == activatorCube.gameObject)
+        private void OnTriggerExit(Collider other)
+        {
+            IsBeingPressed(false);
+            if (activatorCube != null)
             {
-                activatorCube = null;
+                if (other.gameObject == activatorCube.gameObject)
+                {
+                    activatorCube = null;
+                }
             }
         }
 
