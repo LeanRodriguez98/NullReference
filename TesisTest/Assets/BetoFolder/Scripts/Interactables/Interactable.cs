@@ -6,9 +6,13 @@ public class Interactable : MonoBehaviour
 {
 	public bool CanInteract { get; set; }
 
+	private Shader standard;
+	private Shader outline;
+
 	public virtual void Start()
 	{
 		CanInteract = true;
 	}
 	public virtual void Interact() { }
+
 }
