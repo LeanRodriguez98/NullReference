@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2329728}
   - component: {fileID: 6593488}
   - component: {fileID: 11456700}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Portal 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 2326208}
   - component: {fileID: 6565618}
   - component: {fileID: 11417348}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Portal 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404394}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Portal Pair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,9 +214,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partner: {fileID: 134328}
-  AdvancedSettings:
-    m_Teleport: 1
-    m_TextureSize: 1024
+  advancedSettings:
+    teleport: 1
+    textureSize: 2048
+  activateVisualGlitch: 1
+  visualGlitchDuration: 0
 --- !u!114 &11456700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,9 +231,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partner: {fileID: 182862}
-  AdvancedSettings:
-    m_Teleport: 1
-    m_TextureSize: 1024
+  advancedSettings:
+    teleport: 1
+    textureSize: 2048
+  activateVisualGlitch: 1
+  visualGlitchDuration: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
