@@ -8,7 +8,6 @@ public class Editor_ScanManager : Editor {
 
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
 
         ScanManager scanManager = (ScanManager)target;
 
@@ -31,5 +30,19 @@ public class Editor_ScanManager : Editor {
         {
             scanManager.RemoveMaterialSwaper();
         }
+
+        GUILayout.Space(20);
+  
+        if (GUILayout.Button("Reload All", GUILayout.Height(100)))
+        {
+            scanManager.LoadRenderers();
+            scanManager.AddMaterialSwaper();
+        }
+
+        GUILayout.Space(15);
+
+
+        base.OnInspectorGUI();
+
     }
 }

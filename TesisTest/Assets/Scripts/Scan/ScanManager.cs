@@ -11,7 +11,8 @@ public class ScanManager : MonoBehaviour {
     [Space(5)]
     public KeyCode SwapKey = KeyCode.Z;
     [Space(5)]
-    public string[] excludedLayers;
+    public string[] scanExcludedLayer;
+ 
     public void LoadRenderers()
     {
         RemoveMeshes();
@@ -20,9 +21,9 @@ public class ScanManager : MonoBehaviour {
         {
             bool excludedLayer = false;
 
-            for (int j = 0; j < excludedLayers.Length; j++)
+            for (int j = 0; j < scanExcludedLayer.Length; j++)
             {
-                if (go[i].layer == LayerMask.NameToLayer(excludedLayers[j])) //  excludedLayers[j])
+                if (go[i].layer == LayerMask.NameToLayer(scanExcludedLayer[j])) //  excludedLayers[j])
                 {
                     excludedLayer = true;
                 }
@@ -90,7 +91,10 @@ public class ScanManager : MonoBehaviour {
         {
             foreach (MaterialSwaper ms in materialSwapers)
             {
-                ms.Swap();
+                if (ms.gameObject != null)
+                {
+                    ms.Swap();
+                }
             }
         }
     }
