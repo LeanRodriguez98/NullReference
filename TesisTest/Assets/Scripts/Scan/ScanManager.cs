@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-public class ScanManager : MonoBehaviour {
-    
+public class ScanManager : MonoBehaviour
+{
+
     [SerializeField] private List<MeshRenderer> scaneRenderers = new List<MeshRenderer>();
     [SerializeField] private List<MaterialSwaper> materialSwapers = new List<MaterialSwaper>();
     [Space(20)]
     public Material scanMaterial;
+    public Material InteractMaterial;
     [Space(5)]
     public KeyCode SwapKey = KeyCode.Z;
     [Space(5)]
-    public string[] scanExcludedLayer;
- 
+    public string[] scanExcludedLayers;
+    public string[] interactLayers;
+
     public void LoadRenderers()
     {
         RemoveMeshes();
@@ -21,9 +24,9 @@ public class ScanManager : MonoBehaviour {
         {
             bool excludedLayer = false;
 
-            for (int j = 0; j < scanExcludedLayer.Length; j++)
+            for (int j = 0; j < scanExcludedLayers.Length; j++)
             {
-                if (go[i].layer == LayerMask.NameToLayer(scanExcludedLayer[j])) //  excludedLayers[j])
+                if (go[i].layer == LayerMask.NameToLayer(scanExcludedLayers[j])) //  excludedLayers[j])
                 {
                     excludedLayer = true;
                 }
@@ -48,7 +51,18 @@ public class ScanManager : MonoBehaviour {
             go.gameObject.AddComponent<MaterialSwaper>();
             MaterialSwaper ms = go.gameObject.GetComponent<MaterialSwaper>();
             ms.LoadRenderer();
+
             ms.SetSwapMaterial(scanMaterial);
+
+            for (int j = 0; j < interactLayers.Length; j++)
+            {
+                if (go.gameObject.layer == LayerMask.NameToLayer(interactLayers[j]))
+                {
+                    ms.SetSwapMaterial(InteractMaterial);
+                }
+            }
+
+
             materialSwapers.Add(ms);
         }
     }
@@ -81,7 +95,7 @@ public class ScanManager : MonoBehaviour {
 
             objectsInScene.Add(go);
         }
-        return objectsInScene;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        return objectsInScene;
     }
 
 
