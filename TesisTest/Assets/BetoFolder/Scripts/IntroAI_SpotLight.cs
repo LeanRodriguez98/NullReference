@@ -9,9 +9,12 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	public GameObject exitDoorCollider;
 	public GameObject leaverSpotlight;
 	public GameObject leaverSideBound;
+    public Vector3 rotationTarget;
+    public float interpolationTime;
 
 	private Transform playerTransform;
 	private Animator animator;
+    private bool playerLookedAtLight;
 
 	private void Start()
 	{
@@ -19,14 +22,29 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 
 		animator = GetComponent<Animator>();
 		animator.enabled = false;
+        playerLookedAtLight = false;
 	}
 
 	private void Update()
 	{
-		if (!animator.enabled)
+		if (!animator.enabled && !playerLookedAtLight)
+        {
 			LookAtPlayer();
-		else
+        }
+        else if (playerLookedAtLight)
+        {
+            Quaternion targetRotation = Quaternion.Euler(rotationTarget);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, interpolationTime);
+            if (transform.eulerAngles == targetRotation.eulerAngles)
+            {
+                animator.enabled = true;
+                animator.SetTrigger("LookAtWall");
+            }
+        }
+        else
+        {
 			playerAivaDialogue.SetActive(true);
+        }
 	}
 
 	private void LookAtPlayer()
@@ -37,9 +55,7 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	public override void TriggerEvent()
 	{
 		base.TriggerEvent();
-
-		animator.enabled = true;
-		animator.SetTrigger("LookAtWall");
+        playerLookedAtLight = true;
 	}
 
 	public void EnableConfetti()
