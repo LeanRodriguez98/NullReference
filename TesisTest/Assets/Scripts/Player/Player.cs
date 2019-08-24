@@ -27,15 +27,17 @@ public class Player : MonoBehaviour {
         {
             Utilities.ReloadScene();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             Time.timeScale = 5;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             Time.timeScale = 1;
-
         }
+#endif
         //if (Input.GetKeyDown(KeyCode.Escape))
         //{
         //    Utilities.ExitGame();
@@ -61,6 +63,12 @@ public class Player : MonoBehaviour {
     {
         fpc.SetAutoWalk();
         fpc.Invoke("SetAutoWalk", disableTime);
+    }
+
+    public void ResetPosition(Transform t)
+    {
+        gameObject.transform.position = t.position;
+        gameObject.transform.rotation = t.rotation;
     }
 
 }
