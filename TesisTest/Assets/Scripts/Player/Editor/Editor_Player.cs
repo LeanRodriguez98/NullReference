@@ -1,19 +1,18 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 [CustomEditor(typeof(Player))]
 public class Editor_Player : Editor {
-    public Transform resetPosition;
     public override void OnInspectorGUI()
     {
         Player player = (Player)target;
         EditorGUILayout.BeginHorizontal();
-        resetPosition = (Transform)EditorGUILayout.ObjectField("Game Start Position", resetPosition, typeof(Transform), true);
-        if (resetPosition != null)
+        player.resetPosition = (Transform)EditorGUILayout.ObjectField("Game Start Position", player.resetPosition, typeof(Transform), true);
+        if (player.resetPosition != null)
         {
             if (GUILayout.Button("Reset Position"))
             {
-                player.ResetPosition(resetPosition);
+                player.transform.position = player.resetPosition.position;
+                player.transform.rotation = player.resetPosition.rotation;
             }
         }
         EditorGUILayout.EndHorizontal();

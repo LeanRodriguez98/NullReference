@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(ScanManager))]
@@ -10,30 +8,30 @@ public class Editor_ScanManager : Editor {
     {
 
         ScanManager scanManager = (ScanManager)target;
-
-        if (GUILayout.Button("Load Meshes"))
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Load Meshes", GUILayout.Height(30)))
         {
             scanManager.LoadRenderers();
         }
-
-        if (GUILayout.Button("Remove Meshes"))
+        if (GUILayout.Button("Remove Meshes", GUILayout.Height(30)))
         {
             scanManager.RemoveMeshes();
         }
-
-        if (GUILayout.Button("Add Material Swaper"))
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Add Material Swaper", GUILayout.Height(30)))
         {
             scanManager.AddMaterialSwaper();
         }
-
-        if (GUILayout.Button("Remove Material Swaper"))
+        if (GUILayout.Button("Remove Material Swaper", GUILayout.Height(30)))
         {
             scanManager.RemoveMaterialSwaper();
         }
+        EditorGUILayout.EndHorizontal();
 
-        GUILayout.Space(20);
+        GUILayout.Space(10);
   
-        if (GUILayout.Button("Reload All", GUILayout.Height(100)))
+        if (GUILayout.Button("Reload All", GUILayout.Height(80)))
         {
             scanManager.LoadRenderers();
             scanManager.AddMaterialSwaper();

@@ -11,6 +11,9 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpc;
+
+    [SerializeField] [HideInInspector] public Transform resetPosition;
+
     private void Awake()
     {
         instance = this;
@@ -65,10 +68,6 @@ public class Player : MonoBehaviour {
         fpc.Invoke("SetAutoWalk", disableTime);
     }
 
-    public void ResetPosition(Transform t)
-    {
-        gameObject.transform.position = t.position;
-        gameObject.transform.rotation = t.rotation;
-    }
+    
 
 }

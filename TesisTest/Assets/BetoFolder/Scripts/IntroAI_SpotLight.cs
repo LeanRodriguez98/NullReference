@@ -10,6 +10,8 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	public GameObject leaverSpotlight;
 	public GameObject leaverSideBound;
     public Vector3 rotationTarget;
+
+    [Range(0.01f,2.0f)]
     public float interpolationTime;
 
 	private Transform playerTransform;
@@ -31,17 +33,19 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
         {
 			LookAtPlayer();
         }
-        else if (playerLookedAtLight)
+        else if (playerLookedAtLight && !animator.enabled)
         {
             Quaternion targetRotation = Quaternion.Euler(rotationTarget);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, interpolationTime);
-            if (transform.eulerAngles == targetRotation.eulerAngles)
+           // Vector3Int a = new Vector3Int((int)transform.eulerAngles.x, (int)transform.eulerAngles.y, (int)transform.eulerAngles.z);
+           // Vector3Int b = new Vector3Int((int)rotationTarget.x, (int)rotationTarget.y, (int)rotationTarget.z);
+            if (transform.rotation == targetRotation)
             {
                 animator.enabled = true;
                 animator.SetTrigger("LookAtWall");
             }
         }
-        else
+        else if(!playerAivaDialogue.activeSelf)
         {
 			playerAivaDialogue.SetActive(true);
         }
