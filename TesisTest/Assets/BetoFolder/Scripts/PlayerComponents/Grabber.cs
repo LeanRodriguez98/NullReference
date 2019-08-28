@@ -13,6 +13,7 @@ namespace BetoScripts
 		public float m_grabbingStrength;
 		public float m_throwStrength;
 		public float objInterpolationSpeed;
+		public float distanceToLowerObjOnAiming;
 
 		private GameObject m_currentPickedUpObject;
 		private Rigidbody m_currentObjectRB;
@@ -24,6 +25,8 @@ namespace BetoScripts
 		private Camera playerCamera;
 		private Vector3 objPositionWhenAiming;
 		private Vector3 grabberInitialPosition;
+		private bool throwCanceled;
+		private bool onAiming;
 
         private void Start()
 		{
@@ -31,8 +34,10 @@ namespace BetoScripts
 			m_currentObjectRB = null;
 			m_isGrabbing = false;
 			playerCamera = Camera.main;
-			objPositionWhenAiming = m_grabbingPoint.localPosition + (-m_grabbingPoint.transform.up * 0.5f);
+			objPositionWhenAiming = m_grabbingPoint.localPosition + (-m_grabbingPoint.transform.up * distanceToLowerObjOnAiming);
 			grabberInitialPosition = m_grabbingPoint.localPosition;
+			throwCanceled = false;
+			onAiming = false;
 		}
 
 		private void Update()
@@ -108,10 +113,12 @@ namespace BetoScripts
 			Vector3 distanceToGrabber = m_grabbingPoint.position - m_currentPickedUpObject.transform.position;
 			m_currentObjectRB.velocity = distanceToGrabber * (m_grabbingStrength / m_currentObjectRB.mass);
 
-			bool shouldAutodrop = distanceToGrabber.magnitude > m_distanceToAutoDrop;
-			if (shouldAutodrop || Input.GetKeyDown(KeyCode.Mouse0))
-				DropObject();
-
+			if (!onAiming)
+			{
+				bool shouldAutodrop = distanceToGrabber.magnitude > m_distanceToAutoDrop;
+				if (shouldAutodrop || Input.GetKeyDown(KeyCode.Mouse0))
+					DropObject();
+			}
 			CheckForAimingState();
 
 			UI_Player.GetInstance().EnableCrosshair(false);
@@ -147,11 +154,18 @@ namespace BetoScripts
 
 		private void CheckForAimingState()
 		{
-			if (Input.GetKey(KeyCode.Mouse1))
-				AimingState();
-			else if (Input.GetKeyUp(KeyCode.Mouse1))
+			if (Input.GetKeyDown(KeyCode.Mouse1))
 			{
-				//ThrowObject();
+				throwCanceled = false;
+				onAiming = true;
+			}
+			
+			if (!throwCanceled)
+			{
+				if (Input.GetKey(KeyCode.Mouse1))
+					AimingState();
+				else if (Input.GetKeyUp(KeyCode.Mouse1))
+					ThrowObject();
 			}
 			else
 			{
@@ -162,10 +176,18 @@ namespace BetoScripts
 		private void AimingState()
 		{
 			m_grabbingPoint.localPosition = Vector3.Lerp(m_grabbingPoint.localPosition, objPositionWhenAiming, objInterpolationSpeed);
+
+			if (Input.GetKeyDown(KeyCode.Mouse0))
+			{
+				throwCanceled = true;
+				onAiming = false;
+			}
 		}
 
 		private void ThrowObject()
 		{
+			throwCanceled = true;
+
 			m_currentObjectRB.velocity = Vector3.zero;
 			m_currentObjectRB.AddForce(transform.forward * m_throwStrength);
             
