@@ -12,6 +12,7 @@ namespace BetoScripts
 		public float m_distanceToAutoDrop;
 		public float m_grabbingStrength;
 		public float m_throwStrength;
+		public float objInterpolationSpeed;
 
 		private GameObject m_currentPickedUpObject;
 		private Rigidbody m_currentObjectRB;
@@ -20,11 +21,18 @@ namespace BetoScripts
         private GameObject obj;
         private Collider objCollider;
 
+		private Camera playerCamera;
+		private Vector3 objPositionWhenAiming;
+		private Vector3 grabberInitialPosition;
+
         private void Start()
 		{
 			m_currentPickedUpObject = null;
 			m_currentObjectRB = null;
 			m_isGrabbing = false;
+			playerCamera = Camera.main;
+			objPositionWhenAiming = m_grabbingPoint.localPosition + (-m_grabbingPoint.transform.up * 0.5f);
+			grabberInitialPosition = m_grabbingPoint.localPosition;
 		}
 
 		private void Update()
@@ -49,17 +57,6 @@ namespace BetoScripts
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         PickUp(obj);
-                        objCollider = obj.GetComponent<Collider>();
-
-                        if (objCollider != null)
-                        {
-                            objCollider.enabled = false;
-                        }
-
-                        if (obj.GetComponent<Cube>() != null)
-                        {
-                            obj.GetComponent<Cube>().SetIsGrabbed(true);
-                        }
                     }
                 }
 			}
@@ -69,6 +66,8 @@ namespace BetoScripts
 		private void PickUp(GameObject pickedUpObject)
 		{
 			SetCurrentPickedUpObject(pickedUpObject);
+			DisableColliderFrom(pickedUpObject);
+
 			m_isGrabbing = true;
 			throwObj_UI.SetActive(true);
 		}
@@ -90,6 +89,20 @@ namespace BetoScripts
 			m_currentObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
 		}
 
+		private void DisableColliderFrom(GameObject pickedUpObject)
+		{
+			objCollider = pickedUpObject.GetComponent<Collider>();
+			if (objCollider != null)
+			{
+				objCollider.enabled = false;
+			}
+
+			if (pickedUpObject.GetComponent<Cube>() != null)
+			{
+				pickedUpObject.GetComponent<Cube>().SetIsGrabbed(true);
+			}
+		}
+
 		private void GrabObject()
 		{
 			Vector3 distanceToGrabber = m_grabbingPoint.position - m_currentPickedUpObject.transform.position;
@@ -98,8 +111,8 @@ namespace BetoScripts
 			bool shouldAutodrop = distanceToGrabber.magnitude > m_distanceToAutoDrop;
 			if (shouldAutodrop || Input.GetKeyDown(KeyCode.Mouse0))
 				DropObject();
-			else if (Input.GetKeyDown(KeyCode.Mouse1))
-				ThrowObject();
+
+			CheckForAimingState();
 
 			UI_Player.GetInstance().EnableCrosshair(false);
 		}
@@ -131,6 +144,25 @@ namespace BetoScripts
                 obj.GetComponent<Cube>().SetIsGrabbed(false);
             }
         }
+
+		private void CheckForAimingState()
+		{
+			if (Input.GetKey(KeyCode.Mouse1))
+				AimingState();
+			else if (Input.GetKeyUp(KeyCode.Mouse1))
+			{
+				//ThrowObject();
+			}
+			else
+			{
+				m_grabbingPoint.localPosition = Vector3.Lerp(m_grabbingPoint.localPosition, grabberInitialPosition, objInterpolationSpeed);
+			}
+		}
+
+		private void AimingState()
+		{
+			m_grabbingPoint.localPosition = Vector3.Lerp(m_grabbingPoint.localPosition, objPositionWhenAiming, objInterpolationSpeed);
+		}
 
 		private void ThrowObject()
 		{
