@@ -12,15 +12,15 @@ namespace BetoScripts
 		public float distanceToAutoDrop;
 		public float grabbingStrength;
 		public float throwStrength;
-		public float objInterpolationSpeed;
+		public float aimingTransitionSpeed;
 		public float distanceToLowerObjOnAiming;
+		public float fovOnAiming;
 
-		private GameObject currentPickedUpObject;
-		private Rigidbody currentObjectRB;
-
-        private Collider objCollider;
+		private GameObject pickedUpObject;
+		private Rigidbody pickedUpObjectRB;
 
 		private Camera playerCamera;
+		private float initialFOV;
 		private Vector3 objPositionWhenAiming;
 		private Vector3 grabberInitialPosition;
 
@@ -34,11 +34,13 @@ namespace BetoScripts
 
         private void Start()
 		{
-			currentPickedUpObject = null;
-			currentObjectRB = null;
-			playerCamera = Camera.main;
+			pickedUpObject = null;
+			pickedUpObjectRB = null;
 			objPositionWhenAiming = grabbingPoint.localPosition + (-grabbingPoint.transform.up * distanceToLowerObjOnAiming);
 			grabberInitialPosition = grabbingPoint.localPosition;
+
+			playerCamera = Camera.main;
+			initialFOV = playerCamera.fieldOfView;
 
 			state = State.NoObjectGrabbed;
 		}
@@ -66,64 +68,55 @@ namespace BetoScripts
 			RaycastHit hit;
 			if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, maxDistanceToGrab))
 			{
-				GameObject objectToBeProcessed = hit.collider.gameObject;
-
-                if (objectToBeProcessed.CompareTag("PickUpable"))
-                {
-                    UI_Player.GetInstance().EnableCrosshair(true);
-
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        PickUp(objectToBeProcessed);
-                    }
-                }
+				GameObject potentialObjectForPickUp = hit.collider.gameObject;
+				if (Input.GetKeyDown(KeyCode.Mouse0))
+					PickUpObjectIfPossible(potentialObjectForPickUp);
 			}
+			LerpGrabbingPointToPosition(grabberInitialPosition);
+			LerpCameraFOV(initialFOV);
 		}
-     
-		private void PickUp(GameObject pickedUpObject)
+
+		private void PickUpObjectIfPossible(GameObject obj)
 		{
-			SetCurrentPickedUpObject(pickedUpObject);
-			DisableColliderFrom(pickedUpObject);
+			if (obj.CompareTag("PickUpable"))
+				PickUp(obj);
+		}
+
+		private void PickUp(GameObject obj)
+		{
+			pickedUpObject = obj;
+
+			SetupObjectTransform(pickedUpObject);
+			SetupObjectRigidBody(pickedUpObject);
+			SetColliderActiveOf(pickedUpObject, false);
+			SetObjectAndChildsToLayerMask(pickedUpObject, "PickedUpObject");
+			TryToSetupCubeComponent(pickedUpObject, true);
 
 			throwObj_UI.SetActive(true);
 			state = State.GrabbingObject;
 		}
 
-		private void SetCurrentPickedUpObject(GameObject pickedUpObject)
+		private void SetupObjectTransform(GameObject obj)
 		{
-			currentPickedUpObject = pickedUpObject;
-			SetObjectAndChildsToLayerMask("PickedUpObject");
-
-            currentPickedUpObject.transform.rotation = transform.rotation;
-			currentPickedUpObject.transform.parent = grabbingPoint.parent;
-
-			currentObjectRB = currentPickedUpObject.GetComponent<Rigidbody>();
-			currentObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
+            obj.transform.rotation = transform.rotation;
+			obj.transform.parent = grabbingPoint.parent;
 		}
 
-		private void DisableColliderFrom(GameObject pickedUpObject)
+		private void SetupObjectRigidBody(GameObject obj)
 		{
-			objCollider = pickedUpObject.GetComponent<Collider>();
-			if (objCollider != null)
-			{
-				objCollider.enabled = false;
-			}
-
-			if (pickedUpObject.GetComponent<Cube>() != null)
-			{
-				pickedUpObject.GetComponent<Cube>().SetIsGrabbed(true);
-			}
+			pickedUpObjectRB = obj.GetComponent<Rigidbody>();
+			pickedUpObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
 		}
 
 		private void GrabObject()
 		{
 			KeepObjectAtGrabberPosition();
-			grabbingPoint.localPosition = Vector3.Lerp(grabbingPoint.localPosition, grabberInitialPosition, objInterpolationSpeed);
-
+			LerpGrabbingPointToPosition(grabberInitialPosition);
+			LerpCameraFOV(initialFOV);
+			
 			if (Input.GetKeyDown(KeyCode.Mouse0))
 				DropObject();
-
-			if (Input.GetKeyDown(KeyCode.Mouse1))
+			else if (Input.GetKeyDown(KeyCode.Mouse1))
 				state = State.Aiming;
 
 			UI_Player.GetInstance().EnableCrosshair(false);
@@ -131,8 +124,8 @@ namespace BetoScripts
 
 		private void KeepObjectAtGrabberPosition()
 		{
-			Vector3 vectorToGrabber = grabbingPoint.position - currentPickedUpObject.transform.position;
-			currentObjectRB.velocity = vectorToGrabber * (grabbingStrength / currentObjectRB.mass);
+			Vector3 vectorToGrabber = grabbingPoint.position - pickedUpObject.transform.position;
+			pickedUpObjectRB.velocity = vectorToGrabber * (grabbingStrength / pickedUpObjectRB.mass);
 
 			CheckForAutodrop(vectorToGrabber.magnitude);
 		}
@@ -145,36 +138,46 @@ namespace BetoScripts
 
 		private void DropObject()
 		{
-			if (currentPickedUpObject.GetComponent<Cube>() != null)
-			{
-				currentPickedUpObject.GetComponent<Cube>().SetIsGrabbed(false);
-			}
-
-			currentObjectRB.constraints = RigidbodyConstraints.None;
-			currentObjectRB = null;
-
-			SetObjectAndChildsToLayerMask("Default");
-
-            currentPickedUpObject.transform.parent = null;
-			currentPickedUpObject = null;
-
-            if (objCollider != null)
-            {
-                objCollider.enabled = true;
-            }
+			TryToSetupCubeComponent(pickedUpObject, false);
+			SetObjectAndChildsToLayerMask(pickedUpObject, "Default");
+			SetColliderActiveOf(pickedUpObject, true);
+			ResetPickedUpObject();
 
 			throwObj_UI.SetActive(false);
 
 			state = State.NoObjectGrabbed;
         }
 
-		private void SetObjectAndChildsToLayerMask(string layerName)
+		private void TryToSetupCubeComponent(GameObject obj, bool cubeIsGrabbed)
 		{
-			currentPickedUpObject.layer = LayerMask.NameToLayer(layerName);
-			for (int i = 0; i < currentPickedUpObject.transform.childCount; i++)
+			Cube cubeComponent = obj.GetComponent<Cube>();
+			if (cubeComponent != null)
+				cubeComponent.SetIsGrabbed(cubeIsGrabbed);
+		}
+
+		private void SetObjectAndChildsToLayerMask(GameObject obj, string layerName)
+		{
+			obj.layer = LayerMask.NameToLayer(layerName);
+			for (int i = 0; i < obj.transform.childCount; i++)
 			{
-				currentPickedUpObject.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(layerName);
+				obj.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(layerName);
 			}
+		}
+
+		private void SetColliderActiveOf(GameObject pickedUpObject, bool enableCollider)
+		{
+			Collider objCollider = pickedUpObject.GetComponent<Collider>();
+			if (objCollider != null)
+				objCollider.enabled = enableCollider;
+		}
+
+		private void ResetPickedUpObject()
+		{
+			pickedUpObjectRB.constraints = RigidbodyConstraints.None;
+			pickedUpObjectRB = null;
+
+			pickedUpObject.transform.parent = null;
+			pickedUpObject = null;
 		}
 
 		private void Aiming()
@@ -183,20 +186,33 @@ namespace BetoScripts
 			AimingState();
 
 			if (Input.GetKeyUp(KeyCode.Mouse1))
-				ThrowObject();
-			else if (Input.GetKeyDown(KeyCode.Mouse0))
 				state = State.GrabbingObject;
+			else if (Input.GetKeyDown(KeyCode.Mouse0))
+				ThrowObject();
+
+			UI_Player.GetInstance().EnableCrosshair(false);
 		}
 
 		private void AimingState()
 		{
-			grabbingPoint.localPosition = Vector3.Lerp(grabbingPoint.localPosition, objPositionWhenAiming, objInterpolationSpeed);
+			LerpGrabbingPointToPosition(objPositionWhenAiming);
+			LerpCameraFOV(fovOnAiming);
+		}
+
+		private void LerpGrabbingPointToPosition(Vector3 position)
+		{
+			grabbingPoint.localPosition = Vector3.Lerp(grabbingPoint.localPosition, position, aimingTransitionSpeed);
+		}
+
+		private void LerpCameraFOV(float fov)
+		{
+			playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, aimingTransitionSpeed);
 		}
 
 		private void ThrowObject()
 		{
-			currentObjectRB.velocity = Vector3.zero;
-			currentObjectRB.AddForce(transform.forward * throwStrength);
+			pickedUpObjectRB.velocity = Vector3.zero;
+			pickedUpObjectRB.AddForce(transform.forward * throwStrength);
 			DropObject();
 		}
 	}

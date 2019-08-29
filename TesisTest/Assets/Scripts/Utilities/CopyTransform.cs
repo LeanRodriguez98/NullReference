@@ -6,17 +6,21 @@ using UnityEditor;
 public class CopyTransform : MonoBehaviour {
     public GameObject target;
 
-	// Use this for initialization
-	void Start () {
-		
+	private Camera playerCamera;
+	private Camera myCamera;
+
+	void Start () 
+	{
+		playerCamera = Camera.main;
+		myCamera = GetComponent<Camera>();
 	}
 	
-	// Update is called once per frame
-	void LateUpdate () {
+	void LateUpdate () 
+	{
         transform.position = target.transform.position;
         transform.rotation = target.transform.rotation;
         transform.localScale = target.transform.localScale;
 
-      
+		myCamera.fieldOfView = playerCamera.fieldOfView;
     }
 }

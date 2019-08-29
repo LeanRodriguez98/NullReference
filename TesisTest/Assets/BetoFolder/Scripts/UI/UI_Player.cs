@@ -25,8 +25,6 @@ namespace BetoScripts
 		private void Awake()
 		{
 			instance = this;
-			
-		
 		}
 		#endregion 
 
