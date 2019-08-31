@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 6de9fa3c523487449a135a926a9a8313
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HexaLTwo_MainHexagon
+    100004: MainHexagon
+    100006: MainHexagon_HexaLFive
+    100008: MainHexagon_HexaLFour
+    100010: MainHexagon_HexaLOne
+    100012: MainHexagon_HexaLThree
+    100014: MainHexagon_HexaRFive
+    100016: MainHexagon_HexaRFour
+    100018: MainHexagon_HexaROne
+    100020: MainHexagon_HexaRThree
+    100022: MainHexagon_HexaRTwo
+    100024: MainHexagon_Screen
+    400000: //RootNode
+    400002: HexaLTwo_MainHexagon
+    400004: MainHexagon
+    400006: MainHexagon_HexaLFive
+    400008: MainHexagon_HexaLFour
+    400010: MainHexagon_HexaLOne
+    400012: MainHexagon_HexaLThree
+    400014: MainHexagon_HexaRFive
+    400016: MainHexagon_HexaRFour
+    400018: MainHexagon_HexaROne
+    400020: MainHexagon_HexaRThree
+    400022: MainHexagon_HexaRTwo
+    400024: MainHexagon_Screen
+    2100000: HexaLTwo_MainHexagonMat
+    2100002: MainHexagonMat
+    2100004: MainHexagon_HexaLFiveMat
+    2100006: MainHexagon_HexaLFourMat
+    2100008: MainHexagon_HexaLOneMat
+    2100010: MainHexagon_HexaLThreeMat
+    2100012: MainHexagon_HexaRFiveMat
+    2100014: MainHexagon_HexaRFourMat
+    2100016: MainHexagon_HexaROneMat
+    2100018: MainHexagon_HexaRThreeMat
+    2100020: MainHexagon_HexaRTwoMat
+    2100022: MainHexagon_ScreenMat
+    2300000: HexaLTwo_MainHexagon
+    2300002: MainHexagon
+    2300004: MainHexagon_HexaLFive
+    2300006: MainHexagon_HexaLFour
+    2300008: MainHexagon_HexaLOne
+    2300010: MainHexagon_HexaLThree
+    2300012: MainHexagon_HexaRFive
+    2300014: MainHexagon_HexaRFour
+    2300016: MainHexagon_HexaROne
+    2300018: MainHexagon_HexaRThree
+    2300020: MainHexagon_HexaRTwo
+    2300022: MainHexagon_Screen
+    3300000: HexaLTwo_MainHexagon
+    3300002: MainHexagon
+    3300004: MainHexagon_HexaLFive
+    3300006: MainHexagon_HexaLFour
+    3300008: MainHexagon_HexaLOne
+    3300010: MainHexagon_HexaLThree
+    3300012: MainHexagon_HexaRFive
+    3300014: MainHexagon_HexaRFour
+    3300016: MainHexagon_HexaROne
+    3300018: MainHexagon_HexaRThree
+    3300020: MainHexagon_HexaRTwo
+    3300022: MainHexagon_Screen
+    4300000: HexaLTwo_MainHexagon
+    4300002: MainHexagon
+    4300004: MainHexagon_HexaLFive
+    4300006: MainHexagon_HexaLFour
+    4300008: MainHexagon_HexaLOne
+    4300010: MainHexagon_HexaLThree
+    4300012: MainHexagon_HexaRFive
+    4300014: MainHexagon_HexaRFour
+    4300016: MainHexagon_HexaROne
+    4300018: MainHexagon_HexaRThree
+    4300020: MainHexagon_HexaRTwo
+    4300022: MainHexagon_Screen
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.35
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
