@@ -19,26 +19,45 @@ namespace BetoScripts
 
 		private MeshRenderer m_meshRenderer;
 
+
+
+        private MaterialSwaper materialSwaper;
+        private bool materialSwaperState;
 		void Start()
 		{
 			m_meshRenderer = GetComponent<MeshRenderer>();
-			if (m_isEnabled)
-				m_meshRenderer.material = m_enabledColor;
-			else
-				m_meshRenderer.material = m_disabledColor;
-		}
+            materialSwaper = GetComponent<MaterialSwaper>();
+            UpdateMaterial();
+            materialSwaperState = false;
+        }
+
+        void Update()
+        {
+            if (materialSwaperState != materialSwaper.Swaped)
+            {
+                materialSwaperState = materialSwaper.Swaped;
+                UpdateMaterial();
+            }
+        }
 
 		public void SetIsEnabled(bool isEnabled)
 		{
 			m_isEnabled = isEnabled;
-
-			if (m_isEnabled)
-				m_meshRenderer.material = m_enabledColor;
-			else
-				m_meshRenderer.material = m_disabledColor;
-
-			m_puzzleDoor.UpdateState();
+            if (materialSwaper.Swaped)
+            {
+                UpdateMaterial();
+            }
+            m_puzzleDoor.UpdateState();
 		}
+
+        private void UpdateMaterial()
+        {
+            if (m_isEnabled)
+                m_meshRenderer.material = m_enabledColor;
+            else
+                m_meshRenderer.material = m_disabledColor;
+        }
+    
 
 		public bool IsEnabled()
 		{

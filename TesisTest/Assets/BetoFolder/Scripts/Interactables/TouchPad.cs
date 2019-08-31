@@ -13,10 +13,14 @@ public class TouchPad : Interactable
 
     private AudioSource audioClip;
     [SerializeField] private AudioSource sliderAudioSource;
-	public override void Start()
+
+    private MaterialSwaper materialSwaper;
+    private bool materialSwaperState;
+
+    public override void Start()
 	{
 		base.Start();
-
+        materialSwaper = GetComponent<MaterialSwaper>();
 		doorIsOpen = false;
 		meshRenderer = GetComponent<MeshRenderer>();
 		SetMaterial();
@@ -24,9 +28,12 @@ public class TouchPad : Interactable
         audioClip = GetComponent<AudioSource>();
         audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;//PlayerPrefs.GetFloat("VolumeLevel");
         sliderAudioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
+
+        materialSwaperState = false;
+
     }
 
-	public override void Interact()
+    public override void Interact()
 	{
 		base.Interact();
 
@@ -37,13 +44,31 @@ public class TouchPad : Interactable
         PlaySliderSound();
 	}
 
-	public void SetMaterial()
+
+    void Update()
+    {
+        if (materialSwaperState != materialSwaper.Swaped)
+        {
+            materialSwaperState = materialSwaper.Swaped;
+            SetMaterial();
+        }
+    }
+    public void SetMaterial()
 	{
-		if (doorIsOpen)
-			meshRenderer.material = enabledMaterial;
-		else
-			meshRenderer.material = disabledMaterial;
+        if (!materialSwaper.Swaped)
+        {
+            UpdateMaterial();
+        }
 	}
+
+    private void UpdateMaterial()
+    {
+
+        if (doorIsOpen)
+            meshRenderer.material = enabledMaterial;
+        else
+            meshRenderer.material = disabledMaterial;
+    }
 
     public void PlaySliderSound()
     {

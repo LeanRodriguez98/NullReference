@@ -23,6 +23,11 @@ public class MaterialSwaper : MonoBehaviour {
         material = _material;
     }
 
+    public void SetOriginalMaterial(Material _originalMaterial)
+    {
+        originalMaterial = _originalMaterial;
+    }
+
     public void Swap()
     {
         if (swaped)
@@ -36,6 +41,15 @@ public class MaterialSwaper : MonoBehaviour {
         swaped = !swaped;
     }
 
-
+    void Update()
+    {
+        if (swaped)
+        {
+            if (meshRenderer.sharedMaterial != material)
+            {
+                meshRenderer.sharedMaterial = material;
+            }
+        }
+    }
 
 }
