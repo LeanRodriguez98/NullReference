@@ -8,7 +8,10 @@ public class MaterialSwaper : MonoBehaviour {
     [HideInInspector] [SerializeField] private Material originalMaterial;
     [HideInInspector] [SerializeField] private Material material;
     private bool swaped = false;
-
+    public bool Swaped
+    {
+        get { return swaped; }
+    }
     public void LoadRenderer() 
     {
         meshRenderer = GetComponent<MeshRenderer>();

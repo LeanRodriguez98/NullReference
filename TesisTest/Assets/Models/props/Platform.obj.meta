@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: 38a697fe5b1683a4b8960c1331284444
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Platform
+    100002: //RootNode
+    100004: Platform_Base
+    100006: Platform_SquareFive
+    100008: Platform_SquareFour
+    100010: Platform_SquareOne
+    100012: Platform_SquareSix
+    100014: Platform_SquareThree
+    100016: Platform_TriangleFive
+    100018: Platform_TriangleFour
+    100020: Platform_TriangleOne
+    100022: Platform_TriangleSix
+    100024: Platform_TriangleThree
+    100026: Platform_TriangleTwo
+    100028: SquareTwo_Platform
+    400000: //RootNode
+    400002: Platform
+    400004: Platform_Base
+    400006: Platform_SquareFive
+    400008: Platform_SquareFour
+    400010: Platform_SquareOne
+    400012: Platform_SquareSix
+    400014: Platform_SquareThree
+    400016: Platform_TriangleFive
+    400018: Platform_TriangleFour
+    400020: Platform_TriangleOne
+    400022: Platform_TriangleSix
+    400024: Platform_TriangleThree
+    400026: Platform_TriangleTwo
+    400028: SquareTwo_Platform
+    2100000: PlatformMat
+    2100002: Platform_BaseMat
+    2100004: Platform_SquareFiveMat
+    2100006: Platform_SquareFourMat
+    2100008: Platform_SquareOneMat
+    2100010: Platform_SquareSixMat
+    2100012: Platform_SquareThreeMat
+    2100014: Platform_TriangleFiveMat
+    2100016: Platform_TriangleFourMat
+    2100018: Platform_TriangleOneMat
+    2100020: Platform_TriangleSixMat
+    2100022: Platform_TriangleThreeMat
+    2100024: Platform_TriangleTwoMat
+    2100026: SquareTwo_PlatformMat
+    2300000: Platform
+    2300002: Platform_Base
+    2300004: Platform_SquareFive
+    2300006: Platform_SquareFour
+    2300008: Platform_SquareOne
+    2300010: Platform_SquareSix
+    2300012: Platform_SquareThree
+    2300014: Platform_TriangleFive
+    2300016: Platform_TriangleFour
+    2300018: Platform_TriangleOne
+    2300020: Platform_TriangleSix
+    2300022: Platform_TriangleThree
+    2300024: Platform_TriangleTwo
+    2300026: SquareTwo_Platform
+    3300000: Platform
+    3300002: Platform_Base
+    3300004: Platform_SquareFive
+    3300006: Platform_SquareFour
+    3300008: Platform_SquareOne
+    3300010: Platform_SquareSix
+    3300012: Platform_SquareThree
+    3300014: Platform_TriangleFive
+    3300016: Platform_TriangleFour
+    3300018: Platform_TriangleOne
+    3300020: Platform_TriangleSix
+    3300022: Platform_TriangleThree
+    3300024: Platform_TriangleTwo
+    3300026: SquareTwo_Platform
+    4300000: Platform
+    4300002: Platform_Base
+    4300004: Platform_SquareFive
+    4300006: Platform_SquareFour
+    4300008: Platform_SquareOne
+    4300010: Platform_SquareSix
+    4300012: Platform_SquareThree
+    4300014: Platform_TriangleFive
+    4300016: Platform_TriangleFour
+    4300018: Platform_TriangleOne
+    4300020: Platform_TriangleSix
+    4300022: Platform_TriangleThree
+    4300024: Platform_TriangleTwo
+    4300026: SquareTwo_Platform
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.7
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

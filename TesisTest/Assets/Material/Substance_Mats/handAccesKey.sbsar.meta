@@ -29,7 +29,7 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://hand_acces_key\" label=\"\" >\n  <presetinput
-      identifier=\"$outputsize\" uid=\"3646830361\" type=\"8\" value=\"12,12\" />\n
+      identifier=\"$outputsize\" uid=\"3646830361\" type=\"8\" value=\"9,9\" />\n
       </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive
@@ -89,14 +89,9 @@ ScriptedImporter:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 4096
-      textureHeight: 4096
+      textureWidth: 512
+      textureHeight: 512
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: bb693515cdac45b45839c0ac79449155, type: 3}
-    generatedTextures:
-    - {fileID: 2800000, guid: bb693515cdac45b45839c0ac79449155, type: 3}
-    - {fileID: 2800002, guid: bb693515cdac45b45839c0ac79449155, type: 3}
-    - {fileID: 2800004, guid: bb693515cdac45b45839c0ac79449155, type: 3}
-    - {fileID: 2800006, guid: bb693515cdac45b45839c0ac79449155, type: 3}
-    - {fileID: 2800008, guid: bb693515cdac45b45839c0ac79449155, type: 3}
+    generatedTextures: []

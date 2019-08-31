@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 public class ScanManager : MonoBehaviour
 {
 
@@ -19,7 +18,7 @@ public class ScanManager : MonoBehaviour
     public void LoadRenderers()
     {
         RemoveMeshes();
-        GameObject[] go = GetAllObjectsInScene().ToArray();
+        GameObject[] go = Utilities.GetAllObjectsInScene().ToArray();
         for (int i = 0; i < go.Length; i++)
         {
             bool excludedLayer = false;
@@ -69,7 +68,7 @@ public class ScanManager : MonoBehaviour
 
     public void RemoveMaterialSwaper()
     {
-        GameObject[] go = GetAllObjectsInScene().ToArray();
+        GameObject[] go = Utilities.GetAllObjectsInScene().ToArray();
         for (int i = 0; i < go.Length; i++)
         {
             if (go[i].GetComponent<MaterialSwaper>() != null)
@@ -81,22 +80,7 @@ public class ScanManager : MonoBehaviour
         materialSwapers.Clear();
     }
 
-    private List<GameObject> GetAllObjectsInScene()
-    {
-        List<GameObject> objectsInScene = new List<GameObject>();
-
-        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
-        {
-            if (go.hideFlags != HideFlags.None)
-                continue;
-
-            if (PrefabUtility.GetPrefabType(go) == PrefabType.Prefab || PrefabUtility.GetPrefabType(go) == PrefabType.ModelPrefab)
-                continue;
-
-            objectsInScene.Add(go);
-        }
-        return objectsInScene;
-    }
+   
 
 
     private void Update()

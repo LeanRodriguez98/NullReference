@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
+using UnityEditor;
 
 namespace UnityEngine
 {
@@ -107,5 +108,22 @@ namespace UnityEngine
         }
 
         #endregion
+
+        public static List<GameObject> GetAllObjectsInScene()
+        {
+            List<GameObject> objectsInScene = new List<GameObject>();
+
+            foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+            {
+                if (go.hideFlags != HideFlags.None)
+                    continue;
+
+                if (PrefabUtility.GetPrefabType(go) == PrefabType.Prefab || PrefabUtility.GetPrefabType(go) == PrefabType.ModelPrefab)
+                    continue;
+
+                objectsInScene.Add(go);
+            }
+            return objectsInScene;
+        }
     }
 }

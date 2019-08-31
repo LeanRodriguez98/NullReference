@@ -9,7 +9,7 @@ namespace BetoScripts
 		public List<DoorConnection> m_doorConnections;
 		public Animator m_animator;
         private Cube activatorCube;
-
+        [HideInInspector] public AnimatedMaterial.TimeValues timeValue;
         private AudioSource audioClip;
 
         private void Start()
@@ -18,7 +18,15 @@ namespace BetoScripts
             audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
         }
 
-
+        public void SetAnimatedMaterial( AnimatedMaterial.TimeValues _animatedMaterial)
+        {
+            MeshRenderer[] meshes = GetComponentsInChildren<MeshRenderer>();
+            for (int i = 0; i < meshes.Length; i++)
+            {
+                meshes[i].material = _animatedMaterial.substanceGraph.material;
+            }
+            timeValue = _animatedMaterial;
+        }
         void Update()
         {
             if (activatorCube != null)
@@ -28,6 +36,14 @@ namespace BetoScripts
                     activatorCube = null;
                     IsBeingPressed(false);
                 }
+            }
+
+            if (timeValue.substanceGraph != null)
+            {
+                timeValue.substanceGraph.SetInputFloat(timeValue.updateValueName, Time.timeSinceLevelLoad * timeValue.speed);
+                timeValue.substanceGraph.QueueForRender();
+                Substance.Game.Substance.RenderSubstancesSync();
+
             }
         }
 
