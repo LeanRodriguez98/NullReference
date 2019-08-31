@@ -167,8 +167,8 @@ namespace BetoScripts
 		private void SetColliderActiveOf(GameObject pickedUpObject, bool enableCollider)
 		{
 			Collider objCollider = pickedUpObject.GetComponent<Collider>();
-			if (objCollider != null)
-				objCollider.enabled = enableCollider;
+            if (objCollider != null) { }
+				//objCollider.enabled = enableCollider;
 		}
 
 		private void ResetPickedUpObject()
