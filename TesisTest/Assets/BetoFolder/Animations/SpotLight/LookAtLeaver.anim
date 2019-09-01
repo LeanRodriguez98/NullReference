@@ -142,7 +142,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0.96666664
-    functionName: DisableLeaverBound
+    functionName: LowerLeaverWall
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

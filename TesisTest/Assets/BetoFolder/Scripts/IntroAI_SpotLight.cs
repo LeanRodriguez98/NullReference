@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class IntroAI_SpotLight : RaycastTriggerEvent
 {
+	public Animator exitDoorWallAnimator;
+	public Animator leaverWallAnimator;
+
 	public GameObject playerAivaDialogue;
 	public GameObject confettiParticles;
-	public GameObject exitDoorCollider;
 	public GameObject leaverSpotlight;
-	public GameObject leaverSideBound;
     public Vector3 rotationTarget;
 
     [Range(0.01f,2.0f)]
@@ -29,11 +30,7 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 
 	private void Update()
 	{
-		if (!animator.enabled && !playerLookedAtLight)
-        {
-			LookAtPlayer();
-        }
-        else if (playerLookedAtLight && !animator.enabled)
+        if (!animator.enabled)
         {
             Quaternion targetRotation = Quaternion.Euler(rotationTarget);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, interpolationTime);
@@ -67,18 +64,18 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 		confettiParticles.SetActive(true);
 	}
 
-	public void DisableExitCollider()
+	public void LowerLeaverWall()
 	{
-		exitDoorCollider.SetActive(false);
+		leaverWallAnimator.SetTrigger("LowerWall");
+	}
+
+	public void LowerExitDoorWall()
+	{
+		exitDoorWallAnimator.SetTrigger("LowerWall");
 	}
 
 	public void EnableLeaverSpotlight()
 	{
 		leaverSpotlight.SetActive(true);
-	}
-
-	public void DisableLeaverBound()
-	{
-		leaverSideBound.SetActive(false);
 	}
 }
