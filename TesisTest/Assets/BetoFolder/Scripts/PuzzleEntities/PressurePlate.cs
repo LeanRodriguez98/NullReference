@@ -11,7 +11,7 @@ namespace BetoScripts
         private Cube activatorCube;
         [HideInInspector] public AnimatedMaterial.TimeValues timeValue;
         private AudioSource audioClip;
-
+        [Range(0.0f, 0.48f)] public float openRadius;
         private void Start()
         {
             audioClip = GetComponent<AudioSource>();
@@ -41,6 +41,7 @@ namespace BetoScripts
             if (timeValue.substanceGraph != null)
             {
                 timeValue.substanceGraph.SetInputFloat(timeValue.updateValueName, Time.timeSinceLevelLoad * timeValue.speed);
+                timeValue.substanceGraph.SetInputFloat("Cube_on", openRadius);
                 timeValue.substanceGraph.QueueForRender();
                 Substance.Game.Substance.RenderSubstancesSync();
 
