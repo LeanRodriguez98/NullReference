@@ -108,7 +108,7 @@ namespace BetoScripts
 			}
 		}
 
-		public void DisplayPlayerActions(bool isInteractable)
+		public void DisplayPlayerInteractUI(bool isInteractable)
 		{
 			interactUI.SetActive(isInteractable);
 		}

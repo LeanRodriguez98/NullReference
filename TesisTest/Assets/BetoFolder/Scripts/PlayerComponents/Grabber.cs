@@ -36,7 +36,7 @@ namespace BetoScripts
 		{
 			pickedUpObject = null;
 			pickedUpObjectRB = null;
-			objPositionWhenAiming = grabbingPoint.localPosition + (-grabbingPoint.transform.up * distanceToLowerObjOnAiming);
+			objPositionWhenAiming = grabbingPoint.localPosition + (-Vector3.up * distanceToLowerObjOnAiming);
 			grabberInitialPosition = grabbingPoint.localPosition;
 
 			playerCamera = Camera.main;
@@ -123,7 +123,7 @@ namespace BetoScripts
 				UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.AimingToThrowObject);
 			}
 
-			UI_Player.GetInstance().DisplayPlayerActions(false);
+			UI_Player.GetInstance().DisplayPlayerInteractUI(false);
 		}
 
 		private void KeepObjectAtGrabberPosition()
@@ -198,7 +198,7 @@ namespace BetoScripts
 			else if (Input.GetKeyDown(KeyCode.Mouse0))
 				ThrowObject();
 
-			UI_Player.GetInstance().DisplayPlayerActions(false);
+			UI_Player.GetInstance().DisplayPlayerInteractUI(false);
 		}
 
 		private void AimingState()
@@ -220,7 +220,7 @@ namespace BetoScripts
 		private void ThrowObject()
 		{
 			pickedUpObjectRB.velocity = Vector3.zero;
-			pickedUpObjectRB.AddForce(transform.forward * throwStrength);
+			pickedUpObjectRB.AddForce(grabbingPoint.forward * throwStrength);
 			DropObject();
 		}
 	}

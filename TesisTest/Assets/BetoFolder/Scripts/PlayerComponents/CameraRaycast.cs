@@ -52,18 +52,18 @@ namespace BetoScripts
 				Interactable interactable = hit.collider.GetComponent<Interactable>();
 				if (interactable != null && interactable.CanInteract)
 				{
-					playerUI.SetInteractionState(UI_Player.PlayerInteractionState.LookingAtInteractable);
+					playerUI.DisplayPlayerInteractUI(true);
 					return interactable;
 				}
 				else
 				{
-					playerUI.SetInteractionState(UI_Player.PlayerInteractionState.Idle);
+					playerUI.DisplayPlayerInteractUI(false);
 					return null;
 				}
 			}
 			else
 			{
-				playerUI.SetInteractionState(UI_Player.PlayerInteractionState.Idle);
+				playerUI.DisplayPlayerInteractUI(false);
 				return null;
 			}
 		}
