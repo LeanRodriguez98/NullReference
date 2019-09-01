@@ -60,7 +60,7 @@ public class SubtitleManager : MonoBehaviour
         a.spanishSubtitles = "";
         if (!audios.TryGetValue(key, out a))
         {
-            Debug.LogError("Dosen't exist a audio whith key " + key);
+            Debug.LogError("There is no audio with key: " + key);
         }
         return a;
     }

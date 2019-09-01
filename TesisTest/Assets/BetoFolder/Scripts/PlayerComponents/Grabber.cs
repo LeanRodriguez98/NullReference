@@ -6,7 +6,7 @@ namespace BetoScripts
 {
 	public class Grabber : MonoBehaviour
 	{
-		public GameObject throwObj_UI;
+		//public GameObject throwObj_UI;
 		public Transform grabbingPoint;
 		public float maxDistanceToGrab;
 		public float distanceToAutoDrop;
@@ -24,7 +24,7 @@ namespace BetoScripts
 		private Vector3 objPositionWhenAiming;
 		private Vector3 grabberInitialPosition;
 
-		private enum State 
+		private enum State
 		{
 			NoObjectGrabbed,
 			GrabbingObject,
@@ -92,8 +92,9 @@ namespace BetoScripts
 			SetObjectAndChildsToLayerMask(pickedUpObject, "PickedUpObject");
 			TryToSetupCubeComponent(pickedUpObject, true);
 
-			throwObj_UI.SetActive(true);
+			//throwObj_UI.SetActive(true);
 			state = State.GrabbingObject;
+			UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
 		}
 
 		private void SetupObjectTransform(GameObject obj)
@@ -117,9 +118,12 @@ namespace BetoScripts
 			if (Input.GetKeyDown(KeyCode.Mouse0))
 				DropObject();
 			else if (Input.GetKeyDown(KeyCode.Mouse1))
+			{
 				state = State.Aiming;
+				UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.AimingToThrowObject);
+			}
 
-			UI_Player.GetInstance().EnableCrosshair(false);
+			UI_Player.GetInstance().DisplayPlayerActions(false);
 		}
 
 		private void KeepObjectAtGrabberPosition()
@@ -143,7 +147,8 @@ namespace BetoScripts
 			SetColliderActiveOf(pickedUpObject, true);
 			ResetPickedUpObject();
 
-			throwObj_UI.SetActive(false);
+			//throwObj_UI.SetActive(false);
+			UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.Idle);
 
 			state = State.NoObjectGrabbed;
         }
@@ -186,11 +191,14 @@ namespace BetoScripts
 			AimingState();
 
 			if (Input.GetKeyUp(KeyCode.Mouse1))
+			{
 				state = State.GrabbingObject;
+				UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
+			}
 			else if (Input.GetKeyDown(KeyCode.Mouse0))
 				ThrowObject();
 
-			UI_Player.GetInstance().EnableCrosshair(false);
+			UI_Player.GetInstance().DisplayPlayerActions(false);
 		}
 
 		private void AimingState()

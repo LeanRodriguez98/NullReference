@@ -7,13 +7,29 @@ namespace BetoScripts
 {
 	public class UI_Player : MonoBehaviour
 	{
-		public GameObject m_interactableCrosshair;
 		public Text currentObjective;
+		
+		public GameObject interactUI;
 		public Text interactText;
-		public Text throwText;
-		public Text dropText;
+		
+		public GameObject objectGrabbedUI;
+		public Text rightClickAction;
+		public Text leftClickAction;
+
+		private string pressToThrow;
+		private string pressToDrop;
+		private string holdToAim;
+		private string releaseToCancel;
 
 		private bool m_lookingAtInteractable;
+
+		public enum PlayerInteractionState
+		{
+			Idle,
+			LookingAtInteractable,
+			GrabbingObject,
+			AimingToThrowObject
+		}
 
 		#region Singleton
 		private static UI_Player instance;
@@ -30,23 +46,30 @@ namespace BetoScripts
 
 		void Start()
 		{
+			interactUI.SetActive(false);
+			objectGrabbedUI.SetActive(false);
 
             if (GameManager.GetInstance().gameOptions.lenguage == (int)GameManager.Lenguges.English /*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
             {
                 interactText.text = SubtitleManager.instance.GetAudio("PressUI").englishSubtitles;
-                throwText.text = SubtitleManager.instance.GetAudio("ThrowUI").englishSubtitles;
-                dropText.text = SubtitleManager.instance.GetAudio("DropUI").englishSubtitles;
-            }
+                pressToThrow = SubtitleManager.instance.GetAudio("ThrowUI").englishSubtitles;
+                pressToDrop = SubtitleManager.instance.GetAudio("DropUI").englishSubtitles;
+				holdToAim = SubtitleManager.instance.GetAudio("AimUI").englishSubtitles;
+				releaseToCancel = SubtitleManager.instance.GetAudio("CancelThrowUI").englishSubtitles;
+			}
             else
             {
                 interactText.text = SubtitleManager.instance.GetAudio("PressUI").spanishSubtitles;
-                throwText.text = SubtitleManager.instance.GetAudio("ThrowUI").spanishSubtitles;
-                dropText.text = SubtitleManager.instance.GetAudio("DropUI").spanishSubtitles;
-            }
+                pressToThrow = SubtitleManager.instance.GetAudio("ThrowUI").spanishSubtitles;
+                pressToDrop = SubtitleManager.instance.GetAudio("DropUI").spanishSubtitles;
+				holdToAim = SubtitleManager.instance.GetAudio("AimUI").spanishSubtitles;
+				releaseToCancel = SubtitleManager.instance.GetAudio("CancelThrowUI").spanishSubtitles;
+			}
 
 
             m_lookingAtInteractable = false;
 			currentObjective.text = GameManager.GetInstance().GetAivaObjective();
+			SetInteractionState(PlayerInteractionState.Idle);
 		}
 
 		private void Update()
@@ -55,9 +78,39 @@ namespace BetoScripts
 				currentObjective.text = GameManager.GetInstance().GetCoffeObjective();
 		}
 
-		public void EnableCrosshair(bool isInteractable)
+		public void SetInteractionState(PlayerInteractionState playerState)
 		{
-			m_interactableCrosshair.SetActive(isInteractable);
+			switch (playerState)
+			{
+				case PlayerInteractionState.Idle:
+					interactUI.SetActive(false);
+					objectGrabbedUI.SetActive(false);
+					break;
+
+				case PlayerInteractionState.LookingAtInteractable:
+					interactUI.SetActive(true);
+					objectGrabbedUI.SetActive(false);
+					break;
+
+				case PlayerInteractionState.GrabbingObject:
+					interactUI.SetActive(false);
+					objectGrabbedUI.SetActive(true);
+					leftClickAction.text = pressToDrop;
+					rightClickAction.text = holdToAim;
+					break;
+
+				case PlayerInteractionState.AimingToThrowObject:
+					interactUI.SetActive(false);
+					objectGrabbedUI.SetActive(true);
+					leftClickAction.text = pressToThrow;
+					rightClickAction.text = releaseToCancel;
+					break;
+			}
+		}
+
+		public void DisplayPlayerActions(bool isInteractable)
+		{
+			interactUI.SetActive(isInteractable);
 		}
 	}
 }

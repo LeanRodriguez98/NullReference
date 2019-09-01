@@ -8,11 +8,13 @@ namespace BetoScripts
 	{
 		public float m_interactionRange;
 
+		private UI_Player playerUI;
 		private Interactable m_interactableFound;
 
 		private void Start()
 		{
 			m_interactableFound = null;
+			playerUI = UI_Player.GetInstance();
 		}
 
 		void Update()
@@ -37,33 +39,31 @@ namespace BetoScripts
 
 		Interactable CheckInteractableEntity()
 		{
-			UI_Player playerUI = UI_Player.GetInstance();
+			if (playerUI != null)
+				return ShootRaycast();
+			return null;
+		}
 
+		Interactable ShootRaycast()
+		{
 			RaycastHit hit;
 			if (Physics.Raycast(transform.position, transform.forward, out hit, m_interactionRange))
 			{
 				Interactable interactable = hit.collider.GetComponent<Interactable>();
-
-				if (playerUI)
+				if (interactable != null && interactable.CanInteract)
 				{
-					if (interactable != null && interactable.CanInteract)
-					{
-						playerUI.EnableCrosshair(true);
-						return interactable;
-					}
-					else
-					{
-						playerUI.EnableCrosshair(false);
-						return null;
-					}
+					playerUI.DisplayPlayerActions(true);
+					return interactable;
 				}
-				return null;
+				else
+				{
+					playerUI.DisplayPlayerActions(false);
+					return null;
+				}
 			}
 			else
 			{
-				if (playerUI)
-					playerUI.EnableCrosshair(false);
-
+				playerUI.DisplayPlayerActions(false);
 				return null;
 			}
 		}
