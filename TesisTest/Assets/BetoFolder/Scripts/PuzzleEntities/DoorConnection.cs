@@ -19,34 +19,16 @@ namespace BetoScripts
 
 		private MeshRenderer m_meshRenderer;
 
-
-
-        private MaterialSwaper materialSwaper;
-        private bool materialSwaperState;
 		void Start()
 		{
 			m_meshRenderer = GetComponent<MeshRenderer>();
-            materialSwaper = GetComponent<MaterialSwaper>();
             UpdateMaterial();
-            materialSwaperState = false;
-        }
-
-        void Update()
-        {
-            if (materialSwaperState != materialSwaper.Swaped)
-            {
-                materialSwaperState = materialSwaper.Swaped;
-                UpdateMaterial();
-            }
         }
 
 		public void SetIsEnabled(bool isEnabled)
 		{
 			m_isEnabled = isEnabled;
-            if (materialSwaper.Swaped)
-            {
-                UpdateMaterial();
-            }
+            UpdateMaterial();
             m_puzzleDoor.UpdateState();
 		}
 
@@ -57,7 +39,6 @@ namespace BetoScripts
             else
                 m_meshRenderer.material = m_disabledColor;
         }
-    
 
 		public bool IsEnabled()
 		{
