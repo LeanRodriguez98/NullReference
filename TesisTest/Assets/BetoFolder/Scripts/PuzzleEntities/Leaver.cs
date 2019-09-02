@@ -42,13 +42,10 @@ namespace BetoScripts
 			}
 		}
 
-		public void InteractOnCubeCollision(LeaverTriggerFlag.FlagSide flagSide)
+		private void OnCollisionEnter(Collision other) 
 		{
-			if (flagSide == LeaverTriggerFlag.FlagSide.Back && !stickLeaningFoward ||
-				flagSide == LeaverTriggerFlag.FlagSide.Front && stickLeaningFoward)
-			{
+			if (other.collider.CompareTag("PickUpable"))
 				Interact();
-			}
 		}
 	}
 }
