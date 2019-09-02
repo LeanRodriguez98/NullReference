@@ -7,29 +7,24 @@ namespace BetoScripts
 	public class Leaver : Interactable
 	{
 		public List<DoorConnection> m_doorConnections;
-
-		private Animator m_animator;
-		private bool stickLeaningFoward;
-
-        private AudioSource audioClip;
-
+        
+		private AudioSource audioClip;
+		private ParticleSystem particles;
+		
 		public override void Start()
 		{
 			base.Start();
-			m_animator = GetComponent<Animator>();
-			stickLeaningFoward = false;
             audioClip = GetComponent<AudioSource>();
             audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
+
+			particles = GetComponentInChildren<ParticleSystem>();
         }
 
 		public override void Interact()
 		{
 			base.Interact();
 
-			m_animator.SetTrigger("Interact");
 			UpdateDoorConnectionsStates();
-			stickLeaningFoward = !stickLeaningFoward;
-
             audioClip.Play();
         }
 
@@ -45,7 +40,10 @@ namespace BetoScripts
 		private void OnCollisionEnter(Collision other) 
 		{
 			if (other.collider.CompareTag("PickUpable"))
+			{
 				Interact();
+				particles.Play();
+			}
 		}
 	}
 }
