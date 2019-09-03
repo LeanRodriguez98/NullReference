@@ -65,7 +65,9 @@ public class UI_Pause : MonoBehaviour {
 
     public void ToMenu()
     {
+        Time.timeScale = 1;
         Utilities.LoadScene("MainMenu");
+
     }
 
 }

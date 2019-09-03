@@ -19,9 +19,11 @@ public class AnimatedMaterial : MonoBehaviour
 	{
 		for (int i = 0; i < substanceGraphsToUpdate.Length; i++)
 		{
-			substanceGraphsToUpdate[i].substanceGraph.SetInputFloat(substanceGraphsToUpdate[i].updateValueName, Time.timeSinceLevelLoad * substanceGraphsToUpdate[i].speed);
-			substanceGraphsToUpdate[i].substanceGraph.QueueForRender();
+                substanceGraphsToUpdate[i].substanceGraph.SetInputFloat(substanceGraphsToUpdate[i].updateValueName, Time.timeSinceLevelLoad * substanceGraphsToUpdate[i].speed);
+                substanceGraphsToUpdate[i].substanceGraph.QueueForRender();
 		}
 		Substance.Game.Substance.RenderSubstancesSync();
-	}
+
+      
+    }
 }
