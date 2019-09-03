@@ -136,47 +136,51 @@ namespace PortalableFirstPerson
         private void Update()
         {
 
-
-            RotateView();
-
-			if (Input.GetMouseButtonDown (0)) {
-				Cursor.lockState = CursorLockMode.Locked;
-				Cursor.visible = false;
-			}
-
-			if (Input.GetKeyDown (KeyCode.Escape)) {
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
-			}
-
-			float yRot = Input.GetAxis("Mouse X") * mouseLook.xSensitivity;
-			float xRot = Input.GetAxis("Mouse Y") * mouseLook.ySensitivity;
-
-			mouseLook.characterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
-			mouseLook.cameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
-
-            if (mouseLook.clampVerticalRotation)
+            if (!Cursor.visible)
             {
-                mouseLook.cameraTargetRot = mouseLook.ClampRotationAroundXAxis(mouseLook.cameraTargetRot);
-            }
+                RotateView();
 
-			if(mouseLook.smooth)
-			{
-				transform.localRotation = Quaternion.Slerp (transform.localRotation, mouseLook.characterTargetRot,
-					mouseLook.smoothTime * Time.deltaTime);
-				cam.transform.localRotation = Quaternion.Slerp (cam.transform.localRotation, mouseLook.cameraTargetRot,
-					mouseLook.smoothTime * Time.deltaTime);
-			}
-			else
-			{
-				transform.localRotation = mouseLook.characterTargetRot;
-				cam.transform.localRotation = mouseLook.cameraTargetRot;
-			}
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+
+                float yRot = Input.GetAxis("Mouse X") * mouseLook.xSensitivity;
+                float xRot = Input.GetAxis("Mouse Y") * mouseLook.ySensitivity;
+
+                mouseLook.characterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+                mouseLook.cameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+                if (mouseLook.clampVerticalRotation)
+                {
+                    mouseLook.cameraTargetRot = mouseLook.ClampRotationAroundXAxis(mouseLook.cameraTargetRot);
+                }
+
+                if (mouseLook.smooth)
+                {
+                    transform.localRotation = Quaternion.Slerp(transform.localRotation, mouseLook.characterTargetRot,
+                        mouseLook.smoothTime * Time.deltaTime);
+                    cam.transform.localRotation = Quaternion.Slerp(cam.transform.localRotation, mouseLook.cameraTargetRot,
+                        mouseLook.smoothTime * Time.deltaTime);
+                }
+                else
+                {
+                    transform.localRotation = mouseLook.characterTargetRot;
+                    cam.transform.localRotation = mouseLook.cameraTargetRot;
+                }
 
 
-            if (Input.GetButtonDown("Jump") && !jump)
-            {
-                jump = true;
+                if (Input.GetButtonDown("Jump") && !jump)
+                {
+                    jump = true;
+                }
             }
         }
 
