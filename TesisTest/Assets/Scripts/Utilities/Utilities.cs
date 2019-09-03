@@ -109,9 +109,11 @@ namespace UnityEngine
 
         #endregion
 
+
         public static List<GameObject> GetAllObjectsInScene()
         {
             List<GameObject> objectsInScene = new List<GameObject>();
+#if UNITY_EDITOR
 
             foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
             {
@@ -123,6 +125,8 @@ namespace UnityEngine
 
                 objectsInScene.Add(go);
             }
+#endif
+
             return objectsInScene;
         }
     }
