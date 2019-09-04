@@ -7,6 +7,8 @@ namespace BetoScripts
 {
 	public class UI_Player : MonoBehaviour
 	{
+		public Animator UIAivaAnimator;
+
 		public Text currentObjective;
 		
 		public GameObject interactUI;
@@ -111,6 +113,11 @@ namespace BetoScripts
 		public void DisplayPlayerInteractUI(bool isInteractable)
 		{
 			interactUI.SetActive(isInteractable);
+		}
+
+		public void SetAivaUIDisplay(bool display)
+		{
+			UIAivaAnimator.SetBool("DisplayAiva", display);
 		}
 	}
 }

@@ -45,7 +45,8 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
         else if(!playerAivaDialogue.activeSelf)
         {
 			playerAivaDialogue.SetActive(true);
-        }
+			BetoScripts.UI_Player.GetInstance().SetAivaUIDisplay(true);
+		}
 	}
 
 	private void LookAtPlayer()
@@ -77,5 +78,12 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	public void EnableLeaverSpotlight()
 	{
 		leaverSpotlight.SetActive(true);
+		Invoke("HideAivaUI", 18.0f);
+	}
+
+	// TODO: Make Aiva UI animation respond to Aiva's audio file length
+	void HideAivaUI()
+	{
+		BetoScripts.UI_Player.GetInstance().SetAivaUIDisplay(false);
 	}
 }
