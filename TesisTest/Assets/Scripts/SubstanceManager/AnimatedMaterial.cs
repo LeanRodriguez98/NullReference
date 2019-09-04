@@ -12,18 +12,39 @@ public class AnimatedMaterial : MonoBehaviour
 		public float speed;
 		public string updateValueName;
 	}
+    [Range(1, 10)] public uint renderUpdateTime = 1;
+    private uint auxRenderUpdateTime = 0;
+    public TimeValues[] substanceGraphsToUpdate;
 
-	public TimeValues[] substanceGraphsToUpdate;
-
-	public void Update()
+   
+	public void Start()
 	{
-		for (int i = 0; i < substanceGraphsToUpdate.Length; i++)
-		{
-                substanceGraphsToUpdate[i].substanceGraph.SetInputFloat(substanceGraphsToUpdate[i].updateValueName, Time.timeSinceLevelLoad * substanceGraphsToUpdate[i].speed);
-                substanceGraphsToUpdate[i].substanceGraph.QueueForRender();
-		}
-		Substance.Game.Substance.RenderSubstancesSync();
-
-      
+        StartCoroutine(UpdateMaterials());
     }
+
+    
+
+    IEnumerator UpdateMaterials()
+    {
+        for (int i = 0; i < substanceGraphsToUpdate.Length; i++)
+        {
+            substanceGraphsToUpdate[i].substanceGraph.SetInputFloat(substanceGraphsToUpdate[i].updateValueName, substanceGraphsToUpdate[i].substanceGraph.GetInputFloat(substanceGraphsToUpdate[i].updateValueName) + (Time.deltaTime * substanceGraphsToUpdate[i].speed));
+            substanceGraphsToUpdate[i].substanceGraph.QueueForRender();
+
+
+             auxRenderUpdateTime++;
+             if (auxRenderUpdateTime >= renderUpdateTime)
+             {
+                yield return null;
+                auxRenderUpdateTime = 0;
+             }
+        }
+
+        Substance.Game.Substance.RenderSubstancesAsync();
+
+        StartCoroutine(UpdateMaterials());
+    }
+
+
+
 }

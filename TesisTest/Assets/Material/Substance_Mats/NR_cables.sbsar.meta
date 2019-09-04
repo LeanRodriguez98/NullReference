@@ -28,8 +28,7 @@ ScriptedImporter:
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://cables\" label=\"\" >\n  <presetinput identifier=\"Output_Color\"
-      uid=\"3323099875\" type=\"3\" value=\"0,0.466981,1,1\" />\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://cables\" label=\"\" >\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive
     texturePackingList:
@@ -92,10 +91,5 @@ ScriptedImporter:
       textureHeight: 256
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {fileID: 2100000, guid: d2c40a5f65b84f841b40a87dd2a85702, type: 3}
-    generatedTextures:
-    - {fileID: 2800000, guid: d2c40a5f65b84f841b40a87dd2a85702, type: 3}
-    - {fileID: 2800002, guid: d2c40a5f65b84f841b40a87dd2a85702, type: 3}
-    - {fileID: 2800004, guid: d2c40a5f65b84f841b40a87dd2a85702, type: 3}
-    - {fileID: 2800006, guid: d2c40a5f65b84f841b40a87dd2a85702, type: 3}
-    - {fileID: 2800008, guid: d2c40a5f65b84f841b40a87dd2a85702, type: 3}
+    material: {instanceID: 0}
+    generatedTextures: []

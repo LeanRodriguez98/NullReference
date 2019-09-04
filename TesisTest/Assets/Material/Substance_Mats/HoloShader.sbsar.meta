@@ -293,11 +293,10 @@ ScriptedImporter:
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
       identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
-      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"1\"
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.223\"
       />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
-      />\n  <presetinput identifier=\"imageOffset\" uid=\"3900172003\" type=\"1\"
-      value=\"0,-0.021\" />\n  <presetinput identifier=\"time\" uid=\"3900172270\"
-      type=\"0\" value=\"0\" />\n </sbspreset>\n"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive
     texturePackingList:
@@ -476,7 +475,7 @@ ScriptedImporter:
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
       identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
-      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"1\"
       />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
       />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
       />\n </sbspreset>\n"

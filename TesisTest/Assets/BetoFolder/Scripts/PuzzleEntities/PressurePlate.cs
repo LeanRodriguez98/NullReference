@@ -43,7 +43,7 @@ namespace BetoScripts
                 timeValue.substanceGraph.SetInputFloat(timeValue.updateValueName, Time.timeSinceLevelLoad * timeValue.speed);
                 timeValue.substanceGraph.SetInputFloat("Cube_on", openRadius);
                 timeValue.substanceGraph.QueueForRender();
-                Substance.Game.Substance.RenderSubstancesSync();
+                //Substance.Game.Substance.RenderSubstancesSync();
             }
         }
 
