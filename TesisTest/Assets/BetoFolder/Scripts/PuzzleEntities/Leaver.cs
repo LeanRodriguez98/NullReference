@@ -37,9 +37,9 @@ namespace BetoScripts
 			}
 		}
 
-		private void OnCollisionEnter(Collision other) 
+		private void OnTriggerEnter(Collider other) 
 		{
-			if (other.collider.CompareTag("PickUpable"))
+			if (other.CompareTag("PickUpable"))
 			{
 				Interact();
 				particles.Play();

@@ -20,7 +20,6 @@ ScriptedImporter:
     2300000: HoloShader/HoloShader/MeshRenderer
     2800000: HoloShader_baseColor
     2800002: HoloShader_normal
-    2800004: HoloShader_metallic
     2800006: HoloShader_height
     2800008: HoloShader_emissive
     2800010: HoloShader_1_baseColor
@@ -118,23 +117,9 @@ ScriptedImporter:
       />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
       />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
       />\n </sbspreset>\n"
-    shaderName: Standard
-    outputNames: baseColor,normal,metallic,height,emissive
-    texturePackingList:
-    - outputName: baseColor
-      alphaSource: opacity
-    - outputName: normal
-      alphaSource: normal
-    - outputName: roughness
-      alphaSource: roughness
-    - outputName: metallic
-      alphaSource: smoothness
-    - outputName: height
-      alphaSource: height
-    - outputName: emissive
-      alphaSource: emissive
-    - outputName: opacity
-      alphaSource: opacity
+    shaderName: Standard (Specular setup)
+    outputNames: baseColor,normal,height,emissive
+    texturePackingList: []
     textureParameters:
     - textureName: HoloShader_roughness
       wrapMode: 0
@@ -192,12 +177,7 @@ ScriptedImporter:
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100000, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    generatedTextures:
-    - {fileID: 2800000, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800002, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800004, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800006, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800008, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures: []
   - graphLabel: HoloShader_1
     prototypeName: HoloShader
     graphDescIndex: 0
