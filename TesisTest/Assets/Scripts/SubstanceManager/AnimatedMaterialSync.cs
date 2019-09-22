@@ -11,13 +11,16 @@ public class AnimatedMaterialSync : MonoBehaviour {
         public string updateValueName;
     }
     public TimeValues[] substanceGraphsToUpdate;
-
+    public bool dontWaitRenderFinish;
 	void Update () {
         for (int i = 0; i < substanceGraphsToUpdate.Length; i++)
         {
             substanceGraphsToUpdate[i].substanceGraph.SetInputFloat(substanceGraphsToUpdate[i].updateValueName, Time.timeSinceLevelLoad * substanceGraphsToUpdate[i].speed);
             substanceGraphsToUpdate[i].substanceGraph.QueueForRender();
         }
-        Substance.Game.Substance.RenderSubstancesSync();
+        if (dontWaitRenderFinish)
+            Substance.Game.Substance.RenderSubstancesAsync();
+        else
+            Substance.Game.Substance.RenderSubstancesSync();
     }
 }
