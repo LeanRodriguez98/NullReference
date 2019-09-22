@@ -12,6 +12,7 @@ namespace NewMainMenu
             {
                 mainMenu.SetMenuShardsAnimations();
             }
+            base.OnInspectorGUI();
         }
     }
 }

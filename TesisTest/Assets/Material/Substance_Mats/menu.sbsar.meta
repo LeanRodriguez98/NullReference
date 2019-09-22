@@ -29,8 +29,7 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://menu\" label=\"\" >\n  <presetinput identifier=\"$outputsize\"
-      uid=\"3459641937\" type=\"8\" value=\"10,10\" />\n  <presetinput identifier=\"time\"
-      uid=\"2756224787\" type=\"0\" value=\"0.235\" />\n  <presetinput identifier=\"scale\"
+      uid=\"3459641937\" type=\"8\" value=\"10,10\" />\n  <presetinput identifier=\"scale\"
       uid=\"2783486207\" type=\"0\" value=\"1\" />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,emissive
@@ -76,13 +75,13 @@ ScriptedImporter:
     - outputName: baseColor
       bLinear: 0
     - outputName: normal
-      bLinear: 1
+      bLinear: 0
     - outputName: roughness
       bLinear: 1
     - outputName: metallic
       bLinear: 1
     - outputName: height
-      bLinear: 1
+      bLinear: 0
     - outputName: emissive
       bLinear: 0
     inputTextureMap: []
