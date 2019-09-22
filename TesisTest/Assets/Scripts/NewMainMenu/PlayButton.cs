@@ -5,6 +5,7 @@ namespace NewMainMenu
 {
     public class PlayButton : MonoBehaviour
     {
+        public float delay;
         public string sceneToLoadName;
         private bool clicked = false;
         void OnMouseDown()
@@ -12,11 +13,14 @@ namespace NewMainMenu
             if (!clicked)
             {
                 MainMenu.instace.OnButtonClicked();
-                StartCoroutine(LoadAsyncScene());
+                Invoke("LoadScene", delay);
                 clicked = true;
             }
         }
-        
+        private void LoadScene()
+        {
+            StartCoroutine(LoadAsyncScene());
+        }
         private IEnumerator LoadAsyncScene()
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoadName);

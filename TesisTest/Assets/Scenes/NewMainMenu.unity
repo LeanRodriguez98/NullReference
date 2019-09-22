@@ -1562,6 +1562,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: c940878b0924b9a4bacc5184d7048163, type: 3}
+--- !u!114 &742650094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742650089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b95e5dfbfd349947b97095259ad8716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
 --- !u!1 &745326999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100138, guid: f3c168b863eb9b7459a2dd373cc7b003,
@@ -2958,6 +2970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c093040d963e4b247a74c84bdab8cc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 1
   sceneToLoadName: GameplayScene
 --- !u!1 &1257155452 stripped
 GameObject:
@@ -5915,6 +5928,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe7515bea4193540b22f9bd07d8ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shards:
+  - {fileID: 948440991}
+  - {fileID: 602663699}
+  - {fileID: 1770820536}
+  - {fileID: 1430377227}
+  - {fileID: 1190899820}
+  - {fileID: 825192538}
+  - {fileID: 1487702955}
+  - {fileID: 1656632049}
+  - {fileID: 881354087}
+  - {fileID: 582580865}
+  - {fileID: 516201861}
+  - {fileID: 476660019}
+  - {fileID: 847549562}
+  - {fileID: 1361948038}
+  - {fileID: 1844308056}
+  - {fileID: 813942816}
+  - {fileID: 2114173229}
+  - {fileID: 1872391392}
+  - {fileID: 383352146}
+  - {fileID: 730638408}
+  - {fileID: 1729020101}
+  - {fileID: 1978767737}
+  - {fileID: 1844052044}
+  - {fileID: 731707997}
+  - {fileID: 1471720101}
+  - {fileID: 1182519054}
+  - {fileID: 201938728}
+  - {fileID: 520911522}
+  - {fileID: 1995237326}
+  - {fileID: 1227907359}
+  - {fileID: 1066766460}
+  - {fileID: 555287064}
+  - {fileID: 583250958}
+  - {fileID: 100558255}
+  - {fileID: 989109448}
+  - {fileID: 583283646}
+  - {fileID: 320460}
+  - {fileID: 1257155457}
+  - {fileID: 342989622}
+  - {fileID: 83153617}
+  - {fileID: 745327004}
+  - {fileID: 970781621}
+  - {fileID: 296756420}
+  - {fileID: 331841261}
+  - {fileID: 1021655049}
+  - {fileID: 1187889469}
+  - {fileID: 1864215831}
+  - {fileID: 1324104753}
+  - {fileID: 977797979}
+  - {fileID: 1979416646}
+  - {fileID: 768708656}
+  - {fileID: 1163276512}
+  - {fileID: 2050402638}
+  - {fileID: 34299708}
+  - {fileID: 1972617106}
+  - {fileID: 584294818}
+  - {fileID: 383632161}
+  - {fileID: 1763953038}
+  - {fileID: 1052587340}
+  - {fileID: 1726634501}
+  - {fileID: 1584672428}
+  - {fileID: 270072384}
+  - {fileID: 980180091}
+  - {fileID: 1651202485}
+  - {fileID: 1665514752}
+  - {fileID: 652318708}
+  - {fileID: 825048674}
+  - {fileID: 1717370490}
+  - {fileID: 1855291019}
+  - {fileID: 1421376632}
+  - {fileID: 1186079374}
+  - {fileID: 434250866}
+  - {fileID: 1571616642}
+  - {fileID: 1223384679}
+  - {fileID: 333028055}
+  - {fileID: 257518204}
+  - {fileID: 1053127413}
 --- !u!1 &1864215826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100150, guid: f3c168b863eb9b7459a2dd373cc7b003,
