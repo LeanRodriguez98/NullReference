@@ -275,7 +275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &83153612 stripped
 GameObject:
@@ -412,7 +412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c940878b0924b9a4bacc5184d7048163, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: c940878b0924b9a4bacc5184d7048163, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1995,7 +1995,7 @@ Transform:
   m_Children:
   - {fileID: 1799213102}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 32.460003, y: -179.99998, z: 0}
 --- !u!23 &867558709
 MeshRenderer:
@@ -2350,7 +2350,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -18, y: 0, z: 0}
 --- !u!1 &989109443 stripped
 GameObject:
@@ -2597,6 +2597,54 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300094, guid: f3c168b863eb9b7459a2dd373cc7b003, type: 3}
+--- !u!1 &1154260850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154260852}
+  - component: {fileID: 1154260851}
+  m_Layer: 0
+  m_Name: SubstanceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1154260851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154260850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974f74c377c7dd347a1c17f6ea4f8811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substanceGraphsToUpdate:
+  - substanceGraph: {fileID: 11400002, guid: bee347c2e271ddc4eaa6231c46559249, type: 3}
+    speed: 5
+    updateValueName: time
+  - substanceGraph: {fileID: 11400002, guid: 322da099dfbc0be49b8418177383045b, type: 3}
+    speed: 0.025
+    updateValueName: time
+  dontWaitRenderFinish: 1
+--- !u!4 &1154260852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154260850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0000038146973, y: 8.386475, z: 13.001923}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163276507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100008, guid: f3c168b863eb9b7459a2dd373cc7b003,
@@ -3908,7 +3956,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f3c168b863eb9b7459a2dd373cc7b003, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f3c168b863eb9b7459a2dd373cc7b003, type: 3}
       propertyPath: m_Name
@@ -5762,6 +5810,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f3c168b863eb9b7459a2dd373cc7b003, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3c168b863eb9b7459a2dd373cc7b003, type: 3}
   m_IsPrefabAsset: 0
@@ -6006,6 +6058,11 @@ MonoBehaviour:
   - {fileID: 333028055}
   - {fileID: 257518204}
   - {fileID: 1053127413}
+  colorSwap: 1
+  colorSwapLavel: colorSwap
+  colorSwapGraphs:
+  - {fileID: 11400002, guid: bee347c2e271ddc4eaa6231c46559249, type: 3}
+  - {fileID: 11400002, guid: 322da099dfbc0be49b8418177383045b, type: 3}
 --- !u!1 &1864215826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100150, guid: f3c168b863eb9b7459a2dd373cc7b003,

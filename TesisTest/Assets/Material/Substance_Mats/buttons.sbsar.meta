@@ -29,7 +29,8 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://buttons\" label=\"\" >\n  <presetinput identifier=\"$outputsize\"
-      uid=\"1938275787\" type=\"8\" value=\"10,10\" />\n  <presetinput identifier=\"backgroundRange\"
+      uid=\"1938275787\" type=\"8\" value=\"10,10\" />\n  <presetinput identifier=\"time\"
+      uid=\"435873929\" type=\"0\" value=\"1\" />\n  <presetinput identifier=\"backgroundRange\"
       uid=\"410172323\" type=\"0\" value=\"0.14\" />\n  <presetinput identifier=\"backgroundPosition\"
       uid=\"410172321\" type=\"0\" value=\"0.202\" />\n </sbspreset>\n"
     shaderName: Standard
