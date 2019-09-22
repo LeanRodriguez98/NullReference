@@ -37,6 +37,8 @@ namespace UnityEngine
         {
             SceneManager.LoadScene(sceneIndex);
         }
+
+        
         #endregion
         #region ExitGame
         public static void ExitGame()

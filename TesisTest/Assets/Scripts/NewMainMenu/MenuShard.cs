@@ -21,5 +21,10 @@ namespace NewMainMenu
         {
             animator.SetBool("IsMouseOver", false);
         }
+
+        public void FullRotate()
+        {
+            animator.SetTrigger("FullRotation");
+        }
     }
 }

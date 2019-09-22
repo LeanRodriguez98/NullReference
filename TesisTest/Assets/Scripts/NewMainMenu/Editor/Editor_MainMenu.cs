@@ -8,7 +8,7 @@ namespace NewMainMenu
         public override void OnInspectorGUI()
         {
             MainMenu mainMenu = (MainMenu)target;
-            if (GUILayout.Button("SetSardsAnimations"))
+            if (GUILayout.Button("SetShardsAnimations"))
             {
                 mainMenu.SetMenuShardsAnimations();
             }
