@@ -5,18 +5,17 @@ using UnityEngine.UI;
 
 public class UI_MainMenu : MonoBehaviour
 {
-  
+	public GameObject settingsMenu;
+	public GameObject[] objectsToHide;
 
-	private bool optionsMenu = false;
-	private bool subtitles = false;
 	public Dropdown lenguageDropdown;
 	public Slider soundsVolumeSlider;
 	public Slider voicesVolumeSlider;
     public Toggle lenguageToggle;
-	public GameObject[] onOptionMenuEnable;
-	public GameObject[] onOptionMenuDisable;
     public SO_GameOptions gameOptions;
-    
+
+	private bool settingsMenuVisible;
+	private bool subtitles = false;
 
 	private void Start()
 	{
@@ -31,6 +30,8 @@ public class UI_MainMenu : MonoBehaviour
         soundsVolumeSlider.value = gameOptions.soundsVolume;
         voicesVolumeSlider.value = gameOptions.voicesVolume;
 
+		settingsMenuVisible = false;
+		settingsMenu.SetActive(false);
     }
 
 	public void LoadScene(string sceneName)
@@ -45,16 +46,11 @@ public class UI_MainMenu : MonoBehaviour
 
 	public void OptionsMenuToggle()
 	{
-		optionsMenu = !optionsMenu;
-			
-			for(int i = 0; i < onOptionMenuEnable.Length; i++)
-			{
-				onOptionMenuEnable[i].SetActive(optionsMenu);
-			}
-			for(int i = 0; i < onOptionMenuDisable.Length; i++)
-			{
-				onOptionMenuDisable[i].SetActive(!optionsMenu);
-			}
+		settingsMenuVisible = !settingsMenuVisible;
+		settingsMenu.SetActive(settingsMenuVisible);
+
+		for (int i = 0; i < objectsToHide.Length; i++)
+			objectsToHide[i].SetActive(!settingsMenuVisible);
 	}
 
 	public void SetSubtitles()
