@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substanceGraphsToUpdate:
-  - substanceGraph: {fileID: 11400002, guid: bee347c2e271ddc4eaa6231c46559249, type: 3}
+  - substanceGraph: {fileID: 11400002, guid: 3a18851c1a2f4774a8644901b4902f31, type: 3}
     speed: 5
     updateValueName: time
   - substanceGraph: {fileID: 11400002, guid: 322da099dfbc0be49b8418177383045b, type: 3}
@@ -6127,7 +6127,7 @@ MonoBehaviour:
   colorSwap: 1
   colorSwapLavel: colorSwap
   colorSwapGraphs:
-  - {fileID: 11400002, guid: bee347c2e271ddc4eaa6231c46559249, type: 3}
+  - {fileID: 11400002, guid: 3a18851c1a2f4774a8644901b4902f31, type: 3}
   - {fileID: 11400002, guid: 322da099dfbc0be49b8418177383045b, type: 3}
 --- !u!1 &1864215826 stripped
 GameObject:
