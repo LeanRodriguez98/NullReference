@@ -20,22 +20,30 @@ public class GameManager : MonoBehaviour
 		return instance;
 	}
     #endregion
-
+    public bool isGameplay = true;
     private void Awake()
 	{
 		instance = this;
         Utilities.LoadGame(gameOptions);
-		if(gameOptions.lenguage == (int)Lenguges.English/*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
-		{
-            aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").englishSubtitles;
-			coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").englishSubtitles;
-		}
-		else
-		{
-		    aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").spanishSubtitles;
-			coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").spanishSubtitles;
-		}
+        if (isGameplay)
+        {
+            LoadBedRoomUI();
+        }
 	}
+
+    public void LoadBedRoomUI()
+    {
+        if (gameOptions.lenguage == (int)Lenguges.English/*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
+        {
+            aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").englishSubtitles;
+            coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").englishSubtitles;
+        }
+        else
+        {
+            aivaObjective = SubtitleManager.instance.GetAudio("AIVAObjective").spanishSubtitles;
+            coffeeObjective = SubtitleManager.instance.GetAudio("CoffeObjective").spanishSubtitles;
+        }
+    }
 
 	public GameObject playerUI;
 	private string aivaObjective;
@@ -70,6 +78,9 @@ public class GameManager : MonoBehaviour
 	
 	void EnablePlayerUI()
 	{
-		playerUI.SetActive(true);
+        if (playerUI != null)
+        {
+		    playerUI.SetActive(true);
+        }
 	}
 }

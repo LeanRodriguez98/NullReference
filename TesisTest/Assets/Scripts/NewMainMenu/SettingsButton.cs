@@ -19,6 +19,7 @@ namespace NewMainMenu
 			if (!clicked)
 			{
 				Invoke("DisplaySettings", delay);
+                GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
 				clicked = true;
 			}
 		}
