@@ -1,0 +1,1384 @@
+fileFormatVersion: 2
+guid: eda5998ed86e9cf4283953adde152ecc
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: HoloShader/HoloShader
+    400000: HoloShader/HoloShader/Transform
+    2100000: mat.HoloShader
+    2100002: mat.HoloShader_1
+    2100004: mat.HoloShader_2
+    2100006: mat.HoloShader_3
+    2100008: mat.HoloShader_4
+    2100010: mat.HoloShader_5
+    2100012: mat.HoloShader_6
+    2100014: mat.HoloShader_7
+    2100016: mat.HoloShader_8
+    2100018: mat.HoloShader_9
+    2100020: mat.HoloShader_10
+    2100022: mat.HoloShader_11
+    2100024: mat.HoloShader_12
+    2100026: mat.HoloShader_13
+    2300000: HoloShader/HoloShader/MeshRenderer
+    2800000: HoloShader_baseColor
+    2800002: HoloShader_normal
+    2800004: HoloShader_13_baseColor
+    2800006: HoloShader_height
+    2800008: HoloShader_emissive
+    2800010: HoloShader_1_baseColor
+    2800012: HoloShader_1_normal
+    2800014: HoloShader_1_metallic
+    2800016: HoloShader_1_height
+    2800018: HoloShader_1_emissive
+    2800020: HoloShader_2_baseColor
+    2800022: HoloShader_2_normal
+    2800024: HoloShader_2_metallic
+    2800026: HoloShader_2_height
+    2800028: HoloShader_2_emissive
+    2800030: HoloShader_3_baseColor
+    2800032: HoloShader_3_normal
+    2800034: HoloShader_3_metallic
+    2800036: HoloShader_3_height
+    2800038: HoloShader_3_emissive
+    2800040: HoloShader_4_baseColor
+    2800042: HoloShader_4_normal
+    2800044: HoloShader_4_metallic
+    2800046: HoloShader_4_height
+    2800048: HoloShader_4_emissive
+    2800050: HoloShader_5_baseColor
+    2800052: HoloShader_5_normal
+    2800054: HoloShader_5_metallic
+    2800056: HoloShader_5_height
+    2800058: HoloShader_5_emissive
+    2800060: HoloShader_6_baseColor
+    2800062: HoloShader_6_normal
+    2800064: HoloShader_6_metallic
+    2800066: HoloShader_6_height
+    2800068: HoloShader_6_emissive
+    2800070: HoloShader_7_baseColor
+    2800072: HoloShader_7_normal
+    2800074: HoloShader_7_metallic
+    2800076: HoloShader_7_height
+    2800078: HoloShader_7_emissive
+    2800080: HoloShader_8_baseColor
+    2800082: HoloShader_8_normal
+    2800084: HoloShader_8_metallic
+    2800086: HoloShader_8_height
+    2800088: HoloShader_8_emissive
+    2800090: HoloShader_9_baseColor
+    2800092: HoloShader_9_normal
+    2800094: HoloShader_9_metallic
+    2800096: HoloShader_9_height
+    2800098: HoloShader_9_emissive
+    2800100: HoloShader_10_baseColor
+    2800102: HoloShader_10_normal
+    2800104: HoloShader_10_metallic
+    2800106: HoloShader_10_height
+    2800108: HoloShader_10_emissive
+    2800110: HoloShader_11_baseColor
+    2800112: HoloShader_11_normal
+    2800114: HoloShader_11_metallic
+    2800116: HoloShader_11_height
+    2800118: HoloShader_11_emissive
+    2800120: HoloShader_12_baseColor
+    2800122: HoloShader_12_normal
+    2800124: HoloShader_12_metallic
+    2800126: HoloShader_12_height
+    2800128: HoloShader_12_emissive
+    2800130: HoloShader_13_normal
+    2800132: HoloShader_13_height
+    2800134: HoloShader_13_emissive
+    3300000: HoloShader/HoloShader/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    11400004: graph1
+    11400006: graph2
+    11400008: graph3
+    11400010: graph4
+    11400012: graph5
+    11400014: graph6
+    11400016: graph7
+    11400018: graph8
+    11400020: graph9
+    11400022: graph10
+    11400024: graph11
+    11400026: graph12
+    11400028: graph13
+    13500000: HoloShader/HoloShader/SphereCollider
+    100100000: HoloShader
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 13
+  mGraphInstanceData:
+  - graphLabel: HoloShader
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard (Specular setup)
+    outputNames: baseColor,normal,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: metallic
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/Hand.png
+      texture2D: {fileID: 2800000, guid: 4c0262fe85094094e886dbc3e2343119, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800000, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800002, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800006, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800008, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_1
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\" />\n
+      \ <presetinput identifier=\"colorFilter\" uid=\"3900153981\" type=\"4\" value=\"3\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"0\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0.46\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_1_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_1_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_1_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_1_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_1_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_1_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_1_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800010, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800012, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800014, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800016, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800018, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_2
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.223\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_2_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_2_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_2_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_2_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_2_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_2_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_2_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenYourtube.png
+      texture2D: {fileID: 2800000, guid: bbac439925ba2424fa85aec99592a10c, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100004, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800020, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800022, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800024, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800026, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800028, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_3
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_3_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_3_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_3_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_3_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_3_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_3_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_3_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenLeagueOfLeagues.png
+      texture2D: {fileID: 2800000, guid: 90d7c9ebc3e0d2940bd883cbf20b4557, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100006, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800030, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800032, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800034, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800036, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800038, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_4
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"1\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_4_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_4_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_4_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_4_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_4_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_4_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_4_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenListajam.jpg
+      texture2D: {fileID: 2800000, guid: be2cfab1cfe42244daf7b49d246a089c, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100008, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800040, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800042, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800044, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800046, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800048, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_5
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_5_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_5_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_5_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_5_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_5_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_5_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_5_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenPlastiloan.png
+      texture2D: {fileID: 2800000, guid: 30d781a25dccd874d8282b622a513592, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100010, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800050, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800052, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800054, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800056, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800058, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_6
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_6_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_6_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_6_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_6_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_6_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_6_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_6_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenReaper.jpg
+      texture2D: {fileID: 2800000, guid: f9f3654f0b4024840964e5f507617df9, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100012, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800060, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800062, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800064, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800066, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800068, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_7
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_7_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_7_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_7_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_7_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_7_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_7_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_7_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenStandchat.jpg
+      texture2D: {fileID: 2800000, guid: f7f8bbbe4678cc0428e6c4c694f1aa7f, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100014, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800070, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800072, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800074, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800076, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800078, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_8
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_8_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_8_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_8_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_8_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_8_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_8_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_8_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenBinder.jpg
+      texture2D: {fileID: 2800000, guid: a09e42f3c0140ef4fbbdecdf88b109ab, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100016, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800080, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800082, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800084, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800086, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800088, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_9
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_9_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_9_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_9_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_9_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_9_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_9_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_9_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/ScreenCakeCook.jpg
+      texture2D: {fileID: 2800000, guid: 24731aaa2ac242840a23aebb1740b637, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100018, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800090, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800092, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800094, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800096, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800098, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_10
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_10_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_10_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_10_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_10_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_10_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_10_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_10_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/BedIt.png
+      texture2D: {fileID: 2800000, guid: c54f6895f4b7a4546aabb0b918991537, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100020, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800100, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800102, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800104, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800106, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800108, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_11
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_11_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_11_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_11_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_11_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_11_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_11_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_11_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/Cat.jpg
+      texture2D: {fileID: 2800000, guid: 156f36e026b9f47449012cd96daba6fd, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100022, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800110, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800112, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800114, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800116, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800118, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_12
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"0.2\"
+      />\n  <presetinput identifier=\"colorFilter\" uid=\"3900153981\" type=\"4\"
+      value=\"2\" />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\"
+      value=\"0.99\" />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\"
+      value=\"0\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_12_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_12_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_12_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_12_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_12_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_12_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_12_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/Code.jpg
+      texture2D: {fileID: 2800000, guid: 1f3c58fe795ad624196cd18430abae92, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100024, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800120, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800122, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800124, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800126, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800128, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+  - graphLabel: HoloShader_13
+    prototypeName: HoloShader
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
+      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"1\"
+      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
+      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
+      />\n </sbspreset>\n"
+    shaderName: Standard (Specular setup)
+    outputNames: baseColor,normal,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: opacity
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: metallic
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: opacity
+      alphaSource: opacity
+    textureParameters:
+    - textureName: HoloShader_13_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_13_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_13_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_13_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_13_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_13_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: HoloShader_13_opacity
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    - outputName: opacity
+      bLinear: 1
+    inputTextureMap:
+    - inputName: imageInput
+      texturePath: Assets/Textures/HoloShader/screens_Base_Color.png
+      texture2D: {fileID: 2800000, guid: cd2eeff3bf539154b99f5b14a717cf2e, type: 3}
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 32
+      textureHeight: 32
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100026, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    generatedTextures:
+    - {fileID: 2800004, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800130, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800132, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800134, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}

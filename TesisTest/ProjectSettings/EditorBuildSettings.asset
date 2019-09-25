@@ -6,15 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/BetoFolder/Scenes/MainMenu.unity
-    guid: 7a74d908f5aae5940933e81ba893def9
-  - enabled: 1
     path: Assets/Scenes/NewMainMenu.unity
-    guid: b990d69566e6667408801b0f9b151c87
+    guid: 2dcb714be29170648a8f51ffb8b842cb
   - enabled: 1
     path: Assets/BetoFolder/Scenes/GameplayScene.unity
     guid: 7e9b25b7ade9eae41828b90aa374b0d6
-  - enabled: 0
-    path: Assets/Scenes/AgusScene.unity
-    guid: 750931165b7aed34180224cdd020138d
   m_configObjects: {}

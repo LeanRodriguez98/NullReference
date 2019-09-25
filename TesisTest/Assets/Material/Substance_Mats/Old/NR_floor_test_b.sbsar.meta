@@ -1,0 +1,102 @@
+fileFormatVersion: 2
+guid: 153faeb91d87bb94d9b9782edfc80410
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: NR_floor_test_b/NR_floor_test_b
+    400000: NR_floor_test_b/NR_floor_test_b/Transform
+    2100000: mat.NR_floor_tile_1
+    2300000: NR_floor_test_b/NR_floor_test_b/MeshRenderer
+    2800000: NR_floor_tile_1_baseColor
+    2800002: NR_floor_tile_1_normal
+    2800004: NR_floor_tile_1_metallic
+    2800006: NR_floor_tile_1_height
+    2800008: NR_floor_tile_1_emissive
+    3300000: NR_floor_test_b/NR_floor_test_b/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: NR_floor_test_b/NR_floor_test_b/SphereCollider
+    100100000: NR_floor_test_b
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 13
+  mGraphInstanceData:
+  - graphLabel: NR_floor_tile_1
+    prototypeName: NR_floor_tile_1
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://NR_floor_tile_1\" label=\"\" >\n  <presetinput
+      identifier=\"emissive_color\" uid=\"2283616698\" type=\"3\" value=\"1,0,0.0670705,1\"
+      />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    textureParameters:
+    - textureName: NR_floor_tile_1_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: NR_floor_tile_1_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: NR_floor_tile_1_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: NR_floor_tile_1_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: NR_floor_tile_1_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: NR_floor_tile_1_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: 153faeb91d87bb94d9b9782edfc80410, type: 3}
+    generatedTextures:
+    - {fileID: 2800000, guid: 153faeb91d87bb94d9b9782edfc80410, type: 3}
+    - {fileID: 2800002, guid: 153faeb91d87bb94d9b9782edfc80410, type: 3}
+    - {fileID: 2800004, guid: 153faeb91d87bb94d9b9782edfc80410, type: 3}
+    - {fileID: 2800006, guid: 153faeb91d87bb94d9b9782edfc80410, type: 3}
+    - {fileID: 2800008, guid: 153faeb91d87bb94d9b9782edfc80410, type: 3}

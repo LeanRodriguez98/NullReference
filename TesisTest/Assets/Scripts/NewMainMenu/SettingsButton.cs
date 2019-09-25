@@ -6,16 +6,18 @@ namespace NewMainMenu
 {
 	public class SettingsButton : MonoBehaviour
 	{
-		public UI_MainMenu mainMenu;
 		public float delay;
 
 		private bool clicked = false;
 
+        private void OnEnable()
+        {
+            clicked = false;
+        }
 		void OnMouseDown()
 		{
 			if (!clicked)
 			{
-				//MainMenu.instace.OnButtonClicked();
 				Invoke("DisplaySettings", delay);
 				clicked = true;
 			}
@@ -23,7 +25,7 @@ namespace NewMainMenu
 
 		private void DisplaySettings()
 		{
-			mainMenu.OptionsMenuToggle();
+			MainMenu.instace.DisplaySettings(true);
 		}
 	}
 }

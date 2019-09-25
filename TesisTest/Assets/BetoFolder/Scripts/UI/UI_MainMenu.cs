@@ -22,11 +22,8 @@ public class UI_MainMenu : MonoBehaviour
         Utilities.LoadGame(gameOptions);
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.None;
-		//PlayerPrefs.SetInt("DisplaySubtitles", 0);
         lenguageToggle.isOn = gameOptions.dilplaySubtitles;
-		//PlayerPrefs.SetInt("SubtitleLenguage", lenguageDropdown.value);
         lenguageDropdown.value = gameOptions.lenguage;
-		//PlayerPrefs.SetFloat("VolumeLevel", volumeSlider.value);
         soundsVolumeSlider.value = gameOptions.soundsVolume;
         voicesVolumeSlider.value = gameOptions.voicesVolume;
 
@@ -59,14 +56,11 @@ public class UI_MainMenu : MonoBehaviour
 
         if (subtitles)
         {
-          //  PlayerPrefs.SetInt("DisplaySubtitles", 1);
             gameOptions.dilplaySubtitles = true;
         }
         else
         {
-            //PlayerPrefs.SetInt("DisplaySubtitles", 0);
             gameOptions.dilplaySubtitles = false;
-            //PlayerPrefs.SetInt("SubtitleLenguage", 0);
             gameOptions.lenguage = (int)GameManager.Lenguges.English;
         }
         Utilities.SaveGame(gameOptions);
@@ -74,7 +68,6 @@ public class UI_MainMenu : MonoBehaviour
 
 	public void SetSubtitlesLenguage()
 	{
-		//PlayerPrefs.SetInt("SubtitleLenguage", lenguageDropdown.value);
         gameOptions.lenguage = lenguageDropdown.value;
         Utilities.SaveGame(gameOptions);
 
@@ -82,7 +75,6 @@ public class UI_MainMenu : MonoBehaviour
 
     public void SetSoundsVolumeLevel()
 	{
-		//PlayerPrefs.SetFloat("VolumeLevel", volumeSlider.value);
         gameOptions.soundsVolume = soundsVolumeSlider.value;
         Utilities.SaveGame(gameOptions);
 
