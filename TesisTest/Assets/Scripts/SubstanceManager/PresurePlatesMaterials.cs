@@ -20,9 +20,11 @@ public class PresurePlatesMaterials : MonoBehaviour {
                 aux.Add(go.GetComponent<BetoScripts.PressurePlate>());
             }
         }
-
         BetoScripts.PressurePlate[] presurePlates = aux.ToArray();
         graphs = substance.graphs.ToArray();
+        Debug.Log("Presureplates in scene = " + presurePlates.Length);
+        Debug.Log("PresurePLates graphs instance created = " + graphs.Length);
+
         if (presurePlates.Length > graphs.Length)
         {
             Debug.LogError("Graphs instances are insufficients, please add " +(presurePlates.Length - graphs.Length).ToString() + " more and try again!");
@@ -38,6 +40,4 @@ public class PresurePlatesMaterials : MonoBehaviour {
             presurePlates[i].SetAnimatedMaterial(timeValue);
         }
     }
-
-	
 }

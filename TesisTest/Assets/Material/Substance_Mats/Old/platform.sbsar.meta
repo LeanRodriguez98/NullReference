@@ -9,6 +9,7 @@ ScriptedImporter:
     2100004: mat.platform_2
     2100006: mat.platform_3
     2100008: mat.platform_4
+    2100010: mat.platform_5
     2300000: platform/platform/MeshRenderer
     2800000: platform_baseColor
     2800002: platform_normal
@@ -35,6 +36,11 @@ ScriptedImporter:
     2800044: platform_4_metallic
     2800046: platform_4_height
     2800048: platform_4_emissive
+    2800050: platform_5_baseColor
+    2800052: platform_5_normal
+    2800054: platform_5_metallic
+    2800056: platform_5_height
+    2800058: platform_5_emissive
     3300000: platform/platform/MeshFilter
     11400000: sbsar
     11400002: graph0
@@ -42,6 +48,7 @@ ScriptedImporter:
     11400006: graph2
     11400008: graph3
     11400010: graph4
+    11400012: graph5
     13500000: platform/platform/SphereCollider
     100100000: platform
   externalObjects: {}
@@ -425,4 +432,85 @@ ScriptedImporter:
       textureFormat: 0
       bGenerateOnLoad: 1
     material: {fileID: 2100008, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
-    generatedTextures: []
+    generatedTextures:
+    - {fileID: 2800040, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800042, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800044, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800046, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800048, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+  - graphLabel: platform_5
+    prototypeName: platform
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://platform\" label=\"\" >\n  <presetinput identifier=\"$outputsize\"
+      uid=\"3243809324\" type=\"8\" value=\"9,9\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    textureParameters:
+    - textureName: platform_5_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: platform_5_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: platform_5_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: platform_5_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: platform_5_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: platform_5_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100010, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    generatedTextures:
+    - {fileID: 2800050, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800052, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800054, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800056, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
+    - {fileID: 2800058, guid: 79a4c36cba5672e4dadf2acb6a15f1d9, type: 3}
