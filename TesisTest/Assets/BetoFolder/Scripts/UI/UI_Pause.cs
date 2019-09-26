@@ -5,11 +5,17 @@ using UnityEngine;
 public class UI_Pause : MonoBehaviour {
 
     public KeyCode PauseButton = KeyCode.P;
+    public string mainMenuSceneName;
     public GameObject[] ObjectsToTurnOn;
     public GameObject[] ObjectsToTurnOff;
 
     void Start()
     {
+#if UNITY_EDITOR
+        PauseButton = KeyCode.P;
+#else
+        PauseButton = KeyCode.Escape;
+#endif
         for (int i = 0; i < ObjectsToTurnOn.Length; i++)
         {
             ObjectsToTurnOn[i].SetActive(false);
@@ -66,8 +72,7 @@ public class UI_Pause : MonoBehaviour {
     public void ToMenu()
     {
         Time.timeScale = 1;
-        Utilities.LoadScene("MainMenu");
-
+        Utilities.LoadScene(mainMenuSceneName);
     }
 
 }
