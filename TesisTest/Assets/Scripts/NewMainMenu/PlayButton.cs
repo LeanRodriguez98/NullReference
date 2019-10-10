@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 namespace NewMainMenu
 {
     public class PlayButton : MonoBehaviour
@@ -19,16 +18,9 @@ namespace NewMainMenu
         }
         private void LoadScene()
         {
-            StartCoroutine(LoadAsyncScene());
+            Utilities.LoadScene(sceneToLoadName);
         }
-        private IEnumerator LoadAsyncScene()
-        {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoadName);
-
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-        }
+        
     }
 }
+

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BetoFolder/Scenes/GameplayScene.unity
     guid: 7e9b25b7ade9eae41828b90aa374b0d6
+  - enabled: 1
+    path: Assets/Scenes/LoadinScene.unity
+    guid: cf8d770c6831999479743c3759ce02a0
   m_configObjects: {}

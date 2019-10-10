@@ -7773,7 +7773,7 @@ MonoBehaviour:
   - substanceGraph: {fileID: 11400002, guid: 322da099dfbc0be49b8418177383045b, type: 3}
     speed: 0.025
     updateValueName: time
-  dontWaitRenderFinish: 1
+  dontWaitRenderFinish: 0
 --- !u!4 &1154260852
 Transform:
   m_ObjectHideFlags: 0
@@ -8828,7 +8828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  sceneToLoadName: GameplayScene
+  sceneToLoadName: LoadinScene
 --- !u!1 &1257155452
 GameObject:
   m_ObjectHideFlags: 0
