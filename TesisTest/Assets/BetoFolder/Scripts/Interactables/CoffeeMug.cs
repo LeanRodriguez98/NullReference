@@ -11,7 +11,7 @@ public class CoffeeMug : Interactable
     public AudioClip hitSound;
 
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private bool grabState = false;
     public override void Start()
     {
@@ -25,7 +25,9 @@ public class CoffeeMug : Interactable
 		base.Interact();
 		playerVoiceline.SetActive(true);
 		GameManager.GetInstance().CoffeeMugFound = true;
-	}
+        InteractSound();
+
+    }
 
 
     private void InteractSound()
@@ -39,14 +41,6 @@ public class CoffeeMug : Interactable
             audioSource.Play();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Strcture"))
-        {
-            audioSource.clip = hitSound;
-            if (!audioSource.isPlaying)
-                audioSource.Play();
-        }
-    }
+
 
 }
