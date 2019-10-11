@@ -7,13 +7,15 @@ public class TouchPad : Interactable
 	public Animator animator;
 	public Material disabledMaterial;
 	public Material enabledMaterial;
+    public AudioSource sliderAudioSource;
 
-	private MeshRenderer meshRenderer;
+    public AudioClip doorOpenSound;
+    public AudioClip doorCloseSound;
+
+    private MeshRenderer meshRenderer;
 	private bool doorIsOpen;
 
     private AudioSource audioClip;
-    [SerializeField] private AudioSource sliderAudioSource;
-
     private MaterialSwaper materialSwaper;
     private bool materialSwaperState;
 
@@ -38,7 +40,11 @@ public class TouchPad : Interactable
 		base.Interact();
 
 		doorIsOpen = !doorIsOpen;
-		SetMaterial();
+        if (doorIsOpen)
+            sliderAudioSource.clip = doorOpenSound;
+        else
+            sliderAudioSource.clip = doorCloseSound;
+        SetMaterial();
 		animator.SetBool("OpenDoor", !animator.GetBool("OpenDoor"));
         audioClip.Play();
         PlaySliderSound();

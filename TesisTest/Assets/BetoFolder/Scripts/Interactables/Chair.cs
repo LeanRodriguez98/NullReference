@@ -5,20 +5,20 @@ using UnityEngine;
 public class Chair : Interactable
 {
 	public Animator animator;
-    private AudioSource audioClip;
+    private AudioSource audioSource;
 
     public override void Start()
     {
         base.Start();
-        audioClip = GetComponent<AudioSource>();
-        audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;// PlayerPrefs.GetFloat("VolumeLevel");
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume;// PlayerPrefs.GetFloat("VolumeLevel");
     }
 
     public override void Interact()
 	{
 		base.Interact();
 		animator.SetTrigger("Spin");
-        if(!audioClip.isPlaying)
-            audioClip.Play();
+        if(!audioSource.isPlaying)
+            audioSource.Play();
 	}
 }
