@@ -3,74 +3,77 @@ using UnityEngine;
 
 namespace PortalableFirstPerson
 {
-    [RequireComponent(typeof (Rigidbody))]
-    [RequireComponent(typeof (CapsuleCollider))]
-	public class PortalableFirstPersonController : MonoBehaviour
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(CapsuleCollider))]
+    public class PortalableFirstPersonController : MonoBehaviour
     {
-		[Serializable]
-		public class MouseLook
-		{
-			public float xSensitivity = 2f;
-			public float ySensitivity = 2f;
-			public bool clampVerticalRotation = true;
-			public float minimumX = -90F;
-			public float maximumX = 90F;
-			public bool smooth;
-			public float smoothTime = 5f;
-			public bool lockCursor = true;
+        [Serializable]
+        public class MouseLook
+        {
+            public float xSensitivity = 2f;
+            public float ySensitivity = 2f;
+            public bool clampVerticalRotation = true;
+            public float minimumX = -90F;
+            public float maximumX = 90F;
+            public bool smooth;
+            public float smoothTime = 5f;
+            public bool lockCursor = true;
 
 
-			public Quaternion characterTargetRot;
-			public Quaternion cameraTargetRot;
+            public Quaternion characterTargetRot;
+            public Quaternion cameraTargetRot;
 
 
-			public Quaternion ClampRotationAroundXAxis(Quaternion q)
-			{
-				q.x /= q.w;
-				q.y /= q.w;
-				q.z /= q.w;
-				q.w = 1.0f;
+            public Quaternion ClampRotationAroundXAxis(Quaternion q)
+            {
+                q.x /= q.w;
+                q.y /= q.w;
+                q.z /= q.w;
+                q.w = 1.0f;
 
-				float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.x);
+                float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
 
-				angleX = Mathf.Clamp (angleX, minimumX, maximumX);
+                angleX = Mathf.Clamp(angleX, minimumX, maximumX);
 
-				q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
+                q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
 
-				return q;
-			}
+                return q;
+            }
 
-		}
+        }
         [Serializable]
         public class MovementSettings
         {
             public float forwardSpeed = 8.0f;
             public float backwardSpeed = 4.0f;
             public float strafeSpeed = 4.0f;
-            public float runMultiplier = 2.0f; 
-	        public KeyCode runKey = KeyCode.LeftShift;
+            public float runMultiplier = 2.0f;
+            public KeyCode runKey = KeyCode.LeftShift;
             public float jumpForce = 30f;
             public AnimationCurve slopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float currentTargetSpeed = 8f;
-
+            public AudioClip[] footstepSounds;
+            public float timeBetweenSteps;
+            public float velocityTolerance = 0.8f;
+            [HideInInspector] public bool canPlayFootStepSound = true;
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
                 if (input == Vector2.zero)
                 {
                     return;
                 }
-				if (input.x > 0 || input.x < 0)
-				{
-					currentTargetSpeed = strafeSpeed;
-				}
-				if (input.y < 0)
-				{
-					currentTargetSpeed = backwardSpeed;
-				}
-				if (input.y > 0)
-				{
-					currentTargetSpeed = forwardSpeed;
-				}
+                if (input.x > 0 || input.x < 0)
+                {
+                    currentTargetSpeed = strafeSpeed;
+                }
+                if (input.y < 0)
+                {
+                    currentTargetSpeed = backwardSpeed;
+                }
+                if (input.y > 0)
+                {
+                    currentTargetSpeed = forwardSpeed;
+                }
             }
         }
 
@@ -97,6 +100,7 @@ namespace PortalableFirstPerson
         private Vector3 groundContactNormal;
         private bool jump;
         private bool previouslyGrounded;
+        private AudioSource audioSource;
         private bool jumping;
         private bool isGrounded;
 
@@ -116,20 +120,21 @@ namespace PortalableFirstPerson
         }
 
         public void UpdateOrientation(Quaternion orientation)
-		{
-			mouseLook.characterTargetRot = Quaternion.Euler (0, orientation.eulerAngles.y, 0);
-		}
+        {
+            mouseLook.characterTargetRot = Quaternion.Euler(0, orientation.eulerAngles.y, 0);
+        }
 
         private void Start()
         {
             rigidBody = GetComponent<Rigidbody>();
             capsuleCollider = GetComponent<CapsuleCollider>();
+            audioSource = GetComponent<AudioSource>();
 
-			mouseLook.characterTargetRot = Quaternion.Euler (0, transform.localRotation.eulerAngles.y, 0);
-			mouseLook.cameraTargetRot = Quaternion.Euler(cam.transform.localRotation.eulerAngles.x,0,0);
+            mouseLook.characterTargetRot = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0);
+            mouseLook.cameraTargetRot = Quaternion.Euler(cam.transform.localRotation.eulerAngles.x, 0, 0);
 
-			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
 
@@ -192,16 +197,16 @@ namespace PortalableFirstPerson
 
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || isGrounded))
             {
-                Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
+                Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
                 desiredMove = Vector3.ProjectOnPlane(desiredMove, groundContactNormal).normalized;
 
-                desiredMove.x = desiredMove.x*movementSettings.currentTargetSpeed;
-                desiredMove.z = desiredMove.z*movementSettings.currentTargetSpeed;
-                desiredMove.y = desiredMove.y*movementSettings.currentTargetSpeed;
+                desiredMove.x = desiredMove.x * movementSettings.currentTargetSpeed;
+                desiredMove.z = desiredMove.z * movementSettings.currentTargetSpeed;
+                desiredMove.y = desiredMove.y * movementSettings.currentTargetSpeed;
                 if (rigidBody.velocity.sqrMagnitude <
-                    (movementSettings.currentTargetSpeed*movementSettings.currentTargetSpeed))
+                    (movementSettings.currentTargetSpeed * movementSettings.currentTargetSpeed))
                 {
-                    rigidBody.AddForce(desiredMove*SlopeMultiplier(), ForceMode.Impulse);
+                    rigidBody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
                 }
             }
 
@@ -231,6 +236,7 @@ namespace PortalableFirstPerson
                 }
             }
             jump = false;
+            PlayFootStepAudio();
         }
 
 
@@ -240,11 +246,34 @@ namespace PortalableFirstPerson
             return movementSettings.slopeCurveModifier.Evaluate(angle);
         }
 
+        private void PlayFootStepAudio()
+        {
+            if (movementSettings.footstepSounds.Length == 0)
+                return;
+            if (new Vector2(Velocity.x, Velocity.z).magnitude < movementSettings.velocityTolerance)
+                return;
+            if (!movementSettings.canPlayFootStepSound)
+                return;
+            if (audioSource.isPlaying)
+                return;
+            int n = UnityEngine.Random.Range(0, movementSettings.footstepSounds.Length);
+            audioSource.clip = movementSettings.footstepSounds[n];
+            audioSource.volume = UnityEngine.Random.Range(0.5f, 1.0f);
+            audioSource.pitch = UnityEngine.Random.Range(-1.5f, 2.5f);
+            audioSource.PlayOneShot(audioSource.clip);
+            movementSettings.canPlayFootStepSound = false;
+            Invoke("ResetFootStep", movementSettings.timeBetweenSteps);
+        }
+
+        public void ResetFootStep()
+        {
+            movementSettings.canPlayFootStepSound = true;
+        }
 
         private void StickToGroundHelper()
         {
             RaycastHit hitInfo;
-            if (Physics.SphereCast(transform.position, capsuleCollider.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((capsuleCollider.height/2f) - capsuleCollider.radius) + advancedSettings.stickToGroundHelperDistance, ~0, QueryTriggerInteraction.Ignore))
+            if (Physics.SphereCast(transform.position, capsuleCollider.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((capsuleCollider.height / 2f) - capsuleCollider.radius) + advancedSettings.stickToGroundHelperDistance, ~0, QueryTriggerInteraction.Ignore))
             {
                 if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)
                 {
@@ -256,8 +285,8 @@ namespace PortalableFirstPerson
 
         private Vector2 GetInput()
         {
-            Vector2 input = new Vector2{x = Input.GetAxis("Horizontal"),y = Input.GetAxis("Vertical")};
-			movementSettings.UpdateDesiredTargetSpeed(input);
+            Vector2 input = new Vector2 { x = Input.GetAxis("Horizontal"), y = Input.GetAxis("Vertical") };
+            movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
 
@@ -275,7 +304,7 @@ namespace PortalableFirstPerson
             if (isGrounded || advancedSettings.airControl)
             {
                 Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRotation, Vector3.up);
-                rigidBody.velocity = velRotation*rigidBody.velocity;
+                rigidBody.velocity = velRotation * rigidBody.velocity;
             }
         }
 
@@ -283,7 +312,7 @@ namespace PortalableFirstPerson
         {
             previouslyGrounded = isGrounded;
             RaycastHit hitInfo;
-            if (Physics.SphereCast(transform.position, capsuleCollider.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((capsuleCollider.height/2f) - capsuleCollider.radius) + advancedSettings.groundCheckDistance, ~0, QueryTriggerInteraction.Ignore))
+            if (Physics.SphereCast(transform.position, capsuleCollider.radius * (1.0f - advancedSettings.shellOffset), Vector3.down, out hitInfo, ((capsuleCollider.height / 2f) - capsuleCollider.radius) + advancedSettings.groundCheckDistance, ~0, QueryTriggerInteraction.Ignore))
             {
                 isGrounded = true;
                 groundContactNormal = hitInfo.normal;

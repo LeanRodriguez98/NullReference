@@ -10,7 +10,6 @@ public class CoffeeMug : Interactable
     public AudioClip tossSound;
     public AudioClip hitSound;
 
-
     private AudioSource audioSource;
     private bool grabState = false;
     public override void Start()
