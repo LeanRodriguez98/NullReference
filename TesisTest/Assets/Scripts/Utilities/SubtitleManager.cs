@@ -12,6 +12,7 @@ public class SubtitleManager : MonoBehaviour
         public AudioClip clip;
         public string englishSubtitles;
         public string spanishSubtitles;
+        public Color subtitleColor;
     }
 
     private Dictionary<string, Audio> audios;
@@ -19,6 +20,8 @@ public class SubtitleManager : MonoBehaviour
     private List<string> audioQueque;
     public AudioSource audioSource;
     public Text subtitles;
+    private const char AIVA_DialogsFolderFirstChar = 'A';
+    private const char PLAYER_DialogsFolderFirstChar = 'P';
 
     private void Awake()
     {
@@ -42,8 +45,13 @@ public class SubtitleManager : MonoBehaviour
             if (row[1] != "")
             {
                 Audio a;
+                a.subtitleColor = Color.white;
                 int.TryParse(row[0], out a.id);
                 a.clip = (AudioClip)Resources.Load(row[2]);
+                if (row[2].ToCharArray()[0] == AIVA_DialogsFolderFirstChar)
+                    a.subtitleColor = Color.red;
+                else if(row[2].ToCharArray()[0] == PLAYER_DialogsFolderFirstChar)
+                    a.subtitleColor = Color.blue;
                 a.englishSubtitles = row[3];
                 a.spanishSubtitles = row[4];
                 audios.Add(row[1], a);
@@ -69,6 +77,7 @@ public class SubtitleManager : MonoBehaviour
     {
         Audio a;
         a.clip = clip;
+        a.subtitleColor = Color.white;
         a.id = audios.Count + 1;
         a.englishSubtitles = englishSubtitles;
         a.spanishSubtitles = spanishSubtitles;
@@ -102,6 +111,8 @@ public class SubtitleManager : MonoBehaviour
                                 subtitles.text = aux.englishSubtitles;
                             else
                                 subtitles.text = aux.spanishSubtitles;
+
+                            subtitles.color = aux.subtitleColor;
                         }
                     }
                     audioSource.Play();
