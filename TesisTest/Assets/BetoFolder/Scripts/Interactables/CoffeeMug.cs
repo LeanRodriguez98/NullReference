@@ -11,7 +11,7 @@ public class CoffeeMug : Interactable
     public AudioClip hitSound;
 
 
-    public AudioSource audioSource;
+    private AudioSource audioSource;
     private bool grabState = false;
     public override void Start()
     {
@@ -41,6 +41,11 @@ public class CoffeeMug : Interactable
             audioSource.Play();
     }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        audioSource.clip = hitSound;
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+    }
 
 }
