@@ -37,7 +37,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -50,7 +50,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2229269569
+      path: 3807633357
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -103,7 +103,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -131,7 +131,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -159,7 +159,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -170,7 +170,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -180,7 +180,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -190,7 +190,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Leaver_Stick
+    path: PalancaMesh/palanca
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

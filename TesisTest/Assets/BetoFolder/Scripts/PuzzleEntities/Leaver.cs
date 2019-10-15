@@ -9,15 +9,19 @@ namespace BetoScripts
 		public List<DoorConnection> m_doorConnections;
         
 		private AudioSource audioClip;
+		private Animator animator;
 		private ParticleSystem particles;
+		private bool stickLeaningLeft;
 		
 		public override void Start()
 		{
 			base.Start();
             audioClip = GetComponent<AudioSource>();
             audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
-
+			
+			animator = GetComponent<Animator>();
 			particles = GetComponentInChildren<ParticleSystem>();
+			stickLeaningLeft = true;
         }
 
 		public override void Interact()
@@ -26,6 +30,7 @@ namespace BetoScripts
 
 			UpdateDoorConnectionsStates();
             audioClip.Play();
+			animator.SetTrigger("Interact");
         }
 
 		private void UpdateDoorConnectionsStates()
@@ -35,15 +40,30 @@ namespace BetoScripts
 				bool currentDoorState = m_doorConnections[i].IsEnabled();
 				m_doorConnections[i].SetIsEnabled(!currentDoorState);
 			}
+			animator.ResetTrigger("Interact");
 		}
 
-		private void OnTriggerEnter(Collider other) 
+		public void OnActivatedByTrigger(LeaverTrigger.LeaverSide leaverSide)
 		{
-			if (other.CompareTag("PickUpable"))
+			if (stickLeaningLeft && leaverSide == LeaverTrigger.LeaverSide.Left)
 			{
 				Interact();
-				particles.Play();
+				stickLeaningLeft = false;
+			}
+			else if (!stickLeaningLeft && leaverSide == LeaverTrigger.LeaverSide.Right)
+			{
+				Interact();
+				stickLeaningLeft = true;
 			}
 		}
+
+		//private void OnTriggerEnter(Collider other) 
+		//{
+		//	if (other.CompareTag("PickUpable"))
+		//	{
+		//		Interact();
+		//		particles.Play();
+		//	}
+		//}
 	}
 }
