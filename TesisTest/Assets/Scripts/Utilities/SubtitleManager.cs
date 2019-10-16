@@ -35,7 +35,6 @@ public class SubtitleManager : MonoBehaviour
     {
         audioSource.volume *= GameManager.GetInstance().gameOptions.voicesVolume;// PlayerPrefs.GetFloat("VolumeLevel");
     }
-
     public void LoadSubtitles()
     {
         string[] data = sourceCSV.text.Split(new char[] { '\n' });
