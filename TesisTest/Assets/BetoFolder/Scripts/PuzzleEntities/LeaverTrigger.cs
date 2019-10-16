@@ -10,6 +10,7 @@ public class LeaverTrigger : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other) 
 	{
-		leaver.OnActivatedByTrigger(leaverSide);
+		if (other.gameObject.CompareTag("PickUpable"))
+			leaver.OnActivatedByTrigger(leaverSide);
 	}
 }

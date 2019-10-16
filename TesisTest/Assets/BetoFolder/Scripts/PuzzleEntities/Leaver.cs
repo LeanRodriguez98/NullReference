@@ -56,14 +56,5 @@ namespace BetoScripts
 				stickLeaningLeft = true;
 			}
 		}
-
-		//private void OnTriggerEnter(Collider other) 
-		//{
-		//	if (other.CompareTag("PickUpable"))
-		//	{
-		//		Interact();
-		//		particles.Play();
-		//	}
-		//}
 	}
 }
