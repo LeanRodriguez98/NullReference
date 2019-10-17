@@ -33,7 +33,7 @@ public class Aiva : Interactable
 				GameManager.GetInstance().RestartedAIVA = true;
 				hasRestarted = true;
 
-                pcClip.Stop();
+                //pcClip.Stop();
 
 				playerVoiceline.SetActive(true);
 			}
