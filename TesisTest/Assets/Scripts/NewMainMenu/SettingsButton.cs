@@ -9,12 +9,34 @@ namespace NewMainMenu
 		public float delay;
 
 		private bool clicked = false;
+        private AudioSource audioSource;
+        private bool canPlayAudio = true;
 
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         private void OnEnable()
         {
             clicked = false;
         }
-		void OnMouseDown()
+
+        private void OnMouseOver()
+        {
+            if (!audioSource.isPlaying && canPlayAudio)
+            {
+                audioSource.Play();
+                canPlayAudio = false;
+            }
+
+        }
+        private void OnMouseExit()
+        {
+            canPlayAudio = true;
+
+        }
+
+        void OnMouseDown()
 		{
 			if (!clicked)
 			{

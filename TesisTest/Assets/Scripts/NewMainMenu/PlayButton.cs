@@ -7,10 +7,17 @@ namespace NewMainMenu
         public float delay;
         public string sceneToLoadName;
         private bool clicked = false;
+        private AudioSource audioSource;
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
         void OnMouseDown()
         {
             if (!clicked)
             {
+                audioSource.Play();
                 MainMenu.instace.OnButtonClicked();
                 Invoke("LoadScene", delay);
                 clicked = true;
@@ -20,7 +27,7 @@ namespace NewMainMenu
         {
             Utilities.LoadScene(sceneToLoadName);
         }
-        
+
     }
 }
 

@@ -249,17 +249,32 @@ namespace PortalableFirstPerson
         private void PlayFootStepAudio()
         {
             if (movementSettings.footstepSounds.Length == 0)
+            {
                 return;
+
+            }
             if (new Vector2(Velocity.x, Velocity.z).magnitude < movementSettings.velocityTolerance)
+            {
+
                 return;
-            if (!movementSettings.canPlayFootStepSound)
+
+            }
+            if (!movementSettings.canPlayFootStepSound) 
+            {
+
                 return;
-            if (audioSource.isPlaying)
+
+            }
+            if (audioSource.isPlaying) 
+            {
+
                 return;
+
+            }
             int n = UnityEngine.Random.Range(0, movementSettings.footstepSounds.Length);
             audioSource.clip = movementSettings.footstepSounds[n];
-            audioSource.volume = UnityEngine.Random.Range(0.5f, 1.0f);
-            audioSource.pitch = UnityEngine.Random.Range(-1.5f, 2.5f);
+            //audioSource.volume = UnityEngine.Random.Range(0.5f, 1.0f);
+            //audioSource.pitch = UnityEngine.Random.Range(-1.5f, 2.5f);
             audioSource.PlayOneShot(audioSource.clip);
             movementSettings.canPlayFootStepSound = false;
             Invoke("ResetFootStep", movementSettings.timeBetweenSteps);
