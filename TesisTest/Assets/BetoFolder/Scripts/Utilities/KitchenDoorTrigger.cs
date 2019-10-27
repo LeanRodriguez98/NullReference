@@ -5,7 +5,7 @@ using UnityEngine;
 public class KitchenDoorTrigger : MonoBehaviour
 {
 	public GameObject playerVoiceline;
-
+    public AudioSource doorAudioSource;
 	private Animator kitchenDoorAnimator;
 	private GameManager gameManager;
 	private bool playerCanOpenDoor;
@@ -14,7 +14,9 @@ public class KitchenDoorTrigger : MonoBehaviour
 	{
 		kitchenDoorAnimator = GetComponent<Animator>();
 		gameManager = GameManager.GetInstance();
-	}
+        doorAudioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume;
+
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{

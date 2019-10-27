@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ObjectEnabler : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ObjectEnabler : MonoBehaviour
 
     public void LoadChilds()
     {
+        
         List<GameObject> auxList = new List<GameObject>();
         for (int i = 0; i < m_objectsToEnable.Count; i++)
         {
@@ -45,6 +47,7 @@ public class ObjectEnabler : MonoBehaviour
                 m_objectsToEnable[i].SetActive(false);
             }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
