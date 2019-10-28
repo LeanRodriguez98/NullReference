@@ -24,7 +24,8 @@ public class KitchenDoorTrigger : MonoBehaviour
 		if (other.CompareTag("Player") && playerCanOpenDoor)
 		{
 			kitchenDoorAnimator.SetTrigger("OpenDoor");
-			playerVoiceline.SetActive(true);
+            doorAudioSource.Play();
+            playerVoiceline.SetActive(true);
 		}
 	}
 }

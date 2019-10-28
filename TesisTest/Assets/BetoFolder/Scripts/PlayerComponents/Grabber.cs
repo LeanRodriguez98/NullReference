@@ -23,8 +23,9 @@ namespace BetoScripts
 		private float initialFOV;
 		private Vector3 objPositionWhenAiming;
 		private Vector3 grabberInitialPosition;
+        private Cube cubeComponent;
 
-		private enum State
+        private enum State
 		{
 			NoObjectGrabbed,
 			GrabbingObject,
@@ -49,7 +50,7 @@ namespace BetoScripts
 		{
 			UpdateState();
 		}
-
+        
 		private void UpdateState()
 		{
 			switch(state)
@@ -151,11 +152,12 @@ namespace BetoScripts
 			UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.Idle);
 
 			state = State.NoObjectGrabbed;
+            cubeComponent = null;
         }
 
 		private void TryToSetupCubeComponent(GameObject obj, bool cubeIsGrabbed)
 		{
-			Cube cubeComponent = obj.GetComponent<Cube>();
+			cubeComponent = obj.GetComponent<Cube>();
 			if (cubeComponent != null)
 				cubeComponent.SetIsGrabbed(cubeIsGrabbed);
 		}
@@ -221,6 +223,7 @@ namespace BetoScripts
 		{
 			pickedUpObjectRB.velocity = Vector3.zero;
 			pickedUpObjectRB.AddForce(grabbingPoint.forward * throwStrength);
+            cubeComponent.PlayThrowSound();
 			DropObject();
 		}
 	}
