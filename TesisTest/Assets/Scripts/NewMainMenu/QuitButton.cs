@@ -9,7 +9,7 @@ namespace NewMainMenu
         public float delay;
         private bool clicked = false;
         private AudioSource audioSource;
-        private bool canPlayAudio = true;
+        //private bool canPlayAudio = true;
         public AudioClip overClip;
         public AudioClip clickedClip;
 
@@ -19,19 +19,24 @@ namespace NewMainMenu
             audioSource = GetComponent<AudioSource>();
         }
 
-        private void OnMouseOver()
+        private void OnMouseEnter()
         {
-            if (!audioSource.isPlaying && canPlayAudio)
-            {
                 audioSource.clip = overClip;
                 audioSource.Play();
-                canPlayAudio = false;
-            }
+           // if (!audioSource.isPlaying && canPlayAudio)
+           // {
+           //     canPlayAudio = false;
+           // }
+            
+        }
+
+        private void OnMouseOver()
+        {
 
         }
         private void OnMouseExit()
         {
-            canPlayAudio = true;
+            //canPlayAudio = true;
         }
         void OnMouseDown()
         {

@@ -4,227 +4,231 @@ using UnityEngine;
 
 namespace BetoScripts
 {
-	public class Grabber : MonoBehaviour
-	{
-		//public GameObject throwObj_UI;
-		public Transform grabbingPoint;
-		public float maxDistanceToGrab;
-		public float distanceToAutoDrop;
-		public float grabbingStrength;
-		public float throwStrength;
-		public float aimingTransitionSpeed;
-		public float distanceToLowerObjOnAiming;
-		public float fovOnAiming;
+    public class Grabber : MonoBehaviour
+    {
+        //public GameObject throwObj_UI;
+        public Transform grabbingPoint;
+        public float maxDistanceToGrab;
+        public float distanceToAutoDrop;
+        public float grabbingStrength;
+        public float throwStrength;
+        public float aimingTransitionSpeed;
+        public float distanceToLowerObjOnAiming;
+        public float fovOnAiming;
 
-		private GameObject pickedUpObject;
-		private Rigidbody pickedUpObjectRB;
+        private GameObject pickedUpObject;
+        private Rigidbody pickedUpObjectRB;
 
-		private Camera playerCamera;
-		private float initialFOV;
-		private Vector3 objPositionWhenAiming;
-		private Vector3 grabberInitialPosition;
+        private Camera playerCamera;
+        private float initialFOV;
+        private Vector3 objPositionWhenAiming;
+        private Vector3 grabberInitialPosition;
         private Cube cubeComponent;
 
         private enum State
-		{
-			NoObjectGrabbed,
-			GrabbingObject,
-			Aiming
-		}
-		private State state;
+        {
+            NoObjectGrabbed,
+            GrabbingObject,
+            Aiming
+        }
+        private State state;
 
         private void Start()
-		{
-			pickedUpObject = null;
-			pickedUpObjectRB = null;
-			objPositionWhenAiming = grabbingPoint.localPosition + (-Vector3.up * distanceToLowerObjOnAiming);
-			grabberInitialPosition = grabbingPoint.localPosition;
+        {
+            pickedUpObject = null;
+            pickedUpObjectRB = null;
+            objPositionWhenAiming = grabbingPoint.localPosition + (-Vector3.up * distanceToLowerObjOnAiming);
+            grabberInitialPosition = grabbingPoint.localPosition;
 
-			playerCamera = Camera.main;
-			initialFOV = playerCamera.fieldOfView;
+            playerCamera = Camera.main;
+            initialFOV = playerCamera.fieldOfView;
 
-			state = State.NoObjectGrabbed;
-		}
+            state = State.NoObjectGrabbed;
+        }
 
-		private void Update()
-		{
-			UpdateState();
-		}
-        
-		private void UpdateState()
-		{
-			switch(state)
-			{
-				case State.NoObjectGrabbed: CheckForPickableObjects();
-					break;
-				case State.GrabbingObject: GrabObject();
-					break;
-				case State.Aiming: Aiming();
-					break;
-			}
-		}
+        private void Update()
+        {
+            UpdateState();
+        }
 
-		private void CheckForPickableObjects()
-		{
-			RaycastHit hit;
-			if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, maxDistanceToGrab))
-			{
-				GameObject potentialObjectForPickUp = hit.collider.gameObject;
-				if (Input.GetKeyDown(KeyCode.Mouse0))
-					PickUpObjectIfPossible(potentialObjectForPickUp);
-			}
-			LerpGrabbingPointToPosition(grabberInitialPosition);
-			LerpCameraFOV(initialFOV);
-		}
+        private void UpdateState()
+        {
+            switch (state)
+            {
+                case State.NoObjectGrabbed:
+                    CheckForPickableObjects();
+                    break;
+                case State.GrabbingObject:
+                    GrabObject();
+                    break;
+                case State.Aiming:
+                    Aiming();
+                    break;
+            }
+        }
 
-		private void PickUpObjectIfPossible(GameObject obj)
-		{
-			if (obj.CompareTag("PickUpable"))
-				PickUp(obj);
-		}
+        private void CheckForPickableObjects()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, maxDistanceToGrab))
+            {
+                GameObject potentialObjectForPickUp = hit.collider.gameObject;
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                    PickUpObjectIfPossible(potentialObjectForPickUp);
+            }
+            LerpGrabbingPointToPosition(grabberInitialPosition);
+            LerpCameraFOV(initialFOV);
+        }
 
-		private void PickUp(GameObject obj)
-		{
-			pickedUpObject = obj;
+        private void PickUpObjectIfPossible(GameObject obj)
+        {
+            if (obj.CompareTag("PickUpable"))
+                PickUp(obj);
+        }
 
-			SetupObjectTransform(pickedUpObject);
-			SetupObjectRigidBody(pickedUpObject);
-			SetColliderActiveOf(pickedUpObject, false);
-			SetObjectAndChildsToLayerMask(pickedUpObject, "PickedUpObject");
-			TryToSetupCubeComponent(pickedUpObject, true);
+        private void PickUp(GameObject obj)
+        {
+            pickedUpObject = obj;
 
-			//throwObj_UI.SetActive(true);
-			state = State.GrabbingObject;
-			UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
-		}
+            SetupObjectTransform(pickedUpObject);
+            SetupObjectRigidBody(pickedUpObject);
+            SetColliderActiveOf(pickedUpObject, false);
+            SetObjectAndChildsToLayerMask(pickedUpObject, "PickedUpObject");
+            TryToSetupCubeComponent(pickedUpObject, true);
 
-		private void SetupObjectTransform(GameObject obj)
-		{
+            //throwObj_UI.SetActive(true);
+            state = State.GrabbingObject;
+            UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
+        }
+
+        private void SetupObjectTransform(GameObject obj)
+        {
             obj.transform.rotation = transform.rotation;
-			obj.transform.parent = grabbingPoint.parent;
-		}
+            obj.transform.parent = grabbingPoint.parent;
+        }
 
-		private void SetupObjectRigidBody(GameObject obj)
-		{
-			pickedUpObjectRB = obj.GetComponent<Rigidbody>();
-			pickedUpObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
-		}
+        private void SetupObjectRigidBody(GameObject obj)
+        {
+            pickedUpObjectRB = obj.GetComponent<Rigidbody>();
+            pickedUpObjectRB.constraints = RigidbodyConstraints.FreezeRotation;
+        }
 
-		private void GrabObject()
-		{
-			KeepObjectAtGrabberPosition();
-			LerpGrabbingPointToPosition(grabberInitialPosition);
-			LerpCameraFOV(initialFOV);
-			
-			if (Input.GetKeyDown(KeyCode.Mouse0))
-				DropObject();
-			else if (Input.GetKeyDown(KeyCode.Mouse1))
-			{
-				state = State.Aiming;
-				UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.AimingToThrowObject);
-			}
+        private void GrabObject()
+        {
+            KeepObjectAtGrabberPosition();
+            LerpGrabbingPointToPosition(grabberInitialPosition);
+            LerpCameraFOV(initialFOV);
 
-			UI_Player.GetInstance().DisplayPlayerInteractUI(false);
-		}
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                DropObject();
+            else if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                state = State.Aiming;
+                UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.AimingToThrowObject);
+            }
 
-		private void KeepObjectAtGrabberPosition()
-		{
-			Vector3 vectorToGrabber = grabbingPoint.position - pickedUpObject.transform.position;
-			pickedUpObjectRB.velocity = vectorToGrabber * (grabbingStrength / pickedUpObjectRB.mass);
+            UI_Player.GetInstance().DisplayPlayerInteractUI(false);
+        }
 
-			CheckForAutodrop(vectorToGrabber.magnitude);
-		}
+        private void KeepObjectAtGrabberPosition()
+        {
+            Vector3 vectorToGrabber = grabbingPoint.position - pickedUpObject.transform.position;
+            pickedUpObjectRB.velocity = vectorToGrabber * (grabbingStrength / pickedUpObjectRB.mass);
 
-		private void CheckForAutodrop(float distanceFromGrabber)
-		{
-			if (distanceFromGrabber > distanceToAutoDrop)
-				DropObject();
-		}
+            CheckForAutodrop(vectorToGrabber.magnitude);
+        }
 
-		private void DropObject()
-		{
-			TryToSetupCubeComponent(pickedUpObject, false);
-			SetObjectAndChildsToLayerMask(pickedUpObject, "Default");
-			SetColliderActiveOf(pickedUpObject, true);
-			ResetPickedUpObject();
+        private void CheckForAutodrop(float distanceFromGrabber)
+        {
+            if (distanceFromGrabber > distanceToAutoDrop)
+                DropObject();
+        }
 
-			//throwObj_UI.SetActive(false);
-			UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.Idle);
+        private void DropObject()
+        {
+            TryToSetupCubeComponent(pickedUpObject, false);
+            SetObjectAndChildsToLayerMask(pickedUpObject, "Default");
+            SetColliderActiveOf(pickedUpObject, true);
+            ResetPickedUpObject();
 
-			state = State.NoObjectGrabbed;
+            //throwObj_UI.SetActive(false);
+            UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.Idle);
+
+            state = State.NoObjectGrabbed;
             cubeComponent = null;
         }
 
-		private void TryToSetupCubeComponent(GameObject obj, bool cubeIsGrabbed)
-		{
-			cubeComponent = obj.GetComponent<Cube>();
-			if (cubeComponent != null)
-				cubeComponent.SetIsGrabbed(cubeIsGrabbed);
-		}
+        private void TryToSetupCubeComponent(GameObject obj, bool cubeIsGrabbed)
+        {
+            cubeComponent = obj.GetComponent<Cube>();
+            if (cubeComponent != null)
+                cubeComponent.SetIsGrabbed(cubeIsGrabbed);
+        }
 
-		private void SetObjectAndChildsToLayerMask(GameObject obj, string layerName)
-		{
-			obj.layer = LayerMask.NameToLayer(layerName);
-			for (int i = 0; i < obj.transform.childCount; i++)
-			{
-				obj.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(layerName);
-			}
-		}
+        private void SetObjectAndChildsToLayerMask(GameObject obj, string layerName)
+        {
+            obj.layer = LayerMask.NameToLayer(layerName);
+            for (int i = 0; i < obj.transform.childCount; i++)
+            {
+                obj.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(layerName);
+            }
+        }
 
-		private void SetColliderActiveOf(GameObject pickedUpObject, bool enableCollider)
-		{
-			Collider objCollider = pickedUpObject.GetComponent<Collider>();
+        private void SetColliderActiveOf(GameObject pickedUpObject, bool enableCollider)
+        {
+            Collider objCollider = pickedUpObject.GetComponent<Collider>();
             if (objCollider != null) { }
-				//objCollider.enabled = enableCollider;
-		}
+            //objCollider.enabled = enableCollider;
+        }
 
-		private void ResetPickedUpObject()
-		{
-			pickedUpObjectRB.constraints = RigidbodyConstraints.None;
-			pickedUpObjectRB = null;
+        private void ResetPickedUpObject()
+        {
+            pickedUpObjectRB.constraints = RigidbodyConstraints.None;
+            pickedUpObjectRB = null;
 
-			pickedUpObject.transform.parent = null;
-			pickedUpObject = null;
-		}
+            pickedUpObject.transform.parent = null;
+            pickedUpObject = null;
+        }
 
-		private void Aiming()
-		{
-			KeepObjectAtGrabberPosition();
-			AimingState();
+        private void Aiming()
+        {
+            KeepObjectAtGrabberPosition();
+            AimingState();
 
-			if (Input.GetKeyUp(KeyCode.Mouse1))
-			{
-				state = State.GrabbingObject;
-				UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
-			}
-			else if (Input.GetKeyDown(KeyCode.Mouse0))
-				ThrowObject();
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                state = State.GrabbingObject;
+                UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0))
+                ThrowObject();
 
-			UI_Player.GetInstance().DisplayPlayerInteractUI(false);
-		}
+            UI_Player.GetInstance().DisplayPlayerInteractUI(false);
+        }
 
-		private void AimingState()
-		{
-			LerpGrabbingPointToPosition(objPositionWhenAiming);
-			LerpCameraFOV(fovOnAiming);
-		}
+        private void AimingState()
+        {
+            LerpGrabbingPointToPosition(objPositionWhenAiming);
+            LerpCameraFOV(fovOnAiming);
+        }
 
-		private void LerpGrabbingPointToPosition(Vector3 position)
-		{
-			grabbingPoint.localPosition = Vector3.Lerp(grabbingPoint.localPosition, position, aimingTransitionSpeed);
-		}
+        private void LerpGrabbingPointToPosition(Vector3 position)
+        {
+            grabbingPoint.localPosition = Vector3.Lerp(grabbingPoint.localPosition, position, aimingTransitionSpeed);
+        }
 
-		private void LerpCameraFOV(float fov)
-		{
-			playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, aimingTransitionSpeed);
-		}
+        private void LerpCameraFOV(float fov)
+        {
+            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, aimingTransitionSpeed);
+        }
 
-		private void ThrowObject()
-		{
-			pickedUpObjectRB.velocity = Vector3.zero;
-			pickedUpObjectRB.AddForce(grabbingPoint.forward * throwStrength);
-            cubeComponent.PlayThrowSound();
-			DropObject();
-		}
-	}
+        private void ThrowObject()
+        {
+            pickedUpObjectRB.velocity = Vector3.zero;
+            pickedUpObjectRB.AddForce(grabbingPoint.forward * throwStrength);
+            if (cubeComponent != null)
+                cubeComponent.PlayThrowSound();
+            DropObject();
+        }
+    }
 }

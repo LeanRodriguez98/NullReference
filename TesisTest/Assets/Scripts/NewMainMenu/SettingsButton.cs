@@ -10,7 +10,7 @@ namespace NewMainMenu
 
 		private bool clicked = false;
         private AudioSource audioSource;
-        private bool canPlayAudio = true;
+        //private bool canPlayAudio = true;
 
         private void Start()
         {
@@ -21,18 +21,23 @@ namespace NewMainMenu
             clicked = false;
         }
 
+        private void OnMouseEnter()
+        {
+                audioSource.Play();
+           // if (!audioSource.isPlaying && canPlayAudio)
+           // {
+           //     canPlayAudio = false;
+           // }
+            
+        }
+
         private void OnMouseOver()
         {
-            if (!audioSource.isPlaying && canPlayAudio)
-            {
-                audioSource.Play();
-                canPlayAudio = false;
-            }
 
         }
         private void OnMouseExit()
         {
-            canPlayAudio = true;
+            //canPlayAudio = true;
 
         }
 
