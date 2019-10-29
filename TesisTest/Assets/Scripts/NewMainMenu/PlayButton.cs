@@ -10,6 +10,7 @@ namespace NewMainMenu
         private AudioSource audioSource;
         public AudioClip overClip;
         public AudioClip playClip;
+
         private void Start()
         {
             audioSource = GetComponent<AudioSource>();
@@ -19,8 +20,6 @@ namespace NewMainMenu
         {
             audioSource.clip = overClip;
             audioSource.Play();
-       
-
         }
 
         void OnMouseDown()
@@ -30,7 +29,7 @@ namespace NewMainMenu
                 audioSource.clip = playClip;
                 audioSource.Play();
                 MainMenu.instace.OnButtonClicked();
-                Invoke("LoadScene", delay);
+                Invoke("LoadScene", playClip.length + delay);
                 clicked = true;
             }
         }

@@ -13775,7 +13775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c093040d963e4b247a74c84bdab8cc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  delay: 0.2
   sceneToLoadName: LoadinScene
   overClip: {fileID: 8300000, guid: e588eb862c4acde4cb81a541146e468a, type: 3}
   playClip: {fileID: 8300000, guid: 17fc3d41e6f736f4f9346a285745122a, type: 3}

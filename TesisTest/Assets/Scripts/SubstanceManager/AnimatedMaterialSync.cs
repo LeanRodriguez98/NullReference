@@ -23,4 +23,9 @@ public class AnimatedMaterialSync : MonoBehaviour {
         else
             Substance.Game.Substance.RenderSubstancesSync();
     }
+
+    private void OnDestroy()
+    {
+        Substance.Game.Substance.ClearSubstanceList();
+    }
 }

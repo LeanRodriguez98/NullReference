@@ -15,7 +15,7 @@ public class SetGraphsValues : MonoBehaviour
 
     void Start()
     {
-        SetGrahps();
+        //SetGrahps();
     }
     public void SetGrahps()
     {
