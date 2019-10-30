@@ -26,6 +26,7 @@ public class KitchenDoorTrigger : MonoBehaviour
 			kitchenDoorAnimator.SetTrigger("OpenDoor");
             doorAudioSource.Play();
             playerVoiceline.SetActive(true);
+            GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 }
