@@ -40,8 +40,6 @@ public class MusicManager : MonoBehaviour
         musics[index].audioSource.Play();
     }
 
-
-
     public void NextSong()
     {
         StartCoroutine(ChangeSong());

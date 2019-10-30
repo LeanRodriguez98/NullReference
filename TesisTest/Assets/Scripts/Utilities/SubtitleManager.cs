@@ -13,6 +13,7 @@ public class SubtitleManager : MonoBehaviour
         public string englishSubtitles;
         public string spanishSubtitles;
         public Color subtitleColor;
+        public float volume;
     }
 
     private Dictionary<string, Audio> audios;
@@ -49,10 +50,11 @@ public class SubtitleManager : MonoBehaviour
                 a.clip = (AudioClip)Resources.Load(row[2]);
                 if (row[2].ToCharArray()[0] == AIVA_DialogsFolderFirstChar)
                     a.subtitleColor = Color.red;
-                else if(row[2].ToCharArray()[0] == PLAYER_DialogsFolderFirstChar)
+                else if (row[2].ToCharArray()[0] == PLAYER_DialogsFolderFirstChar)
                     a.subtitleColor = Color.blue;
                 a.englishSubtitles = row[3];
                 a.spanishSubtitles = row[4];
+                float.TryParse(row[5], out a.volume);
                 audios.Add(row[1], a);
             }
         }
@@ -72,7 +74,7 @@ public class SubtitleManager : MonoBehaviour
         return a;
     }
 
-    public void AddAudioManually(string key, AudioClip clip, string englishSubtitles, string spanishSubtitles)
+    public void AddAudioManually(string key, AudioClip clip, string englishSubtitles, string spanishSubtitles, float volume)
     {
         Audio a;
         a.clip = clip;
@@ -80,6 +82,7 @@ public class SubtitleManager : MonoBehaviour
         a.id = audios.Count + 1;
         a.englishSubtitles = englishSubtitles;
         a.spanishSubtitles = spanishSubtitles;
+        a.volume = volume;
         audios.Add(key, a);
     }
 
@@ -96,17 +99,17 @@ public class SubtitleManager : MonoBehaviour
     {
         if (audioSource)
         {
-            if(!audioSource.isPlaying)
+            if (!audioSource.isPlaying)
             {
                 if (audioQueque.Count > 0)
                 {
                     Audio aux = GetAudio(audioQueque[0]);
                     audioSource.clip = aux.clip;
-                    if(GameManager.GetInstance().gameOptions.dilplaySubtitles/*   PlayerPrefs.GetInt("DisplaySubtitles") == 1*/)
+                    if (GameManager.GetInstance().gameOptions.dilplaySubtitles/*   PlayerPrefs.GetInt("DisplaySubtitles") == 1*/)
                     {
-                        if(subtitles && subtitles.IsActive())
+                        if (subtitles && subtitles.IsActive())
                         {
-                            if(GameManager.GetInstance().gameOptions.lenguage == (int)GameManager.Lenguges.English /*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
+                            if (GameManager.GetInstance().gameOptions.lenguage == (int)GameManager.Lenguges.English /*PlayerPrefs.GetInt("SubtitleLenguage") == 0*/)
                                 subtitles.text = aux.englishSubtitles;
                             else
                                 subtitles.text = aux.spanishSubtitles;
@@ -114,12 +117,13 @@ public class SubtitleManager : MonoBehaviour
                             subtitles.color = aux.subtitleColor;
                         }
                     }
+                    audioSource.volume = aux.volume;
                     audioSource.Play();
                     audioQueque.RemoveAt(0);
                 }
                 else
-                    if(subtitles)
-                        subtitles.text = null;
+                    if (subtitles)
+                    subtitles.text = null;
             }
         }
     }

@@ -18,7 +18,7 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	private Transform playerTransform;
 	private Animator animator;
     private bool playerLookedAtLight;
-
+    
 	private void Start()
 	{
 		playerTransform = GameManager.GetInstance().player.transform;
@@ -28,7 +28,9 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
         playerLookedAtLight = false;
 	}
 
-	private void Update()
+    
+
+    private void Update()
 	{
         if (!animator.enabled)
         {
