@@ -6,9 +6,18 @@ public class Cube : MonoBehaviour
 {
     [HideInInspector] public bool isGrabbed = false;
     private AudioSource audioSource;
-    public AudioClip cubeHit;
-    public AudioClip cubeHitSructure;
-    public AudioClip cubeThrow;
+    [System.Serializable]
+    public struct Audio
+    {
+        public AudioClip clip;
+        public float volume;
+
+    }
+
+    public Audio leavingCube;
+    public Audio cubeHit;
+    public Audio cubeHitSructure;
+    public Audio cubeThrow;
 
     void Start()
     {
@@ -18,17 +27,31 @@ public class Cube : MonoBehaviour
 
     public void PlayThrowSound()
     {
-        audioSource.clip = cubeThrow;
+        audioSource.clip = cubeThrow.clip;
+        audioSource.volume = cubeThrow.volume;
+        audioSource.Play();
+    }
+
+    public void PlayLeavingSound()
+    {
+        audioSource.clip = leavingCube.clip;
+        audioSource.volume = cubeThrow.volume;
+
         audioSource.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Structure"))
-            audioSource.clip = cubeHitSructure;
+        { 
+            audioSource.clip = cubeHitSructure.clip;
+            audioSource.volume = cubeHitSructure.volume;
+        }
         else
-            audioSource.clip = cubeHit;
-
+        { 
+            audioSource.clip = cubeHit.clip;
+            audioSource.volume = cubeHitSructure.volume;
+        }
         audioSource.Play();
     }
 

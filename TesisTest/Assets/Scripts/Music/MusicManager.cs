@@ -40,6 +40,14 @@ public class MusicManager : MonoBehaviour
         musics[index].audioSource.Play();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            NextSong();
+        }
+    }
+
     public void NextSong()
     {
         StartCoroutine(ChangeSong());

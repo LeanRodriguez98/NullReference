@@ -97,6 +97,9 @@ namespace BetoScripts
             TryToSetupCubeComponent(pickedUpObject, true);
 
             //throwObj_UI.SetActive(true);
+            if (cubeComponent != null)
+                cubeComponent.PlayLeavingSound();
+
             state = State.GrabbingObject;
             UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
         }
