@@ -70,7 +70,7 @@ namespace BetoScripts
         private void CheckForPickableObjects()
         {
             RaycastHit hit;
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, maxDistanceToGrab))
+            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, maxDistanceToGrab) && GameManager.GetInstance().RestartedAIVA)
             {
                 GameObject potentialObjectForPickUp = hit.collider.gameObject;
                 if (Input.GetKeyDown(KeyCode.Mouse0))
