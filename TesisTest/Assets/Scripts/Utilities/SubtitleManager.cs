@@ -86,6 +86,11 @@ public class SubtitleManager : MonoBehaviour
         audios.Add(key, a);
     }
 
+    public Audio GetAudioByKey(string key)
+    {
+        return audios[key];
+    }
+
     public void LoadAudioQueque(string[] keys)
     {
         audioQueque.Clear();
