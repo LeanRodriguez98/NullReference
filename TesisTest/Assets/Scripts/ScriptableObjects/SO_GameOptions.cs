@@ -6,6 +6,7 @@ public class SO_GameOptions : ScriptableObject {
 
     public float voicesVolume;
     public float soundsVolume;
+    public float musicVolume;
     public bool dilplaySubtitles;
     public int lenguage;
 }

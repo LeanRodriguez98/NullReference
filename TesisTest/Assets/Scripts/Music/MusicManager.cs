@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour
 
     //public List<AudioClip> musics;
     [Range(1, 50)] public uint fadeMilisecondsDelay;
+    [Range(1.0f, 5.0f)] public float pauseVolumeUnscaler;
     public AudioLowPassFilter lowPassFilter;
     [System.Serializable]
     public struct Music
@@ -31,7 +32,7 @@ public class MusicManager : MonoBehaviour
             musics[i].audioSource = gameObject.AddComponent<AudioSource>();
             musics[i].audioSource.clip = musics[i].clip;
             musics[i].audioSource.loop = true;
-            musics[i].volume *= 1;//<---- ajustar volumen
+            musics[i].volume *= GameManager.GetInstance().gameOptions.musicVolume;
             musics[i].audioSource.volume = 0.0f;
             musics[i].audioSource.playOnAwake = false;
         }
@@ -46,11 +47,11 @@ public class MusicManager : MonoBehaviour
         {
             if (state)
             {
-                musics[i].audioSource.volume /= 3.0f;
+                musics[i].audioSource.volume /= pauseVolumeUnscaler;
             }
             else
             {
-                musics[i].audioSource.volume *= 3.0f;
+                musics[i].audioSource.volume *= pauseVolumeUnscaler;
             }
             lowPassFilter.enabled = state;
         }
@@ -63,7 +64,7 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator ChangeSong()
     {
-        if (musics.Length > index+1)
+        if (musics.Length > index + 1)
         {
             bool a = false;
             bool b = false;

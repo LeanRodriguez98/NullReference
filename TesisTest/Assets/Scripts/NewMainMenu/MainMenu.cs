@@ -24,6 +24,7 @@ namespace NewMainMenu
         public Dropdown lenguageDropdown;
         public Slider soundsVolumeSlider;
         public Slider voicesVolumeSlider;
+        public Slider musicVolumeSlider;
         public Toggle lenguageToggle;
         public SO_GameOptions gameOptions;
         private bool subtitles = false;
@@ -37,6 +38,7 @@ namespace NewMainMenu
             lenguageDropdown.value = gameOptions.lenguage;
             soundsVolumeSlider.value = gameOptions.soundsVolume;
             voicesVolumeSlider.value = gameOptions.voicesVolume;
+            musicVolumeSlider.value = gameOptions.musicVolume;
 
         }
         public void SetMenuShardsAnimations()
@@ -114,7 +116,12 @@ namespace NewMainMenu
         {
             gameOptions.voicesVolume = voicesVolumeSlider.value;
             Utilities.SaveGame(gameOptions);
+        }
 
+        public void SetMusicVolumeLevel()
+        {
+            gameOptions.musicVolume = musicVolumeSlider.value;
+            Utilities.SaveGame(gameOptions);
         }
     }
 }
