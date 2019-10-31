@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: UnexpectedStudios
   productName: NullReferene
-  defaultCursor: {fileID: 2800000, guid: 73bc508ffd6eb794b9b0fc8a6c3d9bca, type: 3}
+  defaultCursor: {fileID: 2800000, guid: f98caf792e6fb7e4eb78fc320f314c8a, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
