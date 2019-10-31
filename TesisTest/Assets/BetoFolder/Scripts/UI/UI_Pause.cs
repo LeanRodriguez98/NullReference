@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Pause : MonoBehaviour {
+public class UI_Pause : MonoBehaviour
+{
 
     public KeyCode PauseButton = KeyCode.P;
     public string mainMenuSceneName;
@@ -23,7 +24,8 @@ public class UI_Pause : MonoBehaviour {
     }
 
 
-    void Update () {
+    void Update()
+    {
         if (Input.GetKeyDown(PauseButton))
         {
             if (Time.timeScale == 0)
@@ -35,7 +37,7 @@ public class UI_Pause : MonoBehaviour {
                 SetPause(true);
             }
         }
-	}
+    }
 
     private void SetPause(bool pauseState)
     {
@@ -60,6 +62,7 @@ public class UI_Pause : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
+        MusicManager.instance.SetPauseMusic(pauseState);
     }
 
     //This funcions are called by animation events in "Resume Button Animation"

@@ -10,7 +10,7 @@ public class MusicManager : MonoBehaviour
 
     //public List<AudioClip> musics;
     [Range(1, 50)] public uint fadeMilisecondsDelay;
-
+    public AudioLowPassFilter lowPassFilter;
     [System.Serializable]
     public struct Music
     {
@@ -40,11 +40,19 @@ public class MusicManager : MonoBehaviour
         musics[index].audioSource.Play();
     }
 
-    private void Update()
+    public void SetPauseMusic(bool state)
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        for (int i = 0; i < musics.Length; i++)
         {
-            NextSong();
+            if (state)
+            {
+                musics[i].audioSource.volume /= 3.0f;
+            }
+            else
+            {
+                musics[i].audioSource.volume *= 3.0f;
+            }
+            lowPassFilter.enabled = state;
         }
     }
 
