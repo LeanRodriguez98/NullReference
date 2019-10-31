@@ -18,7 +18,7 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	private Transform playerTransform;
 	private Animator animator;
     private bool playerLookedAtLight;
-    
+    private AudioSource wallsAudioSource;
 	private void Start()
 	{
 		playerTransform = GameManager.GetInstance().player.transform;
@@ -26,6 +26,8 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 		animator = GetComponent<Animator>();
 		animator.enabled = false;
         playerLookedAtLight = false;
+        wallsAudioSource = GetComponent<AudioSource>();
+        wallsAudioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume;
 	}
 
     
@@ -70,14 +72,17 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 	public void LowerLeaverWall()
 	{
 		leaverWallAnimator.SetTrigger("LowerWall");
-	}
+        wallsAudioSource.Play();
+
+    }
 
 	public void LowerExitDoorWall()
 	{
 		exitDoorWallAnimator.SetTrigger("LowerWall");
-	}
+        wallsAudioSource.Play();
+    }
 
-	public void EnableLeaverSpotlight()
+    public void EnableLeaverSpotlight()
 	{
 		leaverSpotlight.SetActive(true);
 		Invoke("HideAivaUI", 18.0f);

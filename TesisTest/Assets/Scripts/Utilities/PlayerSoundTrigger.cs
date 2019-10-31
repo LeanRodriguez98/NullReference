@@ -9,6 +9,7 @@ public class PlayerSoundTrigger : MonoBehaviour
     private void Start()
     {
         GetComponent<BoxCollider>().isTrigger = true;
+        volume *= GameManager.GetInstance().gameOptions.soundsVolume;
     }
     private void OnTriggerEnter(Collider other)
     {

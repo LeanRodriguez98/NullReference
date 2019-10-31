@@ -7,7 +7,7 @@ public class AnimationTrigger : MonoBehaviour
 	public float timeToTrigger;
 	public string animationTrigger;
 	public Animator targetAnimator;
-
+    public AudioSource audioSourceToPlay;
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
@@ -17,5 +17,9 @@ public class AnimationTrigger : MonoBehaviour
 	private void TriggerAnimation()
 	{
 		targetAnimator.SetTrigger(animationTrigger);
+        if (audioSourceToPlay != null)
+        {
+            audioSourceToPlay.Play();
+        }
 	}
 }
