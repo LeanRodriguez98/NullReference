@@ -15,7 +15,6 @@ namespace BetoScripts
         public float aimingTransitionSpeed;
         public float distanceToLowerObjOnAiming;
         public float fovOnAiming;
-
         private GameObject pickedUpObject;
         private Rigidbody pickedUpObjectRB;
 
@@ -65,6 +64,7 @@ namespace BetoScripts
                     Aiming();
                     break;
             }
+
         }
 
         private void CheckForPickableObjects()
@@ -102,6 +102,7 @@ namespace BetoScripts
 
             state = State.GrabbingObject;
             UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.GrabbingObject);
+
         }
 
         private void SetupObjectTransform(GameObject obj)
@@ -156,7 +157,6 @@ namespace BetoScripts
 
             //throwObj_UI.SetActive(false);
             UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.Idle);
-
             state = State.NoObjectGrabbed;
             cubeComponent = null;
         }
