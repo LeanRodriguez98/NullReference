@@ -152,7 +152,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 792d83eac79acab4d93a6224a6a281c2, type: 3}
+  - {fileID: 2100000, guid: e1a75767bdd118d4b9d15cd70856a0f7, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,9 +313,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrabbed: 0
-  cubeHit: {fileID: 8300000, guid: 1fc823b0b544b5541bbb32fc015d162c, type: 3}
-  cubeHitSructure: {fileID: 8300000, guid: 4971b976b0f593147aec3c126c6cf813, type: 3}
-  cubeThrow: {fileID: 8300000, guid: aa5131bc562f4164f9f88f1c40b2fc5d, type: 3}
+  leavingCube:
+    clip: {fileID: 0}
+    volume: 0
+  cubeHit:
+    clip: {fileID: 0}
+    volume: 0
+  cubeHitSructure:
+    clip: {fileID: 0}
+    volume: 0
+  cubeThrow:
+    clip: {fileID: 0}
+    volume: 0
 --- !u!114 &114992151666318502
 MonoBehaviour:
   m_ObjectHideFlags: 1

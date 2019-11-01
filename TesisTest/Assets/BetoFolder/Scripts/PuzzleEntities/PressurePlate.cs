@@ -38,13 +38,13 @@ namespace BetoScripts
                 }
             }
 
-            if (timeValue.substanceGraph != null)
+            /*if (timeValue.substanceGraph != null)
             {
                 timeValue.substanceGraph.SetInputFloat(timeValue.updateValueName, Time.timeSinceLevelLoad * timeValue.speed);
                 timeValue.substanceGraph.SetInputFloat("Cube_on", openRadius);
                 timeValue.substanceGraph.QueueForRender();
-                //Substance.Game.Substance.RenderSubstancesSync();
-            }
+                Substance.Game.Substance.RenderSubstancesSync();
+            }*/
         }
 
         private void OnTriggerEnter(Collider other)
