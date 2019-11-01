@@ -145,6 +145,10 @@ namespace PortalableFirstPerson
             {
                 RotateView();
 
+
+#if UNITY_EDITOR
+#else
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     Cursor.lockState = CursorLockMode.Locked;
@@ -156,6 +160,7 @@ namespace PortalableFirstPerson
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
+#endif
 
                 float yRot = Input.GetAxis("Mouse X") * mouseLook.xSensitivity;
                 float xRot = Input.GetAxis("Mouse Y") * mouseLook.ySensitivity;
