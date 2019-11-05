@@ -12,7 +12,13 @@ public class AnimatedMaterialSync : MonoBehaviour {
     }
     public TimeValues[] substanceGraphsToUpdate;
     public bool dontWaitRenderFinish;
-	void Update () {
+
+    private void Start()
+    {
+       // Substance.Game.Substance.ClearSubstanceList();
+    }
+
+    void Update () {
         for (int i = 0; i < substanceGraphsToUpdate.Length; i++)
         {
             substanceGraphsToUpdate[i].substanceGraph.SetInputFloat(substanceGraphsToUpdate[i].updateValueName, Time.timeSinceLevelLoad * substanceGraphsToUpdate[i].speed);
@@ -26,6 +32,6 @@ public class AnimatedMaterialSync : MonoBehaviour {
 
     private void OnDestroy()
     {
-        Substance.Game.Substance.ClearSubstanceList();
+        //Substance.Game.Substance.ClearSubstanceList();
     }
 }

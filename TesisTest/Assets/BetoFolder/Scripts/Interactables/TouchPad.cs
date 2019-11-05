@@ -16,13 +16,13 @@ public class TouchPad : Interactable
 	private bool doorIsOpen;
 
     private AudioSource audioClip;
-    private MaterialSwaper materialSwaper;
-    private bool materialSwaperState;
+    //private MaterialSwaper materialSwaper;
+    //private bool materialSwaperState;
 
     public override void Start()
 	{
 		base.Start();
-        materialSwaper = GetComponent<MaterialSwaper>();
+        //materialSwaper = GetComponent<MaterialSwaper>();
 		doorIsOpen = false;
 		meshRenderer = GetComponent<MeshRenderer>();
 		SetMaterial();
@@ -31,7 +31,7 @@ public class TouchPad : Interactable
         audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;//PlayerPrefs.GetFloat("VolumeLevel");
         sliderAudioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
 
-        materialSwaperState = false;
+       // materialSwaperState = false;
 
     }
 
@@ -53,18 +53,18 @@ public class TouchPad : Interactable
 
     void Update()
     {
-        if (materialSwaperState != materialSwaper.Swaped)
-        {
-            materialSwaperState = materialSwaper.Swaped;
+        //if (materialSwaperState != materialSwaper.Swaped)
+       // {
+       //     materialSwaperState = materialSwaper.Swaped;
             SetMaterial();
-        }
+        //}
     }
     public void SetMaterial()
 	{
-        if (!materialSwaper.Swaped)
-        {
+        //if (!materialSwaper.Swaped)
+       // {
             UpdateMaterial();
-        }
+       // }
 	}
 
     private void UpdateMaterial()
