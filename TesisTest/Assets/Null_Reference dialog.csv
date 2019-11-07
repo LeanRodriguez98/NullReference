@@ -25,7 +25,7 @@
 24;line24;AIVA Voicelines/Line 24;I'll be watching, do your best to entertain me;Estare observando, has lo mejor que puedas para entretenerme;0.45;
 25;line25;Player Voicelines/Line 25;I got to get out of here...;Tengo que salir de aqui...;0.3;
 26;AIVAObjective; - ;Get to AIVA and restart her;Ve con AIVA y reiniciala; - ;
-27;CoffeObjective; - ;Find your coffe mug and go to the kitchen;Encuentra tu taza de cafe y ve a la cocina; - ;
+27;CoffeObjective; - ;Find your coffee mug and go to the kitchen;Encuentra tu taza de cafe y ve a la cocina; - ;
 28;PressUI; - ;Interact;Interactuar; -;
 29;ThrowUI; - ;Throw;Lanzar; -;
 30;DropUI; - ;Drop;Soltar; -;

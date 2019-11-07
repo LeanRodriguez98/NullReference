@@ -28,18 +28,24 @@ public class GlitchEffect : MonoBehaviour
     private bool displayGlitch = false;
     public float glitcDefaulthDuration = 0.5f;
 
-    private AudioSource audioClip;
-
+    private AudioSource audioSource;
+    private float defaultVolume;
     private void Awake()
     {
         glitchEffectInstance = this;
     }
 
+    public void SetVolume(float _volume)
+    {
+        audioSource.volume = _volume * defaultVolume;
+    }
+
     void Start()
     {
         _material = new Material(Shader);
-        audioClip = GetComponent<AudioSource>();
-        audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;
+        audioSource = GetComponent<AudioSource>();
+        defaultVolume = audioSource.volume;
+        audioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume;
     }
 
     public void DisplayGlitchOn()
@@ -47,7 +53,7 @@ public class GlitchEffect : MonoBehaviour
         displayGlitch = true;
         CancelInvoke("DisplayGlitchOff");
         Invoke("DisplayGlitchOff", glitcDefaulthDuration);
-        audioClip.Play();
+        audioSource.Play();
     }
 
     public void DisplayGlitchOn(float duration)
@@ -55,7 +61,7 @@ public class GlitchEffect : MonoBehaviour
         displayGlitch = true;
         CancelInvoke("DisplayGlitchOff");
         Invoke("DisplayGlitchOff", duration);
-        audioClip.Play();
+        audioSource.Play();
     }
 
     public void DisplayGlitchOff()

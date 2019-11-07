@@ -4,18 +4,13 @@ using UnityEngine;
 
 namespace NewMainMenu
 {
-	public class SettingsButton : MonoBehaviour
-	{
+	public class SettingsButton : MenuButton
+    {
 		public float delay;
 
 		private bool clicked = false;
-        private AudioSource audioSource;
-        //private bool canPlayAudio = true;
 
-        private void Start()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+      
         private void OnEnable()
         {
             clicked = false;
@@ -24,21 +19,6 @@ namespace NewMainMenu
         private void OnMouseEnter()
         {
                 audioSource.Play();
-           // if (!audioSource.isPlaying && canPlayAudio)
-           // {
-           //     canPlayAudio = false;
-           // }
-            
-        }
-
-        private void OnMouseOver()
-        {
-
-        }
-        private void OnMouseExit()
-        {
-            //canPlayAudio = true;
-
         }
 
         void OnMouseDown()

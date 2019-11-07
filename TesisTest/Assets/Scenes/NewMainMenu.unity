@@ -15016,7 +15016,7 @@ GameObject:
   - component: {fileID: 1348879451}
   - component: {fileID: 1348879450}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20990,10 +20990,15 @@ MonoBehaviour:
   - {fileID: 333028055}
   - {fileID: 257518204}
   - {fileID: 1053127413}
+  buttons:
+  - {fileID: 742650094}
+  - {fileID: 860705146}
+  - {fileID: 1243069110}
   colorSwapLavel: colorSwap
   colorSwapGraphs:
   - {fileID: 11400002, guid: d36fe3de69e0bd2438b5f0dec0d54124, type: 3}
   - {fileID: 11400002, guid: 322da099dfbc0be49b8418177383045b, type: 3}
+  musicSource: {fileID: 1348879450}
   mainMenuElements:
   - {fileID: 985069100}
   settingsElements:

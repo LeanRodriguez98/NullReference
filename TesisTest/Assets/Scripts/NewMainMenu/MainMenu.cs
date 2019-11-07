@@ -14,8 +14,13 @@ namespace NewMainMenu
         }
         #endregion
         [SerializeField] [HideInInspector] private MenuShard[] shards;
+        [SerializeField] [HideInInspector] private MenuButton[] buttons;
         public string colorSwapLavel;
         public Substance.Game.SubstanceGraph[] colorSwapGraphs;
+        [Space(20)]
+        [Header("Music Source")]
+        public AudioSource musicSource;
+        private float defaultMusicValue;
         [Space(20)]
         [Header("Menu elements")]
         public GameObject[] mainMenuElements;
@@ -28,7 +33,7 @@ namespace NewMainMenu
         public Toggle lenguageToggle;
         public SO_GameOptions gameOptions;
         private bool subtitles = false;
-
+        private bool settingsDone = false;
         private void Start()
         {
             Utilities.LoadGame(gameOptions);
@@ -39,7 +44,9 @@ namespace NewMainMenu
             soundsVolumeSlider.value = gameOptions.soundsVolume;
             voicesVolumeSlider.value = gameOptions.voicesVolume;
             musicVolumeSlider.value = gameOptions.musicVolume;
-
+            defaultMusicValue = musicSource.volume;
+            musicSource.volume *= gameOptions.musicVolume;
+            settingsDone = true;
         }
         public void SetMenuShardsAnimations()
         {
@@ -48,6 +55,11 @@ namespace NewMainMenu
             {
                 shard.SetAnimator();
             }
+        }
+
+        public void SetButtonsData()
+        {
+            buttons = FindObjectsOfType<MenuButton>();
         }
 
         public void OnButtonClicked()
@@ -67,8 +79,8 @@ namespace NewMainMenu
             {
                 if (go != null)
                 {
-                    
-                        go.SetActive(_state);
+
+                    go.SetActive(_state);
                 }
             }
 
@@ -76,52 +88,79 @@ namespace NewMainMenu
             {
                 if (go != null)
                 {
-                    
-                        go.SetActive(!_state);
+
+                    go.SetActive(!_state);
                 }
             }
         }
 
         public void SetSubtitles()
         {
-            subtitles = !subtitles;
+            if (settingsDone)
+            {
 
-            if (subtitles)
-            {
-                gameOptions.dilplaySubtitles = true;
+                subtitles = !subtitles;
+
+                if (subtitles)
+                {
+                    gameOptions.dilplaySubtitles = true;
+                }
+                else
+                {
+                    gameOptions.dilplaySubtitles = false;
+                    gameOptions.lenguage = (int)GameManager.Lenguges.English;
+                }
+                Utilities.SaveGame(gameOptions);
             }
-            else
-            {
-                gameOptions.dilplaySubtitles = false;
-                gameOptions.lenguage = (int)GameManager.Lenguges.English;
-            }
-            Utilities.SaveGame(gameOptions);
+
         }
 
         public void SetSubtitlesLenguage()
         {
-            gameOptions.lenguage = lenguageDropdown.value;
-            Utilities.SaveGame(gameOptions);
-
+            if (settingsDone)
+            {
+                gameOptions.lenguage = lenguageDropdown.value;
+                Utilities.SaveGame(gameOptions);
+            }
         }
 
         public void SetSoundsVolumeLevel()
         {
-            gameOptions.soundsVolume = soundsVolumeSlider.value;
-            Utilities.SaveGame(gameOptions);
+            if (settingsDone)
+            {
+                gameOptions.soundsVolume = soundsVolumeSlider.value;
+                Utilities.SaveGame(gameOptions);
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].SetButtonsVolume(soundsVolumeSlider.value);
+                }
 
+                for (int i = 0; i < shards.Length; i++)
+                {
+                    shards[i].SetShardVolume(soundsVolumeSlider.value);
+                }
+
+                GlitchEffect.glitchEffectInstance.SetVolume(soundsVolumeSlider.value);
+            }
         }
 
         public void SetVoicesVolumeLevel()
         {
-            gameOptions.voicesVolume = voicesVolumeSlider.value;
-            Utilities.SaveGame(gameOptions);
+            if (settingsDone)
+            {
+                gameOptions.voicesVolume = voicesVolumeSlider.value;
+                Utilities.SaveGame(gameOptions);
+            }
         }
 
         public void SetMusicVolumeLevel()
         {
-            gameOptions.musicVolume = musicVolumeSlider.value;
-            Utilities.SaveGame(gameOptions);
+            if (settingsDone)
+            {
+                gameOptions.musicVolume = musicVolumeSlider.value;
+                Utilities.SaveGame(gameOptions);
+                musicSource.volume = defaultMusicValue * musicVolumeSlider.value;
+            }
         }
     }
 }

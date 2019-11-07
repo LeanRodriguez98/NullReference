@@ -12,6 +12,11 @@ namespace NewMainMenu
             {
                 mainMenu.SetMenuShardsAnimations();
             }
+            if (GUILayout.Button("SetButtonsData"))
+            {
+                mainMenu.SetButtonsData();
+            }
+
             base.OnInspectorGUI();
         }
     }

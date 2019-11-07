@@ -2,19 +2,15 @@
 using UnityEngine;
 namespace NewMainMenu
 {
-    public class PlayButton : MonoBehaviour
+    public class PlayButton : MenuButton
     {
         public float delay;
         public string sceneToLoadName;
         private bool clicked = false;
-        private AudioSource audioSource;
         public AudioClip overClip;
         public AudioClip playClip;
 
-        private void Start()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+       
 
         private void OnMouseEnter()
         {
