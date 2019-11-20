@@ -13,7 +13,7 @@ namespace BetoScripts
         public float grabbingStrength;
         public float throwStrength;
         public float aimingTransitionSpeed;
-        public float distanceToLowerObjOnAiming;
+        public float distanceToRaiseObjOnAiming;
         public float fovOnAiming;
         private GameObject pickedUpObject;
         private Rigidbody pickedUpObjectRB;
@@ -34,12 +34,13 @@ namespace BetoScripts
 
         private void Start()
         {
+            playerCamera = Camera.main;
+
             pickedUpObject = null;
             pickedUpObjectRB = null;
-            objPositionWhenAiming = grabbingPoint.localPosition + (-Vector3.up * distanceToLowerObjOnAiming);
+            objPositionWhenAiming = playerCamera.transform.up * distanceToRaiseObjOnAiming;
             grabberInitialPosition = grabbingPoint.localPosition;
 
-            playerCamera = Camera.main;
             initialFOV = playerCamera.fieldOfView;
 
             state = State.NoObjectGrabbed;
@@ -124,7 +125,9 @@ namespace BetoScripts
             LerpCameraFOV(initialFOV);
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
+			{
                 DropObject();
+			}
             else if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 state = State.Aiming;
