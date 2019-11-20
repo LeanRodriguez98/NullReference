@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+	//public event Action aivaHasBeenRestartedEvent; 
 
     public enum Lenguges
     {
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public bool RestartedAIVA { get; set; }
-	public bool CoffeeMugFound { get; set; }
+	//public bool CoffeeMugFound { get; set; }
 
 	public Player player;
 
@@ -71,9 +70,10 @@ public class GameManager : MonoBehaviour
 		// Prototype trash code
 		Invoke("EnablePlayerUI", 6);
 
-		RestartedAIVA = false;
-		CoffeeMugFound = false;
-        	
+		//RestartedAIVA = false;
+		//CoffeeMugFound = false;
+
+		Aiva.OnRestartEvent += AivaHasBeenRestarted;
 	}
 	
 	void EnablePlayerUI()
@@ -82,5 +82,16 @@ public class GameManager : MonoBehaviour
         {
 		    playerUI.SetActive(true);
         }
+	}
+
+	public void AivaHasBeenRestarted()
+	{
+		RestartedAIVA = true;
+		//aivaHasBeenRestartedEvent();
+	}
+
+	private void OnDestroy() 
+	{
+		Aiva.OnRestartEvent -= AivaHasBeenRestarted;
 	}
 }

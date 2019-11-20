@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class Aiva : Interactable
 {
+	public static event Action OnRestartEvent; 
+
 	public GameObject playerVoiceline;
     public AudioSource pcClip;
 
@@ -30,7 +31,12 @@ public class Aiva : Interactable
 				GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
 				animator.SetTrigger("AivaRestarted");
 				CanInteract = false;
-				GameManager.GetInstance().RestartedAIVA = true;
+
+				//GameManager.GetInstance().RestartedAIVA = true;
+				//GameManager.GetInstance().AivaHasBeenRestarted();
+
+				OnRestartEvent();
+
 				hasRestarted = true;
 
                 //pcClip.Stop();

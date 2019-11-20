@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class CoffeeMug : Interactable
 {
+	public static event Action OnMugFound; 
+
     public GameObject playerVoiceline;
 
     public AudioClip grabSound;
@@ -23,18 +24,14 @@ public class CoffeeMug : Interactable
         
         audioSource = GetComponent<AudioSource>();
         audioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume;
+
+		Aiva.OnRestartEvent += SetMugAsInteractable;
     }
 
-    private void Update()
-    {
-        if (!CanInteract)
-        {
-            if (GameManager.GetInstance().RestartedAIVA)
-            {
-                CanInteract = true;
-            }
-        }
-    }
+	private void SetMugAsInteractable()
+	{
+        CanInteract = true;
+	}
 
     public override void Interact()
     {
@@ -44,14 +41,13 @@ public class CoffeeMug : Interactable
             if (!soundPlayed)
             {
                 playerVoiceline.SetActive(true);
-                GameManager.GetInstance().CoffeeMugFound = true;
                 soundPlayed = true;
+
+				OnMugFound();
             }
             InteractSound();
         }
-
     }
-
 
     private void InteractSound()
     {
@@ -71,4 +67,8 @@ public class CoffeeMug : Interactable
             audioSource.Play();
     }
 
+	private void OnDestroy() 
+	{
+		Aiva.OnRestartEvent -= SetMugAsInteractable;
+	}
 }

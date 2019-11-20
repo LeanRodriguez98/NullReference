@@ -7,10 +7,15 @@ namespace BetoScripts
 {
 	public class UI_Player : MonoBehaviour
 	{
+		[Header("Animator")]
 		public Animator UIAivaAnimator;
 
+		[Header("Objectives")]
+		public Animator objectivesAnimator;
 		public Text currentObjective;
-		
+		public float timeBetweenObjectivesDisplay = 2f;
+
+		[Header("Player actions")]
 		public GameObject interactUI;
 		public Text interactText;
 		
@@ -72,12 +77,29 @@ namespace BetoScripts
             m_lookingAtInteractable = false;
 			currentObjective.text = GameManager.GetInstance().GetAivaObjective();
 			SetInteractionState(PlayerInteractionState.Idle);
+
+			Aiva.OnRestartEvent += OnObjectiveComplete;
+			Aiva.OnRestartEvent += OnAivaRestart;
+
+			CoffeeMug.OnMugFound += OnObjectiveComplete;
 		}
 
-		private void Update()
+		private void OnObjectiveComplete()
 		{
-			if (currentObjective.gameObject.activeSelf && GameManager.GetInstance().RestartedAIVA)
-				currentObjective.text = GameManager.GetInstance().GetCoffeObjective();
+			objectivesAnimator.SetTrigger("OnComplete");
+		}
+
+		private void OnAivaRestart()
+		{
+			Invoke("DisplayCoffeeObjective", timeBetweenObjectivesDisplay);
+		}
+
+		private void DisplayCoffeeObjective()
+		{
+			currentObjective.gameObject.SetActive(false);
+			currentObjective.text = GameManager.GetInstance().GetCoffeObjective();
+
+			currentObjective.gameObject.SetActive(true);
 		}
 
 		public void SetInteractionState(PlayerInteractionState playerState)
@@ -119,5 +141,13 @@ namespace BetoScripts
 		{
 			UIAivaAnimator.SetBool("DisplayAiva", display);
 		}
+
+		private void OnDestroy() 
+		{
+			Aiva.OnRestartEvent -= OnAivaRestart;
+			Aiva.OnRestartEvent -= OnObjectiveComplete;
+
+			CoffeeMug.OnMugFound -= OnObjectiveComplete;
+		} 
 	}
 }

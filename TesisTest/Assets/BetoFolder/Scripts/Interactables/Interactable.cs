@@ -11,5 +11,4 @@ public class Interactable : MonoBehaviour
 		CanInteract = true;
 	}
 	public virtual void Interact() { }
-
 }
