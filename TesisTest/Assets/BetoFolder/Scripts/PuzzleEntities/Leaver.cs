@@ -11,7 +11,6 @@ namespace BetoScripts
 		private AudioSource audioClip;
 		private Animator animator;
 		private ParticleSystem particles;
-		private bool stickLeaningLeft;
 		
 		public override void Start()
 		{
@@ -21,7 +20,6 @@ namespace BetoScripts
 			
 			animator = GetComponent<Animator>();
 			particles = GetComponentInChildren<ParticleSystem>();
-			stickLeaningLeft = true;
         }
 
 		public override void Interact()
@@ -41,20 +39,6 @@ namespace BetoScripts
 				m_doorConnections[i].SetIsEnabled(!currentDoorState);
 			}
 			animator.ResetTrigger("Interact");
-		}
-
-		public void OnActivatedByTrigger(LeaverTrigger.LeaverSide leaverSide)
-		{
-			if (stickLeaningLeft && leaverSide == LeaverTrigger.LeaverSide.Left)
-			{
-				Interact();
-				stickLeaningLeft = false;
-			}
-			else if (!stickLeaningLeft && leaverSide == LeaverTrigger.LeaverSide.Right)
-			{
-				Interact();
-				stickLeaningLeft = true;
-			}
 		}
 	}
 }
