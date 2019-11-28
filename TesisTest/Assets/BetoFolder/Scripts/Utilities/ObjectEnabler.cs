@@ -28,7 +28,7 @@ public class ObjectEnabler : MonoBehaviour
             Transform[] t = m_objectsToEnable[i].GetComponentsInChildren<Transform>();
             foreach (Transform tr in t)
             {
-                if (tr.gameObject.activeSelf)
+                if (tr.gameObject.activeInHierarchy)
                 {
                     auxList.Add(tr.gameObject);
                 }

@@ -6,6 +6,9 @@ namespace BetoScripts
 {
 	public class Leaver : Interactable
 	{
+		[SerializeField] GameObject leaverTrigger_1;
+		[SerializeField] GameObject leaverTrigger_2;
+
 		public List<DoorConnection> m_doorConnections;
         
 		private AudioSource audioClip;
@@ -29,6 +32,9 @@ namespace BetoScripts
 			UpdateDoorConnectionsStates();
             audioClip.Play();
 			animator.SetTrigger("Interact");
+
+			leaverTrigger_1.SetActive(!leaverTrigger_1.activeInHierarchy);
+			leaverTrigger_2.SetActive(!leaverTrigger_2.activeInHierarchy);
         }
 
 		private void UpdateDoorConnectionsStates()
