@@ -22,12 +22,14 @@ public class TV : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         if (changeTime.minTime > changeTime.maxTime)
             changeTime.minTime = changeTime.maxTime;
-        noisePlane.SetActive(false);
+        DisplayNoiseOff();
         if (randomStartMaterial)
             ChangeMaterial();
         else
             Invoke("ChangeMaterial", Random.Range(changeTime.minTime, changeTime.maxTime));
     }
+
+    
 
     public void ChangeMaterial()
     {
