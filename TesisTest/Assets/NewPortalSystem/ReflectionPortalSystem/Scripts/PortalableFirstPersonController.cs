@@ -146,8 +146,7 @@ namespace PortalableFirstPerson
                 RotateView();
 
 
-#if UNITY_EDITOR
-#else
+#if !UNITY_EDITOR
 
                 if (Input.GetMouseButtonDown(0))
                 {

@@ -250,36 +250,36 @@ public class portal : MonoBehaviour
 		}
 		clones.Clear();
 		
-			if (teleport && (!HasChildCamera(other.gameObject) && !isBehindMe(other.transform.position)))
+		if (teleport && (!HasChildCamera(other.gameObject) && !isBehindMe(other.transform.position)))
+		{
+
+			if (!clones.ContainsKey(other.gameObject.GetInstanceID()) && !clones.ContainsValue(other.gameObject))
 			{
 
-				if (!clones.ContainsKey(other.gameObject.GetInstanceID()) && !clones.ContainsValue(other.gameObject))
-				{
 
+				GameObject clone = Instantiate(other.gameObject, transform.position, Quaternion.identity);
+				clone.name = "Clone";
+				clone.tag = "Clone";
 
-					GameObject clone = Instantiate(other.gameObject, transform.position, Quaternion.identity);
-					clone.name = "Clone";
-					clone.tag = "Clone";
+			//Destroy(clone, Time.fixedDeltaTime);
 
-				//Destroy(clone, Time.fixedDeltaTime);
+			//if (!clone.GetComponent<DestroyOnTime>())
+			//{
+			//clone.AddComponent<DestroyOnTime>();
+			//}
 
-				//if (!clone.GetComponent<DestroyOnTime>())
-				//{
-				//clone.AddComponent<DestroyOnTime>();
-				//}
-
-				clones.Add(other.gameObject.GetInstanceID(), clone);
-					clones.TryGetValue(other.gameObject.GetInstanceID(), out this.auxClone);
-				}
+			clones.Add(other.gameObject.GetInstanceID(), clone);
+				clones.TryGetValue(other.gameObject.GetInstanceID(), out this.auxClone);
 			}
-			else
+		}
+		else
+		{
+			if (isBehindMe(other.transform.position))
 			{
-				if (isBehindMe(other.transform.position))
-				{
-					Destroy(auxClone);
-					clones.Remove(other.gameObject.GetInstanceID());
-				}
+				Destroy(auxClone);
+				clones.Remove(other.gameObject.GetInstanceID());
 			}
+		}
 		
 		if (teleport && (!HasChildCamera(other.gameObject) || isCamBehindMe(GetChildCamera(other.gameObject))))
         {
