@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4412514378755646
 Transform:
   m_ObjectHideFlags: 1
@@ -150,7 +150,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137499768045278}
-  m_Mesh: {fileID: 4300000, guid: d8266fcb06b2db74b8488cfba36ecc00, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 32e16caf7da79394783e4b9d9f89db4e, type: 3}
 --- !u!33 &33940667696405752
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -188,6 +188,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 86838773b0d96de4e94abfa8ca6d124d, type: 2}
   - {fileID: 2100000, guid: 407119f9894420141b921baa602d3453, type: 2}
   - {fileID: 2100000, guid: 68597a1ba69cb51468ff72eb4fe9eee9, type: 2}
+  - {fileID: 2100000, guid: da4a7b6b30879894195306d61c584dd1, type: 2}
+  - {fileID: 2100000, guid: b9d8c37474007c34c978af26aea69a98, type: 2}
+  - {fileID: 2100000, guid: ffdb1d9843290b74f80af664a1eed600, type: 2}
+  - {fileID: 2100000, guid: 5896895649d603c44899dcdbfeef57d7, type: 2}
   randomStartMaterial: 1
   changeTime:
     minTime: 45
