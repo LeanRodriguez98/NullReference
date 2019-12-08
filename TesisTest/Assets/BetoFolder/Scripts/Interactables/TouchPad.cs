@@ -70,10 +70,10 @@ public class TouchPad : Interactable
     private void UpdateMaterial()
     {
 
-        if (doorIsOpen)
-            meshRenderer.material = enabledMaterial;
-        else
-            meshRenderer.material = disabledMaterial;
+       // if (doorIsOpen)
+       //     meshRenderer.material = enabledMaterial;
+       // else
+       //     meshRenderer.material = disabledMaterial;
     }
 
     public void PlaySliderSound()
