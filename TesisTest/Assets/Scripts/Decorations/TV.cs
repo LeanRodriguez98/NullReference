@@ -33,11 +33,13 @@ public class TV : MonoBehaviour
 
     public void ChangeMaterial()
     {
-        List<Material> m = new List<Material>();
-        foreach (Material mat in materials)
-            if (mat.mainTexture.name != meshRenderer.material.mainTexture.name)
-                m.Add(mat);
-        meshRenderer.material = m[Random.Range(0, m.Count - 1)];
+		//List<Material> m = new List<Material>();
+		//foreach (Material mat in materials)
+		//    if (mat.mainTexture.name != meshRenderer.material.mainTexture.name)
+		//        m.Add(mat);
+		//meshRenderer.material = m[Random.Range(0, m.Count - 1)];
+		
+		meshRenderer.material = materials[Random.Range(0, materials.Count - 1)];
         float time = Random.Range(changeTime.minTime, changeTime.maxTime);
         Invoke("ChangeMaterial", time);
         Invoke("DisplayNoiseOn", time - (noiseDuration / 2.0f));
