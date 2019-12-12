@@ -4,12 +4,13 @@ ScriptedImporter:
   fileIDToRecycleName:
     100000: HoloShader/HoloShader
     400000: HoloShader/HoloShader/Transform
-    2100026: mat.HoloShader_13
+    2100000: mat.HoloShader
     2300000: HoloShader/HoloShader/MeshRenderer
-    2800004: HoloShader_13_baseColor
-    2800130: HoloShader_13_normal
-    2800132: HoloShader_13_height
-    2800134: HoloShader_13_emissive
+    2800000: HoloShader_baseColor
+    2800002: HoloShader_normal
+    2800004: HoloShader_metallic
+    2800006: HoloShader_height
+    2800008: HoloShader_emissive
     3300000: HoloShader/HoloShader/MeshFilter
     11400000: sbsar
     11400002: graph0
@@ -22,19 +23,14 @@ ScriptedImporter:
   script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
   version: 13
   mGraphInstanceData:
-  - graphLabel: HoloShader_13
+  - graphLabel: HoloShader
     prototypeName: HoloShader
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n  <presetinput
-      identifier=\"$randomseed\" uid=\"3570769886\" type=\"4\" value=\"5255\" />\n
-      \ <presetinput identifier=\"scrollSpeed\" uid=\"3900137857\" type=\"0\" value=\"1\"
-      />\n  <presetinput identifier=\"barSize\" uid=\"3900155234\" type=\"0\" value=\"15\"
-      />\n  <presetinput identifier=\"time\" uid=\"3900172270\" type=\"0\" value=\"0\"
-      />\n </sbspreset>\n"
-    shaderName: Standard (Specular setup)
-    outputNames: baseColor,normal,height,emissive
+    preset: " <sbspreset pkgurl=\"pkg://HoloShader\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
     texturePackingList:
     - outputName: baseColor
       alphaSource: opacity
@@ -43,7 +39,7 @@ ScriptedImporter:
     - outputName: roughness
       alphaSource: roughness
     - outputName: metallic
-      alphaSource: metallic
+      alphaSource: smoothness
     - outputName: height
       alphaSource: height
     - outputName: emissive
@@ -51,31 +47,31 @@ ScriptedImporter:
     - outputName: opacity
       alphaSource: opacity
     textureParameters:
-    - textureName: HoloShader_13_baseColor
+    - textureName: HoloShader_roughness
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: HoloShader_13_normal
+    - textureName: HoloShader_baseColor
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: HoloShader_13_roughness
+    - textureName: HoloShader_normal
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: HoloShader_13_metallic
+    - textureName: HoloShader_metallic
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: HoloShader_13_height
+    - textureName: HoloShader_height
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: HoloShader_13_emissive
+    - textureName: HoloShader_emissive
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: HoloShader_13_opacity
+    - textureName: HoloShader_opacity
       wrapMode: 0
       filterMode: 1
       aniso: 1
@@ -96,19 +92,20 @@ ScriptedImporter:
       bLinear: 1
     inputTextureMap:
     - inputName: imageInput
-      texturePath: Assets/Textures/HoloShader/ScreensBaseColor.png
-      texture2D: {fileID: 2800000, guid: aa613f5e4a02e0f49ba10127182f0085, type: 3}
+      texturePath: Assets/Material/Substance_Mats/New/screens_screens_BaseColor.png
+      texture2D: {fileID: 2800000, guid: 52827036c663dfc4da3035f0ce1dcb4b, type: 3}
     targetSettingList:
     - label: 
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 32
-      textureHeight: 32
+      textureWidth: 0
+      textureHeight: 0
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {fileID: 2100026, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    material: {fileID: 2100000, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
     generatedTextures:
+    - {fileID: 2800000, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800002, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
     - {fileID: 2800004, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800130, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800132, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
-    - {fileID: 2800134, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800006, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
+    - {fileID: 2800008, guid: eda5998ed86e9cf4283953adde152ecc, type: 3}
