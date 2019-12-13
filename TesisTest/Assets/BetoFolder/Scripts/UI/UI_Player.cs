@@ -12,7 +12,7 @@ namespace BetoScripts
 
 		[Header("Objectives")]
 		public Animator objectivesAnimator;
-		public Text currentObjective;
+		//public Text currentObjective;
 		public float timeBetweenObjectivesDisplay = 2f;
 
 		[Header("Player actions")]
@@ -75,7 +75,7 @@ namespace BetoScripts
 
 
             m_lookingAtInteractable = false;
-			currentObjective.text = GameManager.GetInstance().GetAivaObjective();
+			//currentObjective.text = GameManager.GetInstance().GetAivaObjective();
 			SetInteractionState(PlayerInteractionState.Idle);
 
 			Aiva.OnRestartEvent += OnObjectiveComplete;
@@ -86,20 +86,22 @@ namespace BetoScripts
 
 		private void OnObjectiveComplete()
 		{
-			objectivesAnimator.SetTrigger("OnComplete");
+			//objectivesAnimator.SetTrigger("OnComplete");
 		}
 
 		private void OnAivaRestart()
 		{
-			Invoke("DisplayCoffeeObjective", timeBetweenObjectivesDisplay);
+			// Init finish loading bar animation
+
+			//Invoke("DisplayCoffeeObjective", timeBetweenObjectivesDisplay);
 		}
 
 		private void DisplayCoffeeObjective()
 		{
-			currentObjective.gameObject.SetActive(false);
-			currentObjective.text = GameManager.GetInstance().GetCoffeObjective();
-
-			currentObjective.gameObject.SetActive(true);
+			//currentObjective.gameObject.SetActive(false);
+			//currentObjective.text = GameManager.GetInstance().GetCoffeObjective();
+//
+			//currentObjective.gameObject.SetActive(true);
 		}
 
 		public void SetInteractionState(PlayerInteractionState playerState)

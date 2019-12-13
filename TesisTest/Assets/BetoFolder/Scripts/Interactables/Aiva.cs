@@ -28,7 +28,7 @@ public class Aiva : Interactable
 		{
 			if (GlitchEffect.glitchEffectInstance != null)
 			{
-				GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
+				//GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
 				animator.SetTrigger("AivaRestarted");
 				CanInteract = false;
 

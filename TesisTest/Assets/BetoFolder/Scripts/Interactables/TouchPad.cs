@@ -40,10 +40,13 @@ public class TouchPad : Interactable
 		base.Interact();
 
 		doorIsOpen = !doorIsOpen;
-        if (doorIsOpen)
-            sliderAudioSource.clip = doorOpenSound;
-        else
-            sliderAudioSource.clip = doorCloseSound;
+		sliderAudioSource.clip = doorIsOpen ? doorOpenSound : doorCloseSound;
+
+        //if (doorIsOpen)
+        //    sliderAudioSource.clip = doorOpenSound;
+        //else
+        //    sliderAudioSource.clip = doorCloseSound;
+
         SetMaterial();
 		animator.SetBool("OpenDoor", !animator.GetBool("OpenDoor"));
         audioClip.Play();
