@@ -24,6 +24,6 @@ public class UI_AivaReboot : MonoBehaviour
 
 	public void CloseSlidingDoor()
 	{
-		touchPad.Interact();
+		touchPad.CloseSlidingDoorOnAivaReboot();
 	}
 }

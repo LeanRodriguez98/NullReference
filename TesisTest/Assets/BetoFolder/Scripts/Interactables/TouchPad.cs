@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TouchPad : Interactable
 {
+	public GameObject floorToDisable;
+
 	public Animator animator;
 	public Material disabledMaterial;
 	public Material enabledMaterial;
@@ -16,6 +16,9 @@ public class TouchPad : Interactable
 	private bool doorIsOpen;
 
     private AudioSource audioClip;
+
+	private bool aivaHasRebooted;
+
     //private MaterialSwaper materialSwaper;
     //private bool materialSwaperState;
 
@@ -31,7 +34,7 @@ public class TouchPad : Interactable
         audioClip.volume *= GameManager.GetInstance().gameOptions.soundsVolume;//PlayerPrefs.GetFloat("VolumeLevel");
         sliderAudioSource.volume *= GameManager.GetInstance().gameOptions.soundsVolume; //PlayerPrefs.GetFloat("VolumeLevel");
 
-       // materialSwaperState = false;
+		aivaHasRebooted = false;
 
     }
 
@@ -39,18 +42,31 @@ public class TouchPad : Interactable
 	{
 		base.Interact();
 
-		doorIsOpen = !doorIsOpen;
+		if (aivaHasRebooted)
+		{
+			floorToDisable.SetActive(false);
+		}
+		else
+		{
+			doorIsOpen = !doorIsOpen;
+			sliderAudioSource.clip = doorIsOpen ? doorOpenSound : doorCloseSound;
+
+			SetMaterial();
+			animator.SetBool("OpenDoor", !animator.GetBool("OpenDoor"));
+			audioClip.Play();
+			PlaySliderSound();
+		}
+	}
+
+	public void CloseSlidingDoorOnAivaReboot()
+	{
+		doorIsOpen = false;
 		sliderAudioSource.clip = doorIsOpen ? doorOpenSound : doorCloseSound;
+		animator.SetBool("OpenDoor", false);
+		audioClip.Play();
+		PlaySliderSound();
 
-        //if (doorIsOpen)
-        //    sliderAudioSource.clip = doorOpenSound;
-        //else
-        //    sliderAudioSource.clip = doorCloseSound;
-
-        SetMaterial();
-		animator.SetBool("OpenDoor", !animator.GetBool("OpenDoor"));
-        audioClip.Play();
-        PlaySliderSound();
+		aivaHasRebooted = true;
 	}
 
 
