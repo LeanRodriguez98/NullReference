@@ -151,8 +151,7 @@ public class portal : MonoBehaviour
             }
 		}
 		
-
-		reflectionCamera.Render ();
+		reflectionCamera.Render();
 
         if (disablePixelLights)
         {
