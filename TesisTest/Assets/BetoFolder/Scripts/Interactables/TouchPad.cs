@@ -2,7 +2,8 @@
 
 public class TouchPad : Interactable
 {
-	public GameObject floorToDisable;
+	public string animationTriggerName;
+	public Animator floorToDisable;
 
 	public Animator animator;
 	public Material disabledMaterial;
@@ -44,7 +45,7 @@ public class TouchPad : Interactable
 
 		if (aivaHasRebooted)
 		{
-			floorToDisable.SetActive(false);
+			floorToDisable.SetTrigger(animationTriggerName);
 		}
 		else
 		{
