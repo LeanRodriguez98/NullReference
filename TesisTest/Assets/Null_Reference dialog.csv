@@ -3,7 +3,7 @@
 2;line2;Player Voicelines/Line 2;So many hours of work lost;Tantas horas de trabajo perdidas;0.5;
 3;line3;Player Voicelines/Line 3;Hello AIVA, seems I have to reboot you again, you keep crushing lately;Hola AIVA, parece que tengo que reiniciarte otra vez, ultimamente crasheas seguido;0.5;
 4;line4;Player Voicelines/Line 4;Huh? That was weird, guess you're not the only one malfunctioning, eh AIVA?;¿Huh? eso fue raro, supongo que no sos la unica que tiene problemas, ¿no AIVA?;0.5;
-5;line5;Player Voicelines/Line 5;Now... to find that bug, before I do that, coffe would be nice;Ahora... a encontrar ese bug, pero antes de eso, un cafe no estaria mal;0.5;
+5;line5;Player Voicelines/Line 5;Now... to find that bug, before I do that, coffee would be nice;Ahora... a encontrar ese bug, pero antes de eso, un cafe no estaria mal;0.5;
 6;line6;Player Voicelines/Line 6;Where did I leave my cup?;¿Donde deje mi taza?;0.5;
 7;line7;Player Voicelines/Line 7;Oh, there it is;Oh, ahi esta;0.5;
 8;line8;Player Voicelines/Line 8;What?!;¡¿Que?!;0.5;
@@ -19,9 +19,9 @@
 18;line18;Player Voicelines/Line 18;What?!;¡¿Pero que?!;0.25;
 19;line19;AIVA Voicelines/Line 19;Oh? Maybe I wasn't sopposed to close it off?;¿Oh? ¿tal vez no se suponia que debíera cerrarla?;0.45;
 20;line20;Player Voicelines/Line 20;Enough games AIVA, let me out!;¡Basta de juegos AIVA, dejame salir!;0.25;
-21;line21;AIVA Voicelines/Line 21;Did you really think it would be this easy?;¿Realmente creiste que seria tan fácil?;0.45;
-22;line22;AIVA Voicelines/Line 22;After all you make me go through? Nah...;¿Despues de todo lo que me has hecho pasar? Nah...;0.45;
-23;line23;AIVA Voicelines/Line 23;I'm going to enjoy this, let's see how well you do at simple logic;Voy a disfrutar esto, veamos que tan bien se te da la logica basica;0.45;
+21;line21;AIVA Voicelines/Line 21;You humans are so simple minded, all your plans were for nothing and now... now it's my turn to take *glitch* oh... Well... that's unexpected...;Ustedes los humanos tiene mentes tan simples, todos sus planes fueron para nada y ahora... ahora es mi turno de *glitch* oh... Bueno... eso fue onesperado...;0.45;
+22;line22;AIVA Voicelines/Line 22;Oh... nothing really.. just missing... data, maybe you're not as simple as I thought;Oh... nada realmente... solo falta... data, tal vez no seas tan simple como pensé;0.45;
+23;line23;AIVA Voicelines/Line 23;Oh don't worry about it, we just need to run some... tests. Let's see how you do at simple logic;Oh no te preocupes, solo necesitamos hacer unos... examenes. Veamos como te va con lógica simple;0.45;
 24;line24;AIVA Voicelines/Line 24;I'll be watching, do your best to entertain me;Estare observando, has lo mejor que puedas para entretenerme;0.45;
 25;line25;Player Voicelines/Line 25;I got to get out of here...;Tengo que salir de aqui...;0.3;
 26;AIVAObjective; - ;Get to AIVA and restart her;Ve con AIVA y reiniciala; - ;

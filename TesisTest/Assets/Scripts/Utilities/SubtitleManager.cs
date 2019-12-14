@@ -41,6 +41,7 @@ public class SubtitleManager : MonoBehaviour
         string[] data = sourceCSV.text.Split(new char[] { '\n' });
         for (int i = 1; i < data.Length; i++)
         {
+			Debug.Log("Line " + i);
             string[] row = data[i].Split(new char[] { ';' });
             if (row[1] != "")
             {

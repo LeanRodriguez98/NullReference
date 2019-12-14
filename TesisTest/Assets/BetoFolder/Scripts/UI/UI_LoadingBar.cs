@@ -3,6 +3,14 @@ using UnityEngine.UI;
 
 public class UI_LoadingBar : MonoBehaviour 
 {
+	#region Singleton
+	public static UI_LoadingBar Instance;
+	private void Awake()
+	{
+		Instance = this;
+	}
+	#endregion
+
 	[SerializeField] Image loadingBarFill;
 	[SerializeField] float timeToStartLoading;
 	[SerializeField] float loadingAmountPerFrame;
@@ -12,6 +20,7 @@ public class UI_LoadingBar : MonoBehaviour
 	float desiredPercentageToReach;
 
 	float tempPercentage;
+	bool runningFadeInAnimation;
 
 	void Start () 
 	{
@@ -19,17 +28,22 @@ public class UI_LoadingBar : MonoBehaviour
 		tempPercentage = 0;
 		desiredPercentageToReach = 0;
 		currentFillAmount = 0;
+		runningFadeInAnimation = false;
+		loadingBarFill.fillAmount = currentFillAmount;
 	}
 	
 	void Update () 
 	{
-		if (currentFillAmount <= desiredPercentageToReach)
+		if (!runningFadeInAnimation) return;
+
+		if (currentFillAmount < desiredPercentageToReach)
 		{
 			currentFillAmount += loadingAmountPerFrame;
 			loadingBarFill.fillAmount = currentFillAmount * 0.01f;
 		}
 		else
 		{
+			runningFadeInAnimation = false;
 			animator.SetBool("OnDisplay", false);
 		}
 	}
@@ -45,5 +59,6 @@ public class UI_LoadingBar : MonoBehaviour
 	void SetDesiredPercentage()
 	{
 		desiredPercentageToReach = tempPercentage;
+		runningFadeInAnimation = true;
 	}
 }
