@@ -1,5 +1,5 @@
 <p align="center">
-<img src="LogoIC.png" alt="Null Reference"/>
+<img src="NullReference.png" alt="Null Reference"/>
 </p>
 
 # Null Reference
