@@ -88,7 +88,7 @@ public class IntroAI_SpotLight : RaycastTriggerEvent
 
 
 	    // TODO: Make Aiva UI animation respond to Aiva's audio file length
-		Invoke("HideAivaUI", 8.0f);
+		Invoke("HideAivaUI", 2.0f);
 	}
 
 	void HideAivaUI()
