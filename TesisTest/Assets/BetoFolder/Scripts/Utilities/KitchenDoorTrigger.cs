@@ -23,7 +23,6 @@ public class KitchenDoorTrigger : MonoBehaviour
 		aivaHasBeenRestarted = false;
 
 		CoffeeMug.OnMugFound += CoffeeMugWasFound;
-		Aiva.OnRestartEvent += AivaHasBeenRestarted;
     }
 
 	private void OnTriggerEnter(Collider other)
@@ -51,6 +50,5 @@ public class KitchenDoorTrigger : MonoBehaviour
 	private void OnDestroy() 
 	{
 		CoffeeMug.OnMugFound -= CoffeeMugWasFound;
-		Aiva.OnRestartEvent -= AivaHasBeenRestarted;
 	}
 }

@@ -35,18 +35,15 @@ public class CoffeeMug : Interactable
 
     public override void Interact()
     {
-        if (GameManager.GetInstance().RestartedAIVA)
-        {
-            base.Interact();
-            if (!soundPlayed)
-            {
-                playerVoiceline.SetActive(true);
-                soundPlayed = true;
+		base.Interact();
+		if (!soundPlayed)
+		{
+			playerVoiceline.SetActive(true);
+			soundPlayed = true;
 
-				OnMugFound();
-            }
-            InteractSound();
-        }
+			OnMugFound();
+		}
+		InteractSound();
     }
 
     private void InteractSound()

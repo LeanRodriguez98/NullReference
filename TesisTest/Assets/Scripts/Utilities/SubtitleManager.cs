@@ -49,9 +49,9 @@ public class SubtitleManager : MonoBehaviour
                 int.TryParse(row[0], out a.id);
                 a.clip = (AudioClip)Resources.Load(row[2]);
                 if (row[2].ToCharArray()[0] == AIVA_DialogsFolderFirstChar)
-                    a.subtitleColor = Color.red;
+                    a.subtitleColor = new Color(1.0f, 0.28f, 0.28f);
                 else if (row[2].ToCharArray()[0] == PLAYER_DialogsFolderFirstChar)
-                    a.subtitleColor = Color.blue;
+                    a.subtitleColor = new Color(0.8f, 0.8f, 1.0f);
                 a.englishSubtitles = row[3];
                 a.spanishSubtitles = row[4];
                 float.TryParse(row[5], out a.volume);

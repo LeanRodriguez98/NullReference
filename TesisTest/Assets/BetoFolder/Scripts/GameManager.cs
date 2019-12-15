@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 		return coffeeObjective;
 	}
 
-	public bool RestartedAIVA { get; set; }
+	//public bool RestartedAIVA { get; set; }
 	//public bool CoffeeMugFound { get; set; }
 
 	public Player player;
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 		//RestartedAIVA = false;
 		//CoffeeMugFound = false;
 
-		Aiva.OnRestartEvent += AivaHasBeenRestarted;
+		//Aiva.OnRestartEvent += AivaHasBeenRestarted;
 	}
 	
 	void EnablePlayerUI()
@@ -86,12 +86,12 @@ public class GameManager : MonoBehaviour
 
 	public void AivaHasBeenRestarted()
 	{
-		RestartedAIVA = true;
+		//RestartedAIVA = true;
 		//aivaHasBeenRestartedEvent();
 	}
 
 	private void OnDestroy() 
 	{
-		Aiva.OnRestartEvent -= AivaHasBeenRestarted;
+		//Aiva.OnRestartEvent -= AivaHasBeenRestarted;
 	}
 }

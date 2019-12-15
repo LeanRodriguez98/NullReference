@@ -28,18 +28,12 @@ public class Aiva : Interactable
 		{
 			if (GlitchEffect.glitchEffectInstance != null)
 			{
-				//GlitchEffect.glitchEffectInstance.DisplayGlitchOn();
 				animator.SetTrigger("AivaRestarted");
 				CanInteract = false;
-
-				//GameManager.GetInstance().RestartedAIVA = true;
-				//GameManager.GetInstance().AivaHasBeenRestarted();
 
 				OnRestartEvent();
 
 				hasRestarted = true;
-
-                //pcClip.Stop();
 
 				playerVoiceline.SetActive(true);
 			}
