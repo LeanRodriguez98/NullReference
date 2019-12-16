@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4661856013247546}
   - component: {fileID: 33371601930839432}
   - component: {fileID: 23403501182849556}
+  - component: {fileID: 64301019170277836}
   m_Layer: 0
   m_Name: Wire01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4661856013247546
 Transform:
@@ -34,13 +35,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1266866706869142}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -66.518, y: 44.59077, z: -55.62682}
+  m_LocalRotation: {x: -0.0012712181, y: 0.7009472, z: -0.10979705, w: 0.70470995}
+  m_LocalPosition: {x: -0.98999953, y: -2.4400015, z: 10.130002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.751, y: -1.005, z: -9.113001}
 --- !u!23 &23403501182849556
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,4 +83,18 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1266866706869142}
+  m_Mesh: {fileID: 4300000, guid: efe1c2702fbcad6458bcffda7a490b1b, type: 3}
+--- !u!64 &64301019170277836
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266866706869142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: -2
+  m_SkinWidth: 0.001
   m_Mesh: {fileID: 4300000, guid: efe1c2702fbcad6458bcffda7a490b1b, type: 3}

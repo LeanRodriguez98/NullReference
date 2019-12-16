@@ -5,15 +5,22 @@ ScriptedImporter:
     100000: floor/floor
     400000: floor/floor/Transform
     2100000: mat.floor
+    2100002: mat.floor_1
     2300000: floor/floor/MeshRenderer
     2800000: floor_baseColor
     2800002: floor_normal
     2800004: floor_metallic
     2800006: floor_height
     2800008: floor_emissive
+    2800010: floor_1_baseColor
+    2800012: floor_1_normal
+    2800014: floor_1_metallic
+    2800016: floor_1_height
+    2800018: floor_1_emissive
     3300000: floor/floor/MeshFilter
     11400000: sbsar
     11400002: graph0
+    11400004: graph1
     13500000: floor/floor/SphereCollider
     100100000: floor
   externalObjects: {}
@@ -98,3 +105,75 @@ ScriptedImporter:
     - {fileID: 2800004, guid: a794af7143cf69a458e5ab8e4b1b494c, type: 3}
     - {fileID: 2800006, guid: a794af7143cf69a458e5ab8e4b1b494c, type: 3}
     - {fileID: 2800008, guid: a794af7143cf69a458e5ab8e4b1b494c, type: 3}
+  - graphLabel: floor_1
+    prototypeName: floor
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://floor\" label=\"\" >\n  <presetinput identifier=\"$outputsize\"
+      uid=\"487774500\" type=\"8\" value=\"10,10\" />\n  <presetinput identifier=\"tileToggle\"
+      uid=\"2001838136\" type=\"4\" value=\"0\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,metallic,height,emissive
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: height
+      alphaSource: height
+    - outputName: emissive
+      alphaSource: emissive
+    textureParameters:
+    - textureName: floor_1_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: floor_1_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: floor_1_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: floor_1_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: floor_1_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: floor_1_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: emissive
+      bLinear: 0
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: a794af7143cf69a458e5ab8e4b1b494c, type: 3}
+    generatedTextures: []
