@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class UI_EndScreen : MonoBehaviour
 {
+    public string sceneName;
+
 	public void GoToMainMenu()
 	{
-		SceneManager.LoadScene(0);
+        Utilities.LoadScene(sceneName);
 	}
 }
