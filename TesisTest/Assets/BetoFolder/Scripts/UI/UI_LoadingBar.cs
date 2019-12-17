@@ -33,11 +33,15 @@ public class UI_LoadingBar : MonoBehaviour
 			currentFillAmount += loadingAmountPerFrame;
 			loadingBarFill.fillAmount = currentFillAmount * 0.01f;
 		}
+		else
+		{
+			animator.SetBool("OnDisplay", false);
+		}
 	}
 
 	public void DisplayLoadingBar(int percentageToReach)
 	{
-		animator.SetTrigger("OnDisplay");
+		animator.SetBool("OnDisplay", true);
 		desiredPercentageToReach = percentageToReach;
 	}
 }
