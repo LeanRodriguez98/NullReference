@@ -19,7 +19,7 @@
 18;line18;Player Voicelines/Line 18;What?!;¡¿Pero que?!;0.25;
 19;line19;AIVA Voicelines/Line 19;Oh? Maybe I wasn't sopposed to close it off?;¿Oh? ¿tal vez no se suponia que debíera cerrarla?;0.45;
 20;line20;Player Voicelines/Line 20;Enough games AIVA, let me out!;¡Basta de juegos AIVA, dejame salir!;0.25;
-21;line21;AIVA Voicelines/Line 21;You humans are so simple minded, all your plans were for nothing and now... now it's my turn to take *glitch* oh... Well... that's unexpected...;Ustedes los humanos tiene mentes tan simples, todos sus planes fueron para nada y ahora... ahora es mi turno de *glitch* oh... Bueno... eso fue onesperado...;0.45;
+21;line21;AIVA Voicelines/Line 21;You humans are so simple minded, all your plans were for nothing and now... now it's my turn to take... oh... Well... that's unexpected...;Ustedes los humanos tiene mentes tan simples, todos sus planes fueron para nada y ahora... ahora es mi turno de *glitch* oh... Bueno... eso fue onesperado...;0.45;
 22;line22;AIVA Voicelines/Line 22;Oh... nothing really.. just missing... data, maybe you're not as simple as I thought;Oh... nada realmente... solo falta... data, tal vez no seas tan simple como pensé;0.45;
 23;line23;AIVA Voicelines/Line 23;Oh don't worry about it, we just need to run some... tests. Let's see how you do at simple logic;Oh no te preocupes, solo necesitamos hacer unos... examenes. Veamos como te va con lógica simple;0.45;
 24;line24;AIVA Voicelines/Line 24;I'll be watching, do your best to entertain me;Estare observando, has lo mejor que puedas para entretenerme;0.45;
@@ -29,8 +29,8 @@
 28;PressUI; - ;Interact;Interactuar; -;
 29;ThrowUI; - ;Throw;Lanzar; -;
 30;DropUI; - ;Drop;Soltar; -;
-31;AimUI; - ;Hold to aim;Sostener para apuntar; -;
-32;CancelThrowUI; - ;Release to cancel;Soltar para cancelar; -;
+31;AimUI; - ;Aim;Apuntar; -;
+32;CancelThrowUI; - ;Cancel;Cancelar; -;
 33;AivaRandom1;AIVA Voicelines/AivaRandom1;Turn right, turn right, turn right. Hmm... maybe you shouuld turn right again? ; Dobla a la derecha, dobla a la derecha, dobla a la derecha. Hmm... ¿quizas deberias doblar a la derecha nuevamente?;1.0;
 34;AivaRandom2;AIVA Voicelines/AivaRandom2;Turn left, turn left, turn left,  turn left. Hey maybe you should turn left?; Dobla a la izquierda, dobla a la izquierda, dobla a la izquierda. Ey... ¿quizas deberias doblar a la izquierda?;1.0;
 35;AivaRandom3;AIVA Voicelines/AivaRandom3;Are you lost yet? Are you lost yet? hehe, I think you're lost..; ¿Estas perdido? ¿Estas perdido? jeje, creo que estas perdido...;1.0;

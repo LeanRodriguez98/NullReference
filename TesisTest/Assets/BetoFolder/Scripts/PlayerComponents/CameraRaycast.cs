@@ -19,6 +19,8 @@ namespace BetoScripts
 
 		void Update()
 		{
+			if (playerUI.playerState == UI_Player.PlayerInteractionState.GrabbingObject) return;
+
 			m_interactableFound = CheckInteractableEntity();
 			if (m_interactableFound && Input.GetKeyDown(KeyCode.Mouse0))
 				m_interactableFound.Interact();

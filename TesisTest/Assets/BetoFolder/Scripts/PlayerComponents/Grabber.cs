@@ -133,7 +133,6 @@ namespace BetoScripts
                 state = State.Aiming;
                 UI_Player.GetInstance().SetInteractionState(UI_Player.PlayerInteractionState.AimingToThrowObject);
             }
-
             UI_Player.GetInstance().DisplayPlayerInteractUI(false);
         }
 

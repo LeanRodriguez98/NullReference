@@ -37,6 +37,7 @@ namespace BetoScripts
 			GrabbingObject,
 			AimingToThrowObject
 		}
+		public PlayerInteractionState playerState { get; private set; }
 
 		#region Singleton
 		private static UI_Player instance;
@@ -106,6 +107,8 @@ namespace BetoScripts
 
 		public void SetInteractionState(PlayerInteractionState playerState)
 		{
+			this.playerState = playerState;
+			
 			switch (playerState)
 			{
 				case PlayerInteractionState.Idle:
