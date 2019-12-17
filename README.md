@@ -4,7 +4,7 @@
 
 # Null Reference
 
-In a dystopic cyberpunk world, a hacker develops an AI to bring down the system that rules the world, however things may not go as expected when the AI becomes sentient. Now the hacker must face his own creation and free himself or dissapear forever
+Null reference is a 3D Puzzle oriented adventure game where the player takes the role of a programmer who created an A.I. to bring down the oppressive system that runs the society he lives in. However, things go awry and now he must overcome the tests and puzzles his own AI created to be able to escape the digital world she has trapped him in. Learn how to overcome the puzzles traversing eerie passages where space does not follow ordinary logic. Defeat AIVA at her own game, and escape... or disappear completely.
 
 This is a game developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
 

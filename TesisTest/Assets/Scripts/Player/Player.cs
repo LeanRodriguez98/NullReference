@@ -33,15 +33,15 @@ public class Player : MonoBehaviour {
             Utilities.ReloadScene();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+#endif
+        if (Input.GetKeyDown(KeyCode.Alpha0) && Input.GetKeyDown(KeyCode.LeftShift))
         {
             Time.timeScale = 5;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
+        if (Input.GetKeyDown(KeyCode.Alpha9) && Input.GetKeyDown(KeyCode.LeftShift))
         {
             Time.timeScale = 1;
         }
-#endif
         //if (Input.GetKeyDown(KeyCode.Escape))
         //{
         //    Utilities.ExitGame();
