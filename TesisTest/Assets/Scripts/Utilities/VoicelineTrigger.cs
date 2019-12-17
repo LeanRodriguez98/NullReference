@@ -8,7 +8,6 @@ public class VoicelineTrigger : MonoBehaviour
 	public SubtitleManager subtitleManager;
 	public float waitForSeconds;
 	public bool playOnAwake;
-
 	private void Awake()
 	{
 		if(playOnAwake)

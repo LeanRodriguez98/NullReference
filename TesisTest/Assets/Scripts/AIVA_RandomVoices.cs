@@ -29,8 +29,8 @@ public class AIVA_RandomVoices : MonoBehaviour
         List<string> voice = new List<string>();
         voice.Add(keys[UnityEngine.Random.Range(0, keys.Length)]);
         SubtitleManager.instance.LoadAudioQueque(voice.ToArray());
-        BetoScripts.UI_Player.GetInstance().SetAivaUIDisplay(true);
-        Invoke("AivaUIDisplayOff", SubtitleManager.instance.GetAudioByKey(voice[0]).clip.length);
+        //BetoScripts.UI_Player.GetInstance().SetAivaUIDisplay(true);
+        //Invoke("AivaUIDisplayOff", SubtitleManager.instance.GetAudioByKey(voice[0]).clip.length);
     }
 
     public void AivaUIDisplayOff()
